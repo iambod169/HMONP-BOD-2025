@@ -1,4 +1,5 @@
 Présentation du Journal de Bord
+
 Ce journal de bord documente mon parcours professionnel à l'Atelier Juno dans le cadre de ma formation HMONP. 
 Il présente semaine par semaine les différentes missions réalisées, les compétences développées et les réflexions sur ma future pratique en tant qu'architecte en nom propre.
 
