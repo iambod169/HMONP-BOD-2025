@@ -5,3 +5,6 @@ Il présente semaine par semaine les différentes missions réalisées, les comp
 
 Chaque page hebdomadaire comprend une analyse détaillée des projets traités ainsi qu'une visualisation graphique de la répartition de mon temps de travail.
 Je créé un site que je met à jour au fur et à mesure des semaines en html
+
+Ma page qui contient les mises à jour de mes fichiers:
+https://iambod169.github.io/HMONP-BOD-2025/
