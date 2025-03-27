@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planification Hebdomadaire HMONP - 10-14 mars 2025</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -53,10 +54,33 @@
             margin-right: 8px;
             border-radius: 3px;
         }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #4e73df;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #2e59d9;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
         <h1>Planification Hebdomadaire HMONP<br>10 - 14 Mars 2025</h1>
         
         <div class="chart-container">
@@ -77,45 +101,38 @@
     </div>
 
     <script>
-        // Configuration du graphique Gantt
+        // Configuration du graphique Gantt modifié - jours sur l'axe Y, projets en légende
         const ctx = document.getElementById('ganttChart').getContext('2d');
         const ganttChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Formation Power BI', 'MICHELIN - LES PISTES', 'ADMINISTRATIF', 'M02-LOGEMENT'],
+                labels: ['Lundi 10 Mars', 'Mardi 11 Mars', 'Mercredi 12 Mars', 'Jeudi 13 Mars', 'Vendredi 14 Mars'],
                 datasets: [
                     {
-                        label: '10 Mars',
-                        data: [0, 4, 1, 0.5],
+                        label: 'Formation Power BI',
+                        data: [0, 0, 8, 8, 8],
                         backgroundColor: '#4e73df',
                         barPercentage: 0.8,
                         categoryPercentage: 0.9
                     },
                     {
-                        label: '11 Mars',
-                        data: [0, 4, 0, 0],
+                        label: 'MICHELIN - LES PISTES',
+                        data: [4, 4, 4, 0, 0],
                         backgroundColor: '#1cc88a',
                         barPercentage: 0.8,
                         categoryPercentage: 0.9
                     },
                     {
-                        label: '12 Mars',
-                        data: [8, 4, 0, 0],
+                        label: 'ADMINISTRATIF',
+                        data: [1, 0, 0, 0, 0],
                         backgroundColor: '#36b9cc',
                         barPercentage: 0.8,
                         categoryPercentage: 0.9
                     },
                     {
-                        label: '13 Mars',
-                        data: [8, 0, 0, 0],
+                        label: 'M02-LOGEMENT',
+                        data: [0.5, 0, 0, 0, 0],
                         backgroundColor: '#f6c23e',
-                        barPercentage: 0.8,
-                        categoryPercentage: 0.9
-                    },
-                    {
-                        label: '14 Mars',
-                        data: [8, 0, 0, 0],
-                        backgroundColor: '#e74a3b',
                         barPercentage: 0.8,
                         categoryPercentage: 0.9
                     }
