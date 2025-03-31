@@ -3,545 +3,589 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bilan Mensuel Mars 2025 - HMONP</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.1.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <title>Journal de Bord HMONP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #f5f5f5;
+            color: #333;
         }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            font-weight: normal;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+        
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .intro {
             background-color: white;
-            padding: 20px;
+            padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
         }
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .chart-container {
-            margin-top: 30px;
-            height: 500px;
-            position: relative;
-        }
-        .chart-title {
-            text-align: center;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-        .summary {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #f9f9f9;
+        
+        .month-section {
+            margin-bottom: 1.5rem;
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .data-table th, .data-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        .data-table th {
-            background-color: #f2f2f2;
-            font-weight: 600;
-        }
-        .data-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .data-table tr:hover {
-            background-color: #f1f1f1;
-        }
-        .home-button {
-            display: inline-flex;
+        
+        .month-header {
+            background-color: #34495e;
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .month-header:hover {
+            background-color: #2c3e50;
+        }
+        
+        .month-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .month-content {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .week-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .week-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .week-header {
             background-color: #3498db;
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            font-weight: 500;
-            transition: background-color 0.2s;
+            padding: 1rem;
         }
-        .home-button:hover {
-            background-color: #2980b9;
+        
+        .week-content {
+            padding: 1.5rem;
         }
-        .home-button i {
-            margin-right: 8px;
-        }
-        .insight-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-        .insight-card h3 {
-            margin-top: 0;
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-        .insight-card p {
-            line-height: 1.6;
+        
+        .week-projects {
+            margin: 1rem 0;
+            font-size: 0.9rem;
             color: #555;
         }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+        
+        .week-projects strong {
+            color: #333;
         }
-        .stat-card {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
+        
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
             color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-disabled {
+            background-color: #7f8c8d;
+            cursor: not-allowed;
+        }
+        
+        .btn-disabled:hover {
+            background-color: #7f8c8d;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
             text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
         }
-        .stat-card h3 {
-            font-size: 2.5rem;
-            margin: 10px 0;
+        
+        .collapse-icon {
+            transition: transform 0.3s ease;
         }
-        .stat-card p {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin: 0;
+        
+        .collapsed .collapse-icon {
+            transform: rotate(-90deg);
         }
-        .tabs {
+        
+        .month-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .collapsed .month-content {
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        
+        /* Ajout de couleurs différentes pour les mois */
+        .month-march .month-header {
+            background-color: #3498db;
+        }
+        .month-april .month-header {
+            background-color: #2ecc71;
+        }
+        .month-may .month-header {
+            background-color: #9b59b6;
+        }
+        .month-june .month-header {
+            background-color: #e67e22;
+        }
+        .month-july .month-header {
+            background-color: #e74c3c;
+        }
+        
+        /* Style pour le bouton de bilan mensuel */
+        .month-header-content {
             display: flex;
-            margin-top: 30px;
-            border-bottom: 2px solid #ddd;
+            align-items: center;
         }
-        .tab-button {
-            padding: 12px 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #7f8c8d;
-            transition: all 0.3s;
+        
+        .report-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            padding: 0.4rem 0.8rem;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
         }
-        .tab-button.active {
-            color: #3498db;
-            border-bottom: 3px solid #3498db;
-            margin-bottom: -2px;
+        
+        .report-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
-        .tab-button:hover {
-            color: #3498db;
+        
+        .report-btn i {
+            margin-right: 0.5rem;
         }
-        .tab-content {
-            display: none;
-            padding: 20px 0;
+        
+        .report-btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
-        .tab-content.active {
-            display: block;
+        
+        .report-btn-disabled:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: none;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Journal de Bord HMONP</h1>
+        <p class="subtitle">Mise en Situation Professionnelle 2024-2025</p>
+    </header>
+    
     <div class="container">
-        <a href="index.html" class="home-button">
-            <i class="fas fa-home"></i> Retour à l'accueil
-        </a>
-        
-        <h1>Bilan Mensuel - Mars 2025</h1>
+        <section class="intro">
+            <h2>Présentation du Journal de Bord</h2>
+            <p>Ce journal de bord documente mon parcours professionnel à l'Atelier Juno dans le cadre de ma formation HMONP. Il présente semaine par semaine les différentes missions réalisées, les compétences développées et les réflexions sur ma future pratique en tant qu'architecte en nom propre.</p>
+            <p>Chaque page hebdomadaire comprend une analyse détaillée des projets traités ainsi qu'une visualisation graphique de la répartition de mon temps de travail.</p>
+        </section>
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <p>Heures travaillées</p>
-                <h3>142.5</h3>
-                <p>Total du mois</p>
+        <!-- Mars 2025 -->
+        <section class="month-section month-march">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Mars 2025</h2>
+                    <a href="./bilan-mars-2025.html" class="report-btn">
+                        <i class="fas fa-chart-pie"></i> Bilan mensuel
+                    </a>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
             </div>
-            <div class="stat-card">
-                <p>Projets</p>
-                <h3>10</h3>
-                <p>Différents projets</p>
-            </div>
-            <div class="stat-card">
-                <p>Formation</p>
-                <h3>45h</h3>
-                <p>31.6% du temps</p>
-            </div>
-            <div class="stat-card">
-                <p>Production</p>
-                <h3>62h</h3>
-                <p>43.5% du temps</p>
-            </div>
-        </div>
+            <div class="month-content">
+                <!-- Semaine 1 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 3 au 7 Mars</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> CHU NANTES, ADMINISTRATIF, CITE DES MUSIQUES, CENTRE FORMATION MARITIME
+                        </div>
+                        <a href="./semaine-3-7mars.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+                
+                <!-- Semaine 2 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 10 au 14 Mars</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Formation Power BI, MICHELIN - LES PISTES, ADMINISTRATIF, M02-LOGEMENT
+                        </div>
+                        <a href="./semaine-10-14mars.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+                
+                <!-- Semaine 3 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 17 au 21 Mars</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Formation Revit pour Kengo Kuma, ADMINISTRATIF, Notre-Dame des Marins, M04-LOGEMENT
+                        </div>
+                        <a href="./semaine-17-21mars.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
 
-        <div class="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'timeDistribution')">Répartition du temps</button>
-            <button class="tab-button" onclick="openTab(event, 'projectEvolution')">Évolution hebdomadaire</button>
-            <button class="tab-button" onclick="openTab(event, 'rawData')">Données brutes</button>
-        </div>
-
-        <div id="timeDistribution" class="tab-content active">
-            <div class="chart-container" style="height: 400px;">
-                <h2 class="chart-title">Répartition du temps par type d'activité</h2>
-                <canvas id="donutChart"></canvas>
+                <!-- Semaine 4 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 24 au 28 Mars</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Notre-Dame des Marins, ADMINISTRATIF, R&D Power BI, M04-LOGEMENT
+                        </div>
+                        <a href="./semaine-24-28mars.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
             </div>
-            
-            <div class="insight-card">
-                <h3>Analyse de la distribution du temps</h3>
-                <p>Le mois de mars a été marqué par un équilibre entre production technique (43.5%) et formation (31.6%). Cette importante part dédiée à la formation témoigne d'un investissement significatif dans le développement de compétences techniques avec notamment la formation Power BI (24h) et la formation Revit pour Kengo Kuma (21h). Les tâches administratives représentent 17.5% du temps et sont principalement liées à la préparation de l'appel d'offres pour l'Accord Cadre RIVP, démontrant l'importance des activités commerciales et stratégiques dans la pratique professionnelle.</p>
-            </div>
-        </div>
+        </section>
 
-        <div id="projectEvolution" class="tab-content">
-            <div class="chart-container">
-                <h2 class="chart-title">Évolution des projets au cours du mois</h2>
-                <canvas id="streamChart"></canvas>
+        <!-- Avril 2025 -->
+        <section class="month-section month-april collapsed">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Avril 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
             </div>
-            
-            <div class="insight-card">
-                <h3>Évolution de l'activité</h3>
-                <p>L'évolution du temps par type d'activité sur le mois montre clairement une alternance entre les périodes de production et de formation. La première semaine a été dominée par la production technique (27h), principalement sur CHU Nantes et CITE DES MUSIQUES. La deuxième et troisième semaine ont été largement consacrées à la formation (24h puis 21h), d'abord avec Power BI puis avec la formation Revit pour Kengo Kuma. La dernière semaine a vu un retour important vers la production technique (21h) avec le projet Notre-Dame des Marins. On remarque également que les tâches administratives sont restées relativement constantes tout au long du mois, tandis que l'activité de R&D est apparue uniquement en fin de mois.</p>
+            <div class="month-content">
+                <!-- Semaine 1 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 31 Mars au 4 Avril</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <!-- Semaine 2 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 7 au 11 Avril</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <!-- Semaine 3 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 14 au 18 Avril</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+
+                <!-- Semaine 4 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 21 au 25 Avril</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div id="rawData" class="tab-content">
-            <h2 class="chart-title">Données pour Power BI</h2>
-            
-            <h3>Données hebdomadaires par projet</h3>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Semaine</th>
-                        <th>Projet</th>
-                        <th>Heures</th>
-                        <th>Type d'activité</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Semaine 1 (3-7 mars)</td><td>CHU Nantes</td><td>12</td><td>Production</td></tr>
-                    <tr><td>Semaine 1 (3-7 mars)</td><td>ADMINISTRATIF</td><td>8</td><td>Administration</td></tr>
-                    <tr><td>Semaine 1 (3-7 mars)</td><td>CITE DES MUSIQUES</td><td>8</td><td>Production</td></tr>
-                    <tr><td>Semaine 1 (3-7 mars)</td><td>CENTRE FORMATION MARITIME</td><td>4</td><td>Production</td></tr>
-                    <tr><td>Semaine 1 (3-7 mars)</td><td>MICHELIN - LES PISTES</td><td>2</td><td>Production</td></tr>
-                    <tr><td>Semaine 1 (3-7 mars)</td><td>M02-LOGEMENT</td><td>1</td><td>Production</td></tr>
-                    
-                    <tr><td>Semaine 2 (10-14 mars)</td><td>Formation Power BI</td><td>24</td><td>Formation</td></tr>
-                    <tr><td>Semaine 2 (10-14 mars)</td><td>MICHELIN - LES PISTES</td><td>12</td><td>Production</td></tr>
-                    <tr><td>Semaine 2 (10-14 mars)</td><td>ADMINISTRATIF</td><td>1</td><td>Administration</td></tr>
-                    <tr><td>Semaine 2 (10-14 mars)</td><td>M02-LOGEMENT</td><td>0.5</td><td>Assistance</td></tr>
-                    
-                    <tr><td>Semaine 3 (17-21 mars)</td><td>FC.25.12_KKAA_REVIT BASE 3J</td><td>21</td><td>Formation</td></tr>
-                    <tr><td>Semaine 3 (17-21 mars)</td><td>ADMINISTRATIF</td><td>8</td><td>Administration</td></tr>
-                    <tr><td>Semaine 3 (17-21 mars)</td><td>Notre-Dame des Marins - Martigues</td><td>5</td><td>Production</td></tr>
-                    <tr><td>Semaine 3 (17-21 mars)</td><td>M04-LOGEMENT - FONTENAY SOUS BOIS</td><td>1.5</td><td>Assistance</td></tr>
-                    
-                    <tr><td>Semaine 4 (24-28 mars)</td><td>Notre-Dame des Marins - Martigues</td><td>21</td><td>Production</td></tr>
-                    <tr><td>Semaine 4 (24-28 mars)</td><td>ADMINISTRATIF</td><td>8</td><td>Administration</td></tr>
-                    <tr><td>Semaine 4 (24-28 mars)</td><td>R&D - Power BI</td><td>4</td><td>R&D</td></tr>
-                    <tr><td>Semaine 4 (24-28 mars)</td><td>M04-LOGEMENT - FONTENAY SOUS BOIS</td><td>1.5</td><td>Assistance</td></tr>
-                </tbody>
-            </table>
-            
-            <h3>Données agrégées par type d'activité</h3>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Type d'activité</th>
-                        <th>Heures</th>
-                        <th>Pourcentage</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Production</td><td>62</td><td>43.5%</td></tr>
-                    <tr><td>Formation</td><td>45</td><td>31.6%</td></tr>
-                    <tr><td>Administration</td><td>25</td><td>17.5%</td></tr>
-                    <tr><td>Assistance</td><td>3.5</td><td>2.5%</td></tr>
-                    <tr><td>R&D</td><td>4</td><td>2.8%</td></tr>
-                    <tr><td>Coordination</td><td>3</td><td>2.1%</td></tr>
-                </tbody>
-            </table>
-        </div>
+        <!-- Mai 2025 -->
+        <section class="month-section month-may collapsed">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Mai 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
+            </div>
+            <div class="month-content">
+                <!-- Semaines de Mai -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 28 Avril au 2 Mai</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 5 au 9 Mai</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 12 au 16 Mai</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 19 au 23 Mai</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 26 au 30 Mai</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="summary">
-            <h2>Synthèse mensuelle</h2>
-            <p>Ce mois de mars 2025 a été caractérisé par une diversité de missions allant de la formation spécialisée à la production technique, en passant par des tâches administratives stratégiques. Les 142.5 heures de travail se sont réparties entre 10 projets différents, avec une concentration particulière sur la formation Power BI (24h), la formation Revit pour Kengo Kuma (21h) et la modélisation du projet Notre-Dame des Marins à Martigues (26h au total).</p>
-            
-            <p>Cette diversité de missions témoigne de la richesse d'apprentissage offerte par la mise en situation professionnelle. J'ai pu développer des compétences techniques pointues tout en participant à des missions stratégiques comme la préparation de l'appel d'offres pour l'Accord Cadre RIVP. La transmission de savoir-faire à travers la formation dispensée aux collaborateurs de Kengo Kuma représente également une évolution importante dans mon positionnement au sein de l'agence.</p>
-            
-            <p>Pour le mois d'avril, je souhaite approfondir mes compétences en gestion de projet et développer davantage mon implication dans les phases amont des projets, afin d'avoir une vision plus complète du processus de conception architecturale.</p>
-        </div>
+        <!-- Juin 2025 -->
+        <section class="month-section month-june collapsed">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Juin 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
+            </div>
+            <div class="month-content">
+                <!-- Semaines de Juin -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 2 au 6 Juin</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 9 au 13 Juin</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 16 au 20 Juin</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 23 au 27 Juin</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Juillet 2025 -->
+        <section class="month-section month-july collapsed">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Juillet 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
+            </div>
+            <div class="month-content">
+                <!-- Semaines de Juillet -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 30 Juin au 4 Juillet</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 7 au 11 Juillet</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 14 au 18 Juillet</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 21 au 25 Juillet</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
     
+    <footer>
+        <p>© 2025 - Journal de Bord HMONP - Atelier Juno</p>
+    </footer>
+
     <script>
-        // Configuration du graphique en anneau (donut chart)
-        const ctxDonut = document.getElementById('donutChart').getContext('2d');
-        const donutChart = new Chart(ctxDonut, {
-            type: 'doughnut',
-            data: {
-                labels: ['Production technique', 'Formation', 'Administration', 'R&D', 'Assistance technique', 'Coordination'],
-                datasets: [{
-                    data: [62, 45, 25, 4, 3.5, 3],
-                    backgroundColor: [
-                        '#3498db',
-                        '#9b59b6',
-                        '#2ecc71',
-                        '#f1c40f',
-                        '#e74c3c',
-                        '#1abc9c'
-                    ],
-                    borderWidth: 0,
-                    hoverOffset: 15
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '60%',
-                plugins: {
-                    legend: {
-                        position: 'right',
-                        labels: {
-                            font: {
-                                size: 14
-                            },
-                            padding: 20
-                        }
-                    },
-                    datalabels: {
-                        color: '#fff',
-                        font: {
-                            weight: 'bold',
-                            size: 14
-                        },
-                        formatter: (value, ctx) => {
-                            const total = ctx.dataset.data.reduce((acc, data) => acc + data, 0);
-                            const percentage = (value * 100 / total).toFixed(1) + '%';
-                            return percentage;
-                        }
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                const label = context.label || '';
-                                const value = context.raw || 0;
-                                const total = context.dataset.data.reduce((acc, data) => acc + data, 0);
-                                const percentage = (value * 100 / total).toFixed(1) + '%';
-                                const projectDetails = getProjectsByActivityType(label);
-                                return [`${label}: ${value}h (${percentage})`, ...projectDetails];
-                            }
-                        }
-                    }
+        // Script pour gérer les sections dépliables
+        document.querySelectorAll('.month-header').forEach(header => {
+            header.addEventListener('click', (e) => {
+                // Si on clique sur le bouton de rapport, ne pas déplier/replier la section
+                if (e.target.closest('.report-btn')) {
+                    return;
                 }
-            },
-            plugins: [ChartDataLabels]
+                
+                const monthSection = header.parentElement;
+                monthSection.classList.toggle('collapsed');
+            });
         });
-
-        // Fonction pour obtenir les projets par type d'activité
-        function getProjectsByActivityType(activityType) {
-            const projects = {
-                'Production technique': [
-                    'CHU Nantes: 12h',
-                    'CITE DES MUSIQUES: 8h',
-                    'CENTRE FORMATION MARITIME: 4h',
-                    'MICHELIN - LES PISTES: 14h',
-                    'Notre-Dame des Marins - Martigues: 26h',
-                    'M02-LOGEMENT: 1h'
-                ],
-                'Formation': [
-                    'Formation Power BI: 24h',
-                    'FC.25.12_KKAA_REVIT BASE 3J: 21h'
-                ],
-                'Administration': [
-                    'ADMINISTRATIF: 25h'
-                ],
-                'R&D': [
-                    'R&D - Power BI: 4h'
-                ],
-                'Assistance technique': [
-                    'M04-LOGEMENT - FONTENAY SOUS BOIS: 3h',
-                    'M02-LOGEMENT: 0.5h'
-                ],
-                'Coordination': [
-                    'Coordination projets divers: 3h'
-                ]
-            };
-            return projects[activityType] || [];
-        }
-
-        // Configuration du graphique à ruban (stream chart / area chart)
-        const ctxStream = document.getElementById('streamChart').getContext('2d');
-        const streamChart = new Chart(ctxStream, {
-            type: 'line',
-            data: {
-                labels: ['Semaine 1 (3-7 mars)', 'Semaine 2 (10-14 mars)', 'Semaine 3 (17-21 mars)', 'Semaine 4 (24-28 mars)'],
-                datasets: [
-                    {
-                        label: 'Production technique',
-                        data: [27, 12, 5, 21],
-                        backgroundColor: 'rgba(52, 152, 219, 0.6)',
-                        borderColor: 'rgba(52, 152, 219, 1)',
-                        fill: true,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Formation',
-                        data: [0, 24, 21, 0],
-                        backgroundColor: 'rgba(155, 89, 182, 0.6)',
-                        borderColor: 'rgba(155, 89, 182, 1)',
-                        fill: true,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Administration',
-                        data: [8, 1, 8, 8],
-                        backgroundColor: 'rgba(46, 204, 113, 0.6)',
-                        borderColor: 'rgba(46, 204, 113, 1)',
-                        fill: true,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'R&D',
-                        data: [0, 0, 0, 4],
-                        backgroundColor: 'rgba(241, 196, 15, 0.6)',
-                        borderColor: 'rgba(241, 196, 15, 1)',
-                        fill: true,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Assistance technique',
-                        data: [0, 0.5, 1.5, 1.5],
-                        backgroundColor: 'rgba(231, 76, 60, 0.6)',
-                        borderColor: 'rgba(231, 76, 60, 1)',
-                        fill: true,
-                        tension: 0.4
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        grid: {
-                            display: false
-                        }
-                    },
-                    y: {
-                        stacked: true,
-                        title: {
-                            display: true,
-                            text: 'Heures travaillées'
-                        },
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
-                        }
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            afterTitle: function(context) {
-                                return 'Projets concernés:';
-                            },
-                            afterLabel: function(context) {
-                                const activityType = context.dataset.label;
-                                const weekIndex = context.dataIndex;
-                                const weekLabels = ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4'];
-                                const week = weekLabels[weekIndex];
-                                return getProjectsByActivityTypeAndWeek(activityType, week);
-                            }
-                        }
-                    },
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            usePointStyle: true,
-                            padding: 15
-                        }
-                    }
-                },
-                elements: {
-                    line: {
-                        fill: true
-                    }
-                }
-            }
-        });
-
-        // Fonction pour obtenir les projets par type d'activité et par semaine
-        function getProjectsByActivityTypeAndWeek(activityType, week) {
-            const projectsByWeek = {
-                'Production technique': {
-                    'Semaine 1': ['CHU Nantes: 12h', 'CITE DES MUSIQUES: 8h', 'CENTRE FORMATION MARITIME: 4h', 'MICHELIN - LES PISTES: 2h', 'M02-LOGEMENT: 1h'],
-                    'Semaine 2': ['MICHELIN - LES PISTES: 12h'],
-                    'Semaine 3': ['Notre-Dame des Marins - Martigues: 5h'],
-                    'Semaine 4': ['Notre-Dame des Marins - Martigues: 21h']
-                },
-                'Formation': {
-                    'Semaine 1': [],
-                    'Semaine 2': ['Formation Power BI: 24h'],
-                    'Semaine 3': ['FC.25.12_KKAA_REVIT BASE 3J: 21h'],
-                    'Semaine 4': []
-                },
-                'Administration': {
-                    'Semaine 1': ['ADMINISTRATIF: 8h'],
-                    'Semaine 2': ['ADMINISTRATIF: 1h'],
-                    'Semaine 3': ['ADMINISTRATIF: 8h'],
-                    'Semaine 4': ['ADMINISTRATIF: 8h']
-                },
-                'R&D': {
-                    'Semaine 1': [],
-                    'Semaine 2': [],
-                    'Semaine 3': [],
-                    'Semaine 4': ['R&D - Power BI: 4h']
-                },
-                'Assistance technique': {
-                    'Semaine 1': [],
-                    'Semaine 2': ['M02-LOGEMENT: 0.5h'],
-                    'Semaine 3': ['M04-LOGEMENT - FONTENAY SOUS BOIS: 1.5h'],
-                    'Semaine 4': ['M04-LOGEMENT - FONTENAY SOUS BOIS: 1.5h']
-                }
-            };
-            
-            return projectsByWeek[activityType]?.[week] || ['Aucun projet'];
-        }
-
-        // Fonction pour gérer les onglets
-        function openTab(evt, tabName) {
-            // Masquer tous les contenus des onglets
-            const tabContents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active");
-            }
-
-            // Désactiver tous les boutons d'onglets
-            const tabButtons = document.getElementsByClassName("tab-button");
-            for (let i = 0; i < tabButtons.length; i++) {
-                tabButtons[i].classList.remove("active");
-            }
-
-            // Afficher le contenu de l'onglet sélectionné et activer le bouton
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
     </script>
-</body>
-</html>
