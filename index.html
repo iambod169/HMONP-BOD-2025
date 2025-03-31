@@ -58,10 +58,10 @@
             background-color: #34495e;
             color: white;
             padding: 1rem 1.5rem;
-            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
             transition: background-color 0.3s;
         }
         
@@ -183,6 +183,45 @@
         .month-july .month-header {
             background-color: #e74c3c;
         }
+        
+        /* Style pour le bouton de bilan mensuel */
+        .month-header-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .report-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            padding: 0.4rem 0.8rem;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .report-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .report-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .report-btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .report-btn-disabled:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: none;
+        }
     </style>
 </head>
 <body>
@@ -201,7 +240,12 @@
         <!-- Mars 2025 -->
         <section class="month-section month-march">
             <div class="month-header">
-                <h2>Mars 2025</h2>
+                <div class="month-header-content">
+                    <h2>Mars 2025</h2>
+                    <a href="./bilan-mars-2025.html" class="report-btn">
+                        <i class="fas fa-chart-pie"></i> Bilan mensuel
+                    </a>
+                </div>
                 <i class="fas fa-chevron-down collapse-icon"></i>
             </div>
             <div class="month-content">
@@ -262,7 +306,12 @@
         <!-- Avril 2025 -->
         <section class="month-section month-april collapsed">
             <div class="month-header">
-                <h2>Avril 2025</h2>
+                <div class="month-header-content">
+                    <h2>Avril 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
                 <i class="fas fa-chevron-down collapse-icon"></i>
             </div>
             <div class="month-content">
@@ -323,7 +372,12 @@
         <!-- Mai 2025 -->
         <section class="month-section month-may collapsed">
             <div class="month-header">
-                <h2>Mai 2025</h2>
+                <div class="month-header-content">
+                    <h2>Mai 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
                 <i class="fas fa-chevron-down collapse-icon"></i>
             </div>
             <div class="month-content">
@@ -393,7 +447,12 @@
         <!-- Juin 2025 -->
         <section class="month-section month-june collapsed">
             <div class="month-header">
-                <h2>Juin 2025</h2>
+                <div class="month-header-content">
+                    <h2>Juin 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
                 <i class="fas fa-chevron-down collapse-icon"></i>
             </div>
             <div class="month-content">
@@ -451,7 +510,12 @@
         <!-- Juillet 2025 -->
         <section class="month-section month-july collapsed">
             <div class="month-header">
-                <h2>Juillet 2025</h2>
+                <div class="month-header-content">
+                    <h2>Juillet 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
                 <i class="fas fa-chevron-down collapse-icon"></i>
             </div>
             <div class="month-content">
@@ -514,11 +578,14 @@
     <script>
         // Script pour gérer les sections dépliables
         document.querySelectorAll('.month-header').forEach(header => {
-            header.addEventListener('click', () => {
+            header.addEventListener('click', (e) => {
+                // Si on clique sur le bouton de rapport, ne pas déplier/replier la section
+                if (e.target.closest('.report-btn')) {
+                    return;
+                }
+                
                 const monthSection = header.parentElement;
                 monthSection.classList.toggle('collapsed');
             });
         });
     </script>
-</body>
-</html>
