@@ -109,14 +109,14 @@
                 labels: ['Lundi 3 Mars', 'Mardi 4 Mars', 'Mercredi 5 Mars', 'Jeudi 6 Mars', 'Vendredi 7 Mars'],
                 datasets: [
                     {
-                        label: 'CHU Nantes',
+                        label: 'CHU NANTES',
                         data: [3, 3, 2, 2, 2],
                         backgroundColor: '#4e73df',
                         barPercentage: 0.8,
                         categoryPercentage: 0.9
                     },
                     {
-                        label: 'ADMINISTRATIF',
+                        label: 'APPEL D-OFFRE',
                         data: [3, 3, 2, 0, 0],
                         backgroundColor: '#1cc88a',
                         barPercentage: 0.8,
@@ -124,7 +124,7 @@
                     },
                     {
                         label: 'CITE DES MUSIQUES',
-                        data: [8, 0, 0, 0, 0],
+                        data: [0, 1, 1, 3, 3],
                         backgroundColor: '#36b9cc',
                         barPercentage: 0.8,
                         categoryPercentage: 0.9
@@ -188,7 +188,7 @@
         const timeDistributionChart = new Chart(ctxDist, {
             type: 'pie',
             data: {
-                labels: ['CHU Nantes (12h)', 'ADMINISTRATIF (8h)', 'CITE DES MUSIQUES (8h)', 'CENTRE FORMATION MARITIME (4h)', 'MICHELIN - LES PISTES (2h)', 'M02-LOGEMENT (1h)'],
+                labels: ['CHU NANTES (12h)', 'APPEL D-OFFRE (8h)', 'CITE DES MUSIQUES (8h)', 'CENTRE FORMATION MARITIME (4h)', 'MICHELIN - LES PISTES (2h)', 'M02-LOGEMENT (1h)'],
                 datasets: [{
                     data: [12, 8, 8, 4, 2, 1],
                     backgroundColor: [
