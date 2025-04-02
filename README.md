@@ -8,3 +8,8 @@ Je créé un site que je met à jour au fur et à mesure des semaines en html
 
 Ma page qui contient les mises à jour de mes fichiers:
 https://iambod169.github.io/HMONP-BOD-2025/
+
+----------------------
+Copyright © 2024-2025 by Balogun Ola-Davies - All Rights Reserved
+
+No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher.
