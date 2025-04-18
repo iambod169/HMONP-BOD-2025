@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planification Hebdomadaire HMONP - 24-28 Février 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>24 - 28 Février 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 24 au 28 février 2025, montrant l'équilibre entre tâches techniques et gestion de projet.</p>
+            <p><strong>Temps total travaillé :</strong> 38 heures</p>
+            <p><strong>Activités principales :</strong> Centre de Formation Maritime (14h - 37%), Accord Cadre RIVP (8h - 21%), Notre-Dame des Marins (8h - 21%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Production BIM (32%), Administratif (32%), Documentation technique (37%)</p>
+        </div>
+
+        <h2>DIVERSIFICATION DES COMPÉTENCES : ENTRE MODÉLISATION TECHNIQUE ET GESTION DE PROJET</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            <p>Cette semaine a été marquée par une grande diversité de missions, illustrant la polyvalence attendue d'un architecte aujourd'hui. La transition constante entre des tâches très techniques (modélisation d'ouvrages complexes) et des missions plus stratégiques (constitution d'équipes, préparation d'appels d'offres) reflète la réalité de notre métier.</p>
+            <p>Je m'interroge particulièrement sur l'équilibre à trouver entre expertise technique et vision globale du projet. En tant que futur architecte en mon nom propre, je devrai être capable de maîtriser ces deux aspects. Cette semaine m'a fait réaliser l'importance de développer des compétences managériales solides, tout en maintenant une expertise technique pointue dans certains domaines, notamment le BIM.</p>
+            <p>La préparation de l'appel d'offre pour la RIVP m'a également confronté aux réalités économiques de notre profession et à l'importance d'une stratégie claire pour se positionner sur les marchés publics, aspect fondamental de la gestion d'une agence d'architecture.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 24 Février', 'Mardi 25 Février', 'Mercredi 26 Février', 'Jeudi 27 Février', 'Vendredi 28 Février'],
+                datasets: [
+                    {
+                        label: 'Centre de Formation Maritime',
+                        data: [0, 7, 7, 0, 0],
+                        backgroundColor: '#83cfc8',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'ECA 2 - Préparation formation',
+                        data: [4, 0, 0, 0, 0],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'CHU NANTES - Modélisation',
+                        data: [4, 0, 0, 0, 0],
+                        backgroundColor: '#f6c23e',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Notre-Dame des Marins',
+                        data: [0, 0, 0, 8, 0],
+                        backgroundColor: '#36b9cc',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Accord Cadre - RIVP',
+                        data: [0, 0, 0, 0, 8],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Centre de Formation Maritime (14h)', 'ECA 2 - Préparation formation (4h)', 'CHU NANTES - Modélisation (4h)', 'Notre-Dame des Marins (8h)', 'Accord Cadre - RIVP (8h)'],
+                datasets: [{
+                    data: [14, 4, 4, 8, 8],
+                    backgroundColor: [
+                        '#83cfc8',
+                        '#4e73df',
+                        '#f6c23e',
+                        '#36b9cc',
+                        '#1cc88a'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
