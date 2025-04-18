@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planification Hebdomadaire HMONP - 17-21 Février 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>17 - 21 Février 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 17 au 21 février 2025, illustrant la diversité des missions et l'importance des activités de R&D et d'amélioration des processus internes.</p>
+            <p><strong>Temps total travaillé :</strong> 36.5 heures</p>
+            <p><strong>Activités principales :</strong> CHU NANTES (10h - 27%), Centre de Formation Maritime (8h - 22%), Notre-Dame des Marins (7h - 19%), Notion Road Map (6h - 16%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Production BIM (53%), R&D (16%), Support technique (22%), Documentation et formation (14%), Commercial (1%)</p>
+        </div>
+
+        <h2>DIVERSITÉ DES MISSIONS ET RECHERCHE & DÉVELOPPEMENT : RENFORCEMENT DE MES COMPÉTENCES OPÉRATIONNELLES ET STRATÉGIQUES</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            <p>Cette semaine a été marquée par une grande diversité de missions, reflétant l'éventail des compétences attendues d'un architecte contemporain. La particularité de cette période a été l'importance accordée à la R&D et à l'amélioration des processus internes, illustrant une dimension souvent négligée mais essentielle de la pratique architecturale : la capacité à optimiser ses propres méthodes de travail.</p>
+            <p>En travaillant sur l'amélioration des pages Notion pour la création de plans de charge, j'ai pris conscience de l'importance d'investir dans des outils de gestion performants pour assurer la pérennité et la croissance d'une agence d'architecture. Cette démarche réflexive sur nos propres pratiques est, à mon sens, indissociable d'une approche responsable du métier d'architecte.</p>
+            <p>La diversité des projets abordés cette semaine (équipement hospitalier, logements, formation maritime) me permet également de développer une certaine agilité intellectuelle, essentielle pour un futur architecte en son nom propre. Passer d'une échelle à l'autre, d'une problématique technique à une réflexion stratégique, tout en maintenant une cohérence dans l'approche, constitue un défi quotidien qui nourrit ma pratique.</p>
+            <p>Je constate également que ma double compétence en architecture et en BIM me place dans une position privilégiée pour contribuer à l'évolution des pratiques professionnelles, tant au sein de l'Atelier Juno qu'auprès des structures que nous accompagnons. Cette semaine renforce ma conviction que l'architecte d'aujourd'hui doit être à la fois praticien, pédagogue et innovateur, capable d'adapter constamment ses méthodes aux défis contemporains.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 17 Février', 'Mardi 18 Février', 'Mercredi 19 Février', 'Jeudi 20 Février', 'Vendredi 21 Février'],
+                datasets: [
+                    {
+                        label: 'Notre-Dame des Marins - Finalisation',
+                        data: [4, 3, 0, 0, 0],
+                        backgroundColor: '#36b9cc',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'AREP FAMILLES - Supports Notion',
+                        data: [2, 3, 0, 0, 0],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Notion Road Map',
+                        data: [2, 2, 2, 0, 0],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'CHU NANTES - Remodélisation',
+                        data: [0, 0, 3, 4, 3],
+                        backgroundColor: '#f6c23e',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'ECA 2 - Discussion commerciale',
+                        data: [0, 0, 0, 0.5, 0],
+                        backgroundColor: '#e74a3b',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Centre de Formation Maritime - DCE',
+                        data: [0, 0, 2, 3, 3],
+                        backgroundColor: '#83cfc8',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Notre-Dame des Marins - Finalisation (7h)', 'AREP FAMILLES - Supports Notion (5h)', 'Notion Road Map (6h)', 'CHU NANTES - Remodélisation (10h)', 'ECA 2 - Discussion commerciale (0.5h)', 'Centre de Formation Maritime - DCE (8h)'],
+                datasets: [{
+                    data: [7, 5, 6, 10, 0.5, 8],
+                    backgroundColor: [
+                        '#36b9cc',
+                        '#4e73df',
+                        '#1cc88a',
+                        '#f6c23e',
+                        '#e74a3b',
+                        '#83cfc8'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
