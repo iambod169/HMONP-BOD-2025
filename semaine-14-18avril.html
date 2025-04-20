@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 14-18 Avril 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>14 - 18 Avril 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 14 au 18 avril 2025, illustrant la diversité des missions entre production BIM, développement d'outils, gestion administrative et relation client.</p>
+            <p><strong>Temps total travaillé :</strong> 38 heures</p>
+            <p><strong>Activités principales :</strong> CENTRE DE FORMATION MARITIME (16h - 42%), Appel d'offre AMO BIM HUS (12h - 32%), Power BI Road Map (6h - 16%), GIGOT OG - PARIS (4h - 10%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Production BIM (42%), Administratif (32%), R&D (16%), Commercial (10%)</p>
+        </div>
+
+        <h2>DÉMARRAGE D'UN NOUVEAU PROJET ET MISSIONS TECHNIQUES</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            <p>Cette semaine marque une évolution significative dans mon parcours professionnel avec ma première initiative commerciale aboutissant à une réunion client et à l'élaboration d'un devis pour une étude de faisabilité. Cette expérience, complémentaire des missions techniques que je poursuis par ailleurs, enrichit considérablement ma compréhension des multiples dimensions du métier d'architecte.</p>
+            <p>La diversité des missions effectuées cette semaine illustre parfaitement la polyvalence requise dans la pratique architecturale contemporaine : expertise technique (BIM, outils d'analyse), compétences administratives (réponse à appel d'offre), et maintenant relation client et développement commercial. Cette multiplicité des rôles, loin d'être une dispersion, constitue à mes yeux une richesse qui nourrit une vision intégrée de la pratique architecturale.</p>
+            <p>L'opportunité de participer activement au démarrage d'un nouveau projet de maîtrise d'œuvre représente une étape cruciale dans mon parcours vers l'habilitation. Elle me permet d'appréhender concrètement les responsabilités de l'architecte dans l'établissement de la relation contractuelle et dans la définition du cadre d'exercice de sa mission, dimensions essentielles de la profession réglementée à laquelle j'aspire.</p>
+            <p>La dynamique complémentaire mise en place avec Dany lors de la réunion avec M. Gigot illustre parfaitement les bénéfices d'une approche collaborative de la pratique architecturale. Cette expérience m'a permis d'observer et d'intégrer des savoir-faire relationnels et méthodologiques essentiels, tout en valorisant mes propres compétences et sensibilités.</p>
+            <p>Cette semaine confirme ainsi ma conviction que l'architecte contemporain doit être capable de naviguer entre différents registres d'intervention, de la conception créative à la gestion administrative, de l'expertise technique à la relation client, tout en maintenant une vision cohérente de sa pratique et de ses responsabilités professionnelles et sociétales.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 14 Avril', 'Mardi 15 Avril', 'Mercredi 16 Avril', 'Jeudi 17 Avril', 'Vendredi 18 Avril'],
+                datasets: [
+                    {
+                        label: 'CENTRE DE FORMATION MARITIME',
+                        data: [7, 7, 0, 0, 0],
+                        backgroundColor: '#36b9cc',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Power BI Road Map',
+                        data: [0, 0, 4, 2, 0],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Appel d\'offre AMO BIM HUS',
+                        data: [0, 0, 1, 6, 5],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'GIGOT OG - PARIS (réunion)',
+                        data: [1, 0, 0, 0, 0],
+                        backgroundColor: '#f6c23e',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'GIGOT OG - PARIS (devis)',
+                        data: [0, 0, 0, 0, 3],
+                        backgroundColor: '#e74a3b',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['CENTRE DE FORMATION MARITIME (16h)', 'Power BI Road Map (6h)', 'Appel d\'offre AMO BIM HUS (12h)', 'GIGOT OG - PARIS (réunion) (1h)', 'GIGOT OG - PARIS (devis) (3h)'],
+                datasets: [{
+                    data: [16, 6, 12, 1, 3],
+                    backgroundColor: [
+                        '#36b9cc',
+                        '#1cc88a',
+                        '#4e73df',
+                        '#f6c23e',
+                        '#e74a3b'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
