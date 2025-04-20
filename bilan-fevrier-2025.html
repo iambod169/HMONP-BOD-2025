@@ -384,3 +384,196 @@
                 'Veille réglementaire': [
                     'Conférence PLU-Bioclimatique: 3h'
                 ]
+            };
+            return projects[activityType] || [];
+        }
+
+        // Configuration du graphique à ruban (stream chart / area chart)
+        const ctxStream = document.getElementById('streamChart').getContext('2d');
+        const streamChart = new Chart(ctxStream, {
+            type: 'line',
+            data: {
+                labels: ['Semaine 1 (3-7 février)', 'Semaine 2 (10-14 février)', 'Semaine 3 (17-21 février)', 'Semaine 4 (24-28 février)'],
+                datasets: [
+                    {
+                        label: 'Production BIM',
+                        data: [19, 10, 17, 12],
+                        backgroundColor: 'rgba(54, 185, 204, 0.6)',
+                        borderColor: 'rgba(54, 185, 204, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Formation',
+                        data: [16, 14, 5, 0],
+                        backgroundColor: 'rgba(78, 115, 223, 0.6)',
+                        borderColor: 'rgba(78, 115, 223, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Administratif',
+                        data: [3, 0, 0.5, 12],
+                        backgroundColor: 'rgba(28, 200, 138, 0.6)',
+                        borderColor: 'rgba(28, 200, 138, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'R&D',
+                        data: [0, 0, 6, 0],
+                        backgroundColor: 'rgba(246, 194, 62, 0.6)',
+                        borderColor: 'rgba(246, 194, 62, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Documentation technique',
+                        data: [0, 0, 8, 14],
+                        backgroundColor: 'rgba(131, 207, 200, 0.6)',
+                        borderColor: 'rgba(131, 207, 200, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Veille réglementaire',
+                        data: [0, 3, 0, 0],
+                        backgroundColor: 'rgba(155, 89, 182, 0.6)',
+                        borderColor: 'rgba(155, 89, 182, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Coordination',
+                        data: [3, 0, 0, 0],
+                        backgroundColor: 'rgba(231, 76, 60, 0.6)',
+                        borderColor: 'rgba(231, 76, 60, 1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            afterTitle: function(context) {
+                                return 'Projets concernés:';
+                            },
+                            afterLabel: function(context) {
+                                const activityType = context.dataset.label;
+                                const weekIndex = context.dataIndex;
+                                const weekLabels = ['Semaine 1 (3-7 février)', 'Semaine 2 (10-14 février)', 'Semaine 3 (17-21 février)', 'Semaine 4 (24-28 février)'];
+                                const week = weekLabels[weekIndex];
+                                return getProjectsByActivityTypeAndWeek(activityType, week);
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    }
+                },
+                elements: {
+                    line: {
+                        fill: true
+                    }
+                }
+            }
+        });
+
+        // Fonction pour obtenir les projets par type d'activité et par semaine
+        function getProjectsByActivityTypeAndWeek(activityType, week) {
+            const projectsByWeek = {
+                'Production BIM': {
+                    'Semaine 1 (3-7 février)': ['Notre-Dame des Marins: 16h', 'MBDA LE COLISÉE: 3h'],
+                    'Semaine 2 (10-14 février)': ['Notre-Dame des Marins: 10h'],
+                    'Semaine 3 (17-21 février)': ['Notre-Dame des Marins: 7h', 'CHU NANTES: 10h'],
+                    'Semaine 4 (24-28 février)': ['CHU NANTES: 4h', 'Notre-Dame des Marins - Bât A2: 8h']
+                },
+                'Formation': {
+                    'Semaine 1 (3-7 février)': ['Formation AREP ARCHI: 16h'],
+                    'Semaine 2 (10-14 février)': ['Formation AREP FAMILLES: 14h'],
+                    'Semaine 3 (17-21 février)': ['AREP FAMILLES - Supports: 5h'],
+                    'Semaine 4 (24-28 février)': []
+                },
+                'Administratif': {
+                    'Semaine 1 (3-7 février)': ['Administratif - Entretien annuel: 3h'],
+                    'Semaine 2 (10-14 février)': [],
+                    'Semaine 3 (17-21 février)': ['ECA 2 - Discussion: 0.5h'],
+                    'Semaine 4 (24-28 février)': ['ECA 2 - Préparation formation: 4h', 'Administratif - RIVP: 8h']
+                },
+                'R&D': {
+                    'Semaine 1 (3-7 février)': [],
+                    'Semaine 2 (10-14 février)': [],
+                    'Semaine 3 (17-21 février)': ['Notion Road Map: 6h'],
+                    'Semaine 4 (24-28 février)': []
+                },
+                'Documentation technique': {
+                    'Semaine 1 (3-7 février)': [],
+                    'Semaine 2 (10-14 février)': [],
+                    'Semaine 3 (17-21 février)': ['Centre Formation Maritime: 8h'],
+                    'Semaine 4 (24-28 février)': ['Centre Formation Maritime: 14h']
+                },
+                'Coordination': {
+                    'Semaine 1 (3-7 février)': ['MBDA LE COLISÉE: 3h'],
+                    'Semaine 2 (10-14 février)': [],
+                    'Semaine 3 (17-21 février)': [],
+                    'Semaine 4 (24-28 février)': []
+                },
+                'Veille réglementaire': {
+                    'Semaine 1 (3-7 février)': [],
+                    'Semaine 2 (10-14 février)': ['Conférence PLU-Bioclimatique: 3h'],
+                    'Semaine 3 (17-21 février)': [],
+                    'Semaine 4 (24-28 février)': []
+                }
+            };
+            
+            return projectsByWeek[activityType]?.[week] || ['Aucun projet'];
+        }
+        
+        // Fonction pour gérer les onglets
+        function openTab(evt, tabName) {
+            // Masquer tous les contenus des onglets
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Désactiver tous les boutons d'onglets
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            // Afficher le contenu de l'onglet sélectionné et activer le bouton
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
