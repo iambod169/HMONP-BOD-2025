@@ -3,700 +3,712 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bilan Annuel 2025 - Entretien d'évaluation | Balogun OD</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/recharts@2.7.2/umd/Recharts.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Journal de Bord HMONP | Balogun OD </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+     <!-- Favicon -->
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #f5f5f5;
+            color: #333;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        
+        .header-container {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            max-height: 150px;
+            margin-right: 2rem;
+        }
+        .header-content {
+            flex-grow: 1;
+            text-align: center;
         }
         h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .chart-container {
-            margin-top: 30px;
-            position: relative;
-        }
-        .chart-title {
-            text-align: center;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-        .summary {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
-        }
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .data-table th, .data-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        .data-table th {
-            background-color: #f2f2f2;
-            font-weight: 600;
-        }
-        .data-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .data-table tr:hover {
-            background-color: #f1f1f1;
-        }
-        .home-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 15px;
-            background-color: #6F8381;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            font-weight: 500;
-            transition: background-color 0.2s;
-        }
-        .home-button:hover {
-            background-color: #00090f;
-        }
-        .home-button i {
-            margin-right: 8px;
-        }
-        .insight-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-        .insight-card h3 {
-            margin-top: 0;
-            color: #2c3e50;
-            border-bottom: 2px solid #6F8381;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-        .insight-card p {
-            line-height: 1.6;
-            color: #555;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        .stat-card {
-            background: linear-gradient(135deg, #6F8381, #2c3e50);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .stat-card h3 {
-            font-size: 2.5rem;
-            margin: 10px 0;
-        }
-        .stat-card p {
-            font-size: 1rem;
-            opacity: 0.9;
             margin: 0;
+            font-size: 2.5rem;
         }
-        .tabs {
-            display: flex;
-            margin-top: 30px;
-            border-bottom: 2px solid #ddd;
+        
+        .subtitle {
+            font-weight: normal;
+            margin-top: 0.5rem;
+            opacity: 0.8;
         }
-        .tab-button {
-            padding: 12px 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #7f8c8d;
-            transition: all 0.3s;
+        
+        .container {
+            max-width: 1600px;
+            margin: 2rem auto;
+            padding: 0 2rem;
         }
-        .tab-button.active {
-            color: #6F8381;
-            border-bottom: 3px solid #6F8381;
-            margin-bottom: -2px;
+        
+        .intro {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
         }
-        .tab-button:hover {
-            color: #6F8381;
+        
+        .month-section {
+            margin-bottom: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
-        .tab-content {
-            display: none;
-            padding: 20px 0;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .score-comparison {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-        }
-        .score-card {
-            background-color: #fafafa;
-            border-left: 4px solid #6F8381;
-            padding: 15px;
-            border-radius: 0 5px 5px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            width: calc(33.333% - 20px);
-            min-width: 250px;
-        }
-        .score-card h4 {
-            margin-top: 0;
-            color: #333;
-        }
-        .score-value {
+        
+        .month-header {
+            background-color: #34495e;
+            color: white;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
-            margin-top: 10px;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
-        .score-label {
-            font-weight: 500;
+        
+        .month-header:hover {
+            background-color: #2c3e50;
+        }
+        
+        .month-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .month-content {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .week-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .week-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .week-header {
+            background-color: #282F30;
+            color: white;
+            padding: 1rem;
+        }
+        
+        .week-content {
+            padding: 1.5rem;
+        }
+        
+        .week-projects {
+            margin: 1rem 0;
+            font-size: 0.9rem;
             color: #555;
         }
-        .score-number {
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        .action-plan {
-            background-color: #f0f4f3;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 30px 0;
-            border-left: 5px solid #6F8381;
-        }
-        .action-plan h3 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-        .action-plan-list {
-            margin-top: 15px;
-            padding-left: 20px;
-        }
-        .action-plan-list li {
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-        .feedback-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 30px 0;
-        }
-        .feedback-column {
-            flex: 1;
-            min-width: 300px;
-        }
-        .feedback-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-top: 4px solid #6F8381;
-        }
-        .feedback-title {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .feedback-title i {
-            margin-right: 10px;
-            color: #6F8381;
-            font-size: 1.2rem;
-        }
-        .feedback-title h3 {
-            margin: 0;
-            font-size: 1.2rem;
+        
+        .week-projects strong {
             color: #333;
         }
-        .feedback-content {
-            line-height: 1.6;
-            color: #555;
+        
+        .btn {
+            display: inline-block;
+            background-color: #6F8381;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
         }
-        .feedback-content ul {
-            padding-left: 20px;
-            margin-top: 10px;
+        
+        .btn:hover {
+            background-color: #00090f;
         }
-        .feedback-content li {
-            margin-bottom: 5px;
+        
+        .btn-disabled {
+            background-color: #7f8c8d;
+            cursor: not-allowed;
         }
-        #radar-chart {
-            height: 500px;
-            margin: 0 auto;
+        
+        .btn-disabled:hover {
+            background-color: #7f8c8d;
         }
-        .competence-legend {
-            font-size: 0.85rem;
-            line-height: 1.5;
-            color: #666;
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
             text-align: center;
-            margin-top: 10px;
-            font-style: italic;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .collapse-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .collapsed .collapse-icon {
+            transform: rotate(-90deg);
+        }
+        
+        .month-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .collapsed .month-content {
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        
+        /* Ajout de couleurs différentes pour les mois */
+        .month-february .month-header {
+            background-color: #2D2F2E;
+        }
+        .month-march .month-header {
+            background-color: #2c4136;
+        }
+        .month-april .month-header {
+            background-color: #495655;
+        }
+        .month-may .month-header {
+            background-color: #7C837E;
+        }
+        .month-june .month-header {
+            background-color: #9E9894;
+        }
+        .month-july .month-header {
+            background-color: #B6C0CB;
+        }
+        
+        /* Style pour le bouton de bilan mensuel */
+        .month-header-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .report-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            padding: 0.4rem 0.8rem;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .report-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .report-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .report-btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .report-btn-disabled:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: none;
+        }
+        
+        /* Style pour la section de bilan annuel */
+        .annual-section {
+            margin-bottom: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .annual-header {
+            background: linear-gradient(135deg, #000000, #2c3e50);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .annual-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .annual-header-content {
+            display: flex;
+            align-items: center;
         }
     </style>
 </head>
 <body>
+    <header>
+        <img src="assets/images/Logo.gif" alt="Logo HMONP" class="logo">
+        <div class="header-content">
+        <h1>Journal de Bord HMONP - Balogun OD</h1>
+        <p class="subtitle">Mise en Situation Professionnelle 2024-2025</p>
+    </header>
+    
     <div class="container">
-        <a href="index.html" class="home-button">
-            <i class="fas fa-home"></i> Retour à l'accueil
-        </a>
+        <section class="intro">
+            <h2>Présentation du Journal de Bord de Balogun</h2>
+            <p>Ce journal de bord documente mon parcours professionnel à l'Atelier Juno dans le cadre de ma formation HMONP. Il présente semaine par semaine les différentes missions réalisées, les compétences développées et les réflexions sur ma future pratique en tant qu'architecte en nom propre.</p>
+            <p>Chaque page hebdomadaire comprend une analyse détaillée des projets traités ainsi qu'une visualisation graphique de la répartition de mon temps de travail.</p>
+        </section>
+
+        <!-- Bilan Annuel -->
+        <section class="annual-section">
+            <div class="annual-header">
+                <h2>Bilan Annuel 2025 - BOD x JUNO</h2>
+                <a href="./bilan-annuel-2025.html" class="report-btn">
+                    <i class="fas fa-chart-line"></i> Bilan annuel
+                </a>
+            </div>
+        </section>
+
+        <!-- Février 2025 -->
+        <section class="month-section month-february collapsed">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Février 2025</h2>
+                    <a href="./bilan-fevrier-2025.html" class="report-btn">
+                        <i class="fas fa-chart-pie"></i> Bilan mensuel
+                    </a>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
+            </div>
+            <div class="month-content">
+                <!-- Semaine 1 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 3 au 7 Février</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Formation AREP ARCHI, NDDM - Modélisation, MBDA Colisée - Coordination
+                        </div>
+                        <a href="./semaine-3-7fevrier.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+                
+                <!-- Semaine 2 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 10 au 14 Février</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Formation AREP FAMILLES, NDDM - Modélisation, Conférence PLU-Bioclimatique Paris
+                        </div>
+                        <a href="./semaine-10-14fevrier.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+                
+                <!-- Semaine 3 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 17 au 21 Février</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Notre-Dame des Marins, AREP FAMILLES - Support, Notion Road Map, CHU NANTES - Remodélisation, ECA 2, Centre de Formation Maritime
+                        </div>
+                        <a href="./semaine-17-21fevrier.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+
+                <!-- Semaine 4 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 24 au 28 Février</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Centre de Formation Maritime, ECA 2 - Préparation formation, CHU NANTES - Modélisation, Notre-Dame des Marins, Accord Cadre - RIVP 
+                        </div>
+                        <a href="./semaine-24-28fevrier.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <h1>Bilan Annuel - Entretien d'évaluation 2025</h1>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <p>Date de l'entretien</p>
-                <h3>09/02</h3>
-                <p>Février 2025</p>
+        <!-- Reste du code inchangé -->
+        <!-- Mars 2025 -->
+        <section class="month-section month-march collapsed">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Mars 2025</h2>
+                    <a href="./bilan-mars-2025.html" class="report-btn">
+                        <i class="fas fa-chart-pie"></i> Bilan mensuel
+                    </a>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
             </div>
-            <div class="stat-card">
-                <p>Domaines évalués</p>
-                <h3>6</h3>
-                <p>Compétences clés</p>
-            </div>
-            <div class="stat-card">
-                <p>Points forts</p>
-                <h3>Formation</h3>
-                <p>4.9/5 par la Direction</p>
-            </div>
-            <div class="stat-card">
-                <p>Axes d'amélioration</p>
-                <h3 style="font-size: 2rem;">BIM Management</h3>
-                <p>Plan à 6 mois</p>
-            </div>
-        </div>
-
-        <div class="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'competencesRadar')">Radar des compétences</button>
-            <button class="tab-button" onclick="openTab(event, 'feedbackDetails')">Détails des évaluations</button>
-            <button class="tab-button" onclick="openTab(event, 'actionPlan')">Plan d'action</button>
-        </div>
-
-        <div id="competencesRadar" class="tab-content active">
-            <div class="chart-container">
-                <h2 class="chart-title">Évaluation des compétences</h2>
-                <div id="radar-chart"></div>
-                <p class="competence-legend">Note: Pour "Appels d'offres", aucune note n'a été attribuée en auto-évaluation (valeur 0 sur le graphique).<br/>
-                Pour "Communication", la note de la direction (2-3/5) a été représentée par 2.5/5.</p>
-            </div>
-            
-            <div class="insight-card">
-                <h3>Analyse des compétences</h3>
-                <p>Le radar des compétences met en évidence une convergence relative entre mon auto-évaluation et celle de la direction. Les plus grands écarts se situent dans les domaines de la "Modélisation" (écart de 0.5 point) et des "Appels d'offres" (domaine non auto-évalué). La "Formation" constitue clairement mon point fort (4.9/5 selon la direction), tandis que le "BIM Management" (2.5/5) et la "Communication" (2.5/5) représentent mes principaux axes d'amélioration.</p>
-                <p>Cette analyse comparative est précieuse dans le cadre de ma formation HMONP car elle permet d'identifier clairement les domaines où je dois concentrer mes efforts pour développer mon profil d'architecte complet. La direction reconnaît mes compétences techniques et pédagogiques, tout en m'encourageant à renforcer les aspects managériaux et communicationnels indispensables à la pratique en nom propre.</p>
-            </div>
-
-            <div class="score-comparison">
-                <div class="score-card">
-                    <h4>Formation</h4>
-                    <div class="score-value">
-                        <span class="score-label">Auto-évaluation:</span>
-                        <span class="score-number">5.0/5</span>
+            <div class="month-content">
+                <!-- Semaine 1 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 3 au 7 Mars</h3>
                     </div>
-                    <div class="score-value">
-                        <span class="score-label">Évaluation Direction:</span>
-                        <span class="score-number">4.9/5</span>
-                    </div>
-                    <div class="score-value">
-                        <span class="score-label">Écart:</span>
-                        <span class="score-number">0.1</span>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> CHU NANTES, ADMINISTRATIF, CITE DES MUSIQUES, CENTRE FORMATION MARITIME
+                        </div>
+                        <a href="./semaine-3-7mars.html" class="btn">Voir le détail</a>
                     </div>
                 </div>
                 
-                <div class="score-card">
-                    <h4>BIM Management</h4>
-                    <div class="score-value">
-                        <span class="score-label">Auto-évaluation:</span>
-                        <span class="score-number">3.0/5</span>
+                <!-- Semaine 2 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 10 au 14 Mars</h3>
                     </div>
-                    <div class="score-value">
-                        <span class="score-label">Évaluation Direction:</span>
-                        <span class="score-number">2.5/5</span>
-                    </div>
-                    <div class="score-value">
-                        <span class="score-label">Écart:</span>
-                        <span class="score-number">0.5</span>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Formation Power BI, MICHELIN - LES PISTES, ADMINISTRATIF, M02-LOGEMENT
+                        </div>
+                        <a href="./semaine-10-14mars.html" class="btn">Voir le détail</a>
                     </div>
                 </div>
                 
-                <div class="score-card">
-                    <h4>Modélisation</h4>
-                    <div class="score-value">
-                        <span class="score-label">Auto-évaluation:</span>
-                        <span class="score-number">4.5/5</span>
+                <!-- Semaine 3 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 17 au 21 Mars</h3>
                     </div>
-                    <div class="score-value">
-                        <span class="score-label">Évaluation Direction:</span>
-                        <span class="score-number">4.0/5</span>
-                    </div>
-                    <div class="score-value">
-                        <span class="score-label">Écart:</span>
-                        <span class="score-number">0.5</span>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Formation Revit pour Kengo Kuma, ADMINISTRATIF, Notre-Dame des Marins, M04-LOGEMENT
+                        </div>
+                        <a href="./semaine-17-21mars.html" class="btn">Voir le détail</a>
                     </div>
                 </div>
-                
-                <div class="score-card">
-                    <h4>Assistance BIM</h4>
-                    <div class="score-value">
-                        <span class="score-label">Auto-évaluation:</span>
-                        <span class="score-number">4.0/5</span>
-                    </div>
-                    <div class="score-value">
-                        <span class="score-label">Évaluation Direction:</span>
-                        <span class="score-number">4.0/5</span>
-                    </div>
-                    <div class="score-value">
-                        <span class="score-label">Écart:</span>
-                        <span class="score-number">0.0</span>
-                    </div>
-                </div>
-                
-                <div class="score-card">
-                    <h4>Appels d'offres</h4>
-                    <div class="score-value">
-                        <span class="score-label">Auto-évaluation:</span>
-                        <span class="score-number">N/A</span>
-                    </div>
-                    <div class="score-value">
-                        <span class="score-label">Évaluation Direction:</span>
-                        <span class="score-number">2.5/5</span>
-                    </div>
-                    <div class="score-value">
-                        <span class="score-label">Écart:</span>
-                        <span class="score-number">N/A</span>
-                    </div>
-                </div>
-                
-                <div class="score-card">
-                    <h4>Communication</h4>
-                    <div class="score-value">
-                        <span class="score-label">Auto-évaluation:</span>
-                        <span class="score-number">3.0/5</span>
-                    </div>
-                    <div class="score-value">
-                        <span class="score-label">Évaluation Direction:</span>
-                        <span class="score-number">2.5/5</span>
-                    </div>
-                    <div class="score-value">
-                        <span class="score-label">Écart:</span>
-                        <span class="score-number">0.5</span>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div id="feedbackDetails" class="tab-content">
-            <h2 class="chart-title">Détails des évaluations par compétence</h2>
-            
-            <div class="feedback-section">
-                <div class="feedback-column">
-                    <div class="feedback-card">
-                        <div class="feedback-title">
-                            <i class="fas fa-graduation-cap"></i>
-                            <h3>Formation (4.9/5)</h3>
-                        </div>
-                        <div class="feedback-content">
-                            <p>La direction est très positive concernant ma performance dans ce domaine. Cette note élevée reflète mes capacités pédagogiques et mon expertise technique, notamment démontrées lors des formations dispensées pour AREP.</p>
-                        </div>
+                <!-- Semaine 4 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 24 au 28 Mars</h3>
                     </div>
-                    
-                    <div class="feedback-card">
-                        <div class="feedback-title">
-                            <i class="fas fa-sitemap"></i>
-                            <h3>BIM Management (2.5/5)</h3>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Notre-Dame des Marins, ADMINISTRATIF, R&D Power BI, M04-LOGEMENT
                         </div>
-                        <div class="feedback-content">
-                            <p>Mon expérience est encore limitée sur ce volet. La direction m'encourage à approfondir ce domaine en exploitant les ressources internes et en m'appuyant sur les nombreux projets de BIM management disponibles sur le serveur.</p>
-                        </div>
+                        <a href="./semaine-24-28mars.html" class="btn">Voir le détail</a>
                     </div>
-                    
-                    <div class="feedback-card">
-                        <div class="feedback-title">
-                            <i class="fas fa-cubes"></i>
-                            <h3>Modélisation (4.0/5)</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avril 2025 -->
+        <section class="month-section month-april">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Avril 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
+            </div>
+            <div class="month-content">
+                <!-- Semaine 1 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 31 Mars au 4 Avril</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Formation Base Revit - ANMA_LIM, BIM World, Accord Cadre RIVP, Notion Road Map
                         </div>
-                        <div class="feedback-content">
-                            <p>La direction a remarqué une évolution positive dans ma prise d'autonomie et ma montée en compétence dans les missions de modélisation BIM. Elle recommande d'établir un planning de modélisation pour une meilleure organisation sur mon plan de charge et une meilleure visibilité sur ces compétences.</p>
-                        </div>
+                        <a href="semaine-31mars-4avril.html" class="btn">Voir le détail</a>
                     </div>
                 </div>
                 
-                <div class="feedback-column">
-                    <div class="feedback-card">
-                        <div class="feedback-title">
-                            <i class="fas fa-hands-helping"></i>
-                            <h3>Assistance BIM (4.0/5)</h3>
-                        </div>
-                        <div class="feedback-content">
-                            <p>La direction s'accorde à dire que j'ai un bon relationnel avec les clients, que je sais être à l'écoute de leurs besoins et me montrer pédagogue auprès d'eux.</p>
-                        </div>
+                <!-- Semaine 2 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 7 au 11 Avril</h3>
                     </div>
-                    
-                    <div class="feedback-card">
-                        <div class="feedback-title">
-                            <i class="fas fa-file-contract"></i>
-                            <h3>Appels d'offre (2.5/5)</h3>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Formation Avancée Revit - ANMA_LIM, R&D Power BI Road Map, Centre de Formation Maritime, Colloque Architecture
                         </div>
-                        <div class="feedback-content">
-                            <p>L'exercice est encore nouveau pour moi. La direction est confiante sur ma capacité à progresser dans la compréhension et la complétude des dossiers d'appels d'offres.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="feedback-card">
-                        <div class="feedback-title">
-                            <i class="fas fa-comments"></i>
-                            <h3>Communication (2.5/5)</h3>
-                        </div>
-                        <div class="feedback-content">
-                            <p>La direction reconnaît ma très bonne capacité d'échange avec les clients. Toutefois, elle perçoit parfois un manque de communication concernant mes objectifs professionnels, qui ne sont pas toujours partagés avec la direction en amont. La formation HMONP a été spécifiquement citée comme exemple où une meilleure communication aurait été nécessaire.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="insight-card">
-                <h3>Analyse générale du feedback</h3>
-                <p>Les retours de la direction mettent en lumière un profil technique solide avec des compétences relationnelles bien développées auprès des clients, mais nécessitant une amélioration dans les aspects stratégiques et de communication interne. Dans le cadre de ma formation HMONP, ces observations sont particulièrement pertinentes puisqu'elles pointent précisément les compétences nécessaires à l'exercice en nom propre : capacités managériales, vision stratégique et communication transparente avec les collaborateurs et partenaires.</p>
-                <p>La direction suggère des mesures concrètes pour progresser, notamment l'établissement d'un planning de modélisation, l'exploitation des ressources internes pour développer mes compétences en BIM management, et des points d'échange réguliers avec la direction. Ces recommandations s'inscrivent parfaitement dans ma démarche de développement professionnel et constituent des jalons importants pour ma progression vers l'habilitation.</p>
-            </div>
-        </div>
-
-        <div id="actionPlan" class="tab-content">
-            <h2 class="chart-title">Plan d'action et objectifs</h2>
-            
-            <div class="action-plan">
-                <h3>Plan d'action sur 6 mois</h3>
-                <ul class="action-plan-list">
-                    <li>Renforcer ma valeur ajoutée en me formant à Power BI, en développant des outils BIM et de gestion</li>
-                    <li>Établir un planning de modélisation pour améliorer l'organisation de mon plan de charge</li>
-                    <li>Exploiter les ressources internes pour approfondir mes compétences en BIM management</li>
-                    <li>Participer aux points bimensuels avec un membre de la direction pour échanger sur des sujets techniques</li>
-                    <li>Contribuer à la relecture ou à l'écriture des articles du blog de l'agence</li>
-                </ul>
-            </div>
-            
-            <div class="feedback-section">
-                <div class="feedback-column">
-                    <div class="feedback-card">
-                        <div class="feedback-title">
-                            <i class="fas fa-user-graduate"></i>
-                            <h3>Formation HMONP</h3>
-                        </div>
-                        <div class="feedback-content">
-                            <p>La direction, notamment Thomas Teyssaire en tant que tuteur, m'invite à échanger davantage sur le sujet de mon mémoire d'habilitation et plus largement sur ma formation au sein de la structure.</p>
-                            <p>Concernant mon souhait d'être davantage impliqué en maîtrise d'œuvre, la direction reconnaît la difficulté liée à la conjoncture actuelle, mais s'efforcera de m'intégrer dans la mesure du possible aux projets pertinents, notamment le projet VISA 94.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="feedback-card">
-                        <div class="feedback-title">
-                            <i class="fas fa-building"></i>
-                            <h3>Culture d'agence</h3>
-                        </div>
-                        <div class="feedback-content">
-                            <p>J'ai exprimé un ressenti positif vis-à-vis de l'organisation et de l'atmosphère de travail :</p>
-                            <ul>
-                                <li>Sentiment d'autonomie</li>
-                                <li>Liberté d'aborder différents sujets avec l'équipe</li>
-                                <li>Appréciation de l'organisation du projet des "calboratoires"</li>
-                            </ul>
-                            <p>L'organisation est jugée claire, notamment depuis l'utilisation croissante de Notion.</p>
-                        </div>
+                        <a href="semaine-7-11avril.html" class="btn">Voir le détail</a>
                     </div>
                 </div>
                 
-                <div class="feedback-column">
-                    <div class="feedback-card">
-                        <div class="feedback-title">
-                            <i class="fas fa-tasks"></i>
-                            <h3>Aspirations professionnelles</h3>
-                        </div>
-                        <div class="feedback-content">
-                            <ul>
-                                <li>Être davantage sollicité sur des missions liées à la maîtrise d'œuvre et à la conception</li>
-                                <li>Ne pas me restreindre qu'aux missions BIM, mais développer ma "casquette archi"</li>
-                                <li>Contribuer au développement des articles du blog</li>
-                                <li>M'essayer à l'estimation d'une mission en BIM management</li>
-                                <li>Développer sur le long terme une approche plus technique de l'architecture</li>
-                                <li>Faire du chantier, notamment à l'occasion du projet VISA 94</li>
-                            </ul>
-                        </div>
+                <!-- Semaine 3 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 14 au 18 Avril</h3>
                     </div>
-                    
-                    <div class="feedback-card">
-                        <div class="feedback-title">
-                            <i class="fas fa-clock"></i>
-                            <h3>Rappels organisationnels</h3>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> CENTRE DE FORMATION MARITIME, Appel d'offre AMO BIM HUS, Power BI Road Map, GIGOT OG - PARIS
                         </div>
-                        <div class="feedback-content">
-                            <p>La direction a rappelé certains points essentiels du règlement intérieur :</p>
-                            <ul>
-                                <li>Horaires de travail : 9h30-18h30</li>
-                                <li>Les retards doivent rester exceptionnels et justifiés</li>
-                                <li>Pas d'heures supplémentaires ou de prolongation des journées de travail</li>
-                                <li>Pauses possibles à tout moment, durée moyenne d'une vingtaine de minutes</li>
-                                <li>Applications de réseaux sociaux personnels non souhaitées sur l'ordinateur professionnel</li>
-                            </ul>
+                        <a href="semaine-14-18avril.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+
+                <!-- Semaine 4 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 21 au 25 Avril</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
                         </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
                     </div>
                 </div>
             </div>
-            
-            <div class="insight-card">
-                <h3>Réflexion sur le plan d'action</h3>
-                <p>Ce plan d'action à 6 mois s'articule parfaitement avec ma formation HMONP en me permettant de développer des compétences essentielles pour l'exercice en nom propre. La formation à Power BI et le développement d'outils de gestion vont renforcer mes capacités d'analyse et de suivi de projet, tandis que les échanges réguliers avec la direction vont améliorer ma communication et ma vision stratégique.</p>
-                <p>Les rappels organisationnels soulignent l'importance du cadre de travail et de la gestion du temps, aspects fondamentaux de la responsabilité d'un architecte. Je considère ces éléments comme des opportunités d'apprentissage qui vont au-delà des compétences techniques, en abordant les dimensions managériales et organisationnelles indispensables à ma future pratique.</p>
-            </div>
-        </div>
+        </section>
 
-        <div class="summary">
-            <h2>Synthèse de l'entretien annuel</h2>
-            <p>Cet entretien annuel du 9 février 2025 constitue un jalon important dans ma formation HMONP, en offrant une vision claire de mes forces et axes d'amélioration. L'évaluation croisée (auto-évaluation et évaluation par la direction) révèle un profil technique solide, particulièrement en formation (4.9/5) et en assistance BIM (4.0/5), mais nécessitant un renforcement dans les domaines du BIM management (2.5/5) et de la communication interne (2.5/5).</p>
-            
-            <p>Mes aspirations à développer ma "casquette archi" et à m'impliquer davantage dans des missions de maîtrise d'œuvre ont été entendues par la direction, qui s'efforcera de m'intégrer dans la mesure du possible aux projets pertinents, tout en reconnaissant les contraintes liées à la conjoncture économique actuelle. Le plan d'action établi pour les six prochains mois se concentre sur le renforcement de ma valeur ajoutée via la formation à Power BI et le développement d'outils BIM et de gestion.</p>
-            
-            <p>Les points bimensuels prévus avec un membre de la direction et ma contribution aux articles du blog de l'agence représentent des opportunités concrètes pour améliorer ma communication et élargir mon champ d'expertise. L'ensemble de ces mesures s'inscrit parfaitement dans ma démarche de développement des compétences nécessaires à l'exercice en nom propre, alliant expertise technique, vision stratégique et capacités relationnelles.</p>
-        </div>
+        <!-- Mai 2025 -->
+        <section class="month-section month-may collapsed">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Mai 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
+            </div>
+            <div class="month-content">
+                <!-- Semaines de Mai -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 28 Avril au 2 Mai</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 5 au 9 Mai</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 12 au 16 Mai</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 19 au 23 Mai</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 26 au 30 Mai</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Juin 2025 -->
+        <section class="month-section month-june collapsed">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Juin 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
+            </div>
+            <div class="month-content">
+                <!-- Semaines de Juin -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 2 au 6 Juin</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 9 au 13 Juin</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 16 au 20 Juin</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 23 au 27 Juin</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Juillet 2025 -->
+        <section class="month-section month-july collapsed">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Juillet 2025</h2>
+                    <span class="report-btn report-btn-disabled">
+                        <i class="fas fa-chart-pie"></i> Bientôt disponible
+                    </span>
+                </div>
+                <i class="fas fa-chevron-down collapse-icon"></i>
+            </div>
+            <div class="month-content">
+                <!-- Semaines de Juillet -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 30 Juin au 4 Juillet</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 7 au 11 Juillet</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 14 au 18 Juillet</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 21 au 25 Juillet</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> À venir
+                        </div>
+                        <a href="#" class="btn btn-disabled">Bientôt disponible</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
     
+    <footer>
+        <p>© 2025 - Journal de Bord HMONP - Balogun Ola-Davies</p>
+    </footer>
+
     <script>
-        // Fonction pour gérer les onglets
-        function openTab(evt, tabName) {
-            // Masquer tous les contenus des onglets
-            const tabContents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active");
-            }
-
-            // Désactiver tous les boutons d'onglets
-            const tabButtons = document.getElementsByClassName("tab-button");
-            for (let i = 0; i < tabButtons.length; i++) {
-                tabButtons[i].classList.remove("active");
-            }
-
-            // Afficher le contenu de l'onglet sélectionné et activer le bouton
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-    </script>
-    
-    <script type="text/babel">
-        // Composant React pour le radar des compétences
-        const CompetenceRadar = () => {
-            // Données extraites du compte-rendu
-            const data = [
-                { 
-                    subject: 'Formation', 
-                    'Auto-évaluation': 5.0, 
-                    'Évaluation Direction': 4.9,
-                    fullMark: 5 
-                },
-                { 
-                    subject: 'BIM Management', 
-                    'Auto-évaluation': 3.0, 
-                    'Évaluation Direction': 2.5,
-                    fullMark: 5 
-                },
-                { 
-                    subject: 'Modélisation', 
-                    'Auto-évaluation': 4.5, 
-                    'Évaluation Direction': 4.0,
-                    fullMark: 5 
-                },
-                { 
-                    subject: 'Assistance BIM', 
-                    'Auto-évaluation': 4.0, 
-                    'Évaluation Direction': 4.0,
-                    fullMark: 5 
-                },
-                { 
-                    subject: 'Appels d\'offres', 
-                    'Auto-évaluation': 0, 
-                    'Évaluation Direction': 2.5,
-                    fullMark: 5 
-                },
-                { 
-                    subject: 'Communication', 
-                    'Auto-évaluation': 3.0, 
-                    'Évaluation Direction': 2.5,
-                    fullMark: 5 
+        // Script pour gérer les sections dépliables
+        document.querySelectorAll('.month-header').forEach(header => {
+            header.addEventListener('click', (e) => {
+                // Si on clique sur le bouton de rapport, ne pas déplier/replier la section
+                if (e.target.closest('.report-btn')) {
+                    return;
                 }
-            ];
-
-            const { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend, ResponsiveContainer, Tooltip } = Recharts;
-
-            return (
-                <div className="w-full h-96 p-4 bg-white rounded-lg shadow">
-                    <h2 className="text-xl font-bold text-center mb-4">Évaluation des compétences - Balogun Ola-Davies (BOD)</h2>
-                    <h3 className="text-sm text-gray-600 text-center mb-6">Entretien annuel du 09/02/2025</h3>
-                    
-                    <ResponsiveContainer width="100%" height="80%">
-                        <RadarChart outerRadius="80%" data={data}>
-                            <PolarGrid />
-                            <PolarAngleAxis dataKey="subject" />
-                            <PolarRadiusAxis domain={[0, 5]} tickCount={6} />
-                            
-                            <Tooltip />
-                            
-                            <Radar
-                                name="Auto-évaluation"
-                                dataKey="Auto-évaluation"
-                                stroke="#8884d8"
-                                fill="#8884d8"
-                                fillOpacity={0.3}
-                            />
-                            
-                            <Radar
-                                name="Évaluation Direction"
-                                dataKey="Évaluation Direction"
-                                stroke="#82ca9d"
-                                fill="#82ca9d"
-                                fillOpacity={0.3}
-                            />
-                            
-                            <Legend />
-                        </RadarChart>
-                    </ResponsiveContainer>
-                </div>
-            );
-        };
-
-        // Rendu du composant dans le div radar-chart
-        const root = ReactDOM.createRoot(document.getElementById('radar-chart'));
-        root.render(<CompetenceRadar />);
+                
+                const section = header.parentElement;
+                section.classList.toggle('collapsed');
+            });
+        });
     </script>
 </body>
 </html>
