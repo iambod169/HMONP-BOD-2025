@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bilan Annuel 2025 - Entretien d'évaluation | Balogun OD</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/recharts@2.7.2/umd/Recharts.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Chart.js au lieu de React/Recharts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -112,7 +110,7 @@
             margin: 30px 0;
         }
         .stat-card {
-            background: linear-gradient(135deg, #000000, #485969);
+            background: linear-gradient(135deg, #6F8381, #2c3e50);
             color: white;
             padding: 20px;
             border-radius: 8px;
@@ -254,9 +252,14 @@
         .feedback-content li {
             margin-bottom: 5px;
         }
-        #radar-chart {
+        #radar-chart-container {
             height: 500px;
             margin: 0 auto;
+            position: relative;
+        }
+        #radar-canvas {
+            max-width: 100%;
+            height: auto;
         }
         .competence-legend {
             font-size: 0.85rem;
@@ -265,6 +268,21 @@
             text-align: center;
             margin-top: 10px;
             font-style: italic;
+        }
+        .chart-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .chart-header h2 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .chart-header h3 {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+            margin-top: 0;
         }
     </style>
 </head>
@@ -308,7 +326,15 @@
         <div id="competencesRadar" class="tab-content active">
             <div class="chart-container">
                 <h2 class="chart-title">Évaluation des compétences</h2>
-                <div id="radar-chart"></div>
+                
+                <div id="radar-chart-container">
+                    <div class="chart-header">
+                        <h2>Évaluation des compétences - Balogun Ola-Davies (BOD)</h2>
+                        <h3>Entretien annuel du 09/02/2025</h3>
+                    </div>
+                    <canvas id="radar-canvas"></canvas>
+                </div>
+                
                 <p class="competence-legend">Note: Pour "Appels d'offres", aucune note n'a été attribuée en auto-évaluation (valeur 0 sur le graphique).<br/>
                 Pour "Communication", la note de la direction (2-3/5) a été représentée par 2.5/5.</p>
             </div>
@@ -611,91 +637,85 @@
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
-    </script>
-    
-    <script type="text/babel">
-        // Composant React pour le radar des compétences
-        const CompetenceRadar = () => {
+
+        // Créer le graphique radar avec Chart.js
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('radar-canvas').getContext('2d');
+            
             // Données extraites du compte-rendu
-            const data = [
-                { 
-                    subject: 'Formation', 
-                    'Auto-évaluation': 5.0, 
-                    'Évaluation Direction': 4.9,
-                    fullMark: 5 
-                },
-                { 
-                    subject: 'BIM Management', 
-                    'Auto-évaluation': 3.0, 
-                    'Évaluation Direction': 2.5,
-                    fullMark: 5 
-                },
-                { 
-                    subject: 'Modélisation', 
-                    'Auto-évaluation': 4.5, 
-                    'Évaluation Direction': 4.0,
-                    fullMark: 5 
-                },
-                { 
-                    subject: 'Assistance BIM', 
-                    'Auto-évaluation': 4.0, 
-                    'Évaluation Direction': 4.0,
-                    fullMark: 5 
-                },
-                { 
-                    subject: 'Appels d\'offres', 
-                    'Auto-évaluation': 0, 
-                    'Évaluation Direction': 2.5,
-                    fullMark: 5 
-                },
-                { 
-                    subject: 'Communication', 
-                    'Auto-évaluation': 3.0, 
-                    'Évaluation Direction': 2.5,
-                    fullMark: 5 
-                }
-            ];
+            const data = {
+                labels: ['Formation', 'BIM Management', 'Modélisation', 'Assistance BIM', 'Appels d\'offres', 'Communication'],
+                datasets: [
+                    {
+                        label: 'Auto-évaluation',
+                        data: [5.0, 3.0, 4.5, 4.0, 0, 3.0],
+                        backgroundColor: 'rgba(136, 132, 216, 0.3)',
+                        borderColor: 'rgb(136, 132, 216)',
+                        pointBackgroundColor: 'rgb(136, 132, 216)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(136, 132, 216)'
+                    },
+                    {
+                        label: 'Évaluation Direction',
+                        data: [4.9, 2.5, 4.0, 4.0, 2.5, 2.5],
+                        backgroundColor: 'rgba(130, 202, 157, 0.3)',
+                        borderColor: 'rgb(130, 202, 157)',
+                        pointBackgroundColor: 'rgb(130, 202, 157)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(130, 202, 157)'
+                    }
+                ]
+            };
 
-            const { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend, ResponsiveContainer, Tooltip } = Recharts;
+            // Options pour personnaliser le graphique
+            const options = {
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 5,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.r !== null) {
+                                    label += context.parsed.r + '/5';
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                maintainAspectRatio: false,
+                responsive: true
+            };
 
-            return (
-                <div className="w-full h-96 p-4 bg-white rounded-lg shadow">
-                    <h2 className="text-xl font-bold text-center mb-4">Évaluation des compétences - Balogun Ola-Davies (BOD)</h2>
-                    <h3 className="text-sm text-gray-600 text-center mb-6">Entretien annuel du 09/02/2025</h3>
-                    
-                    <ResponsiveContainer width="100%" height="80%">
-                        <RadarChart outerRadius="80%" data={data}>
-                            <PolarGrid />
-                            <PolarAngleAxis dataKey="subject" />
-                            <PolarRadiusAxis domain={[0, 5]} tickCount={6} />
-                            
-                            <Tooltip />
-                            
-                            <Radar
-                                name="Auto-évaluation"
-                                dataKey="Auto-évaluation"
-                                stroke="#8884d8"
-                                fill="#8884d8"
-                                fillOpacity={0.3}
-                            />
-                            
-                            <Radar
-                                name="Évaluation Direction"
-                                dataKey="Évaluation Direction"
-                                stroke="#82ca9d"
-                                fill="#82ca9d"
-                                fillOpacity={0.3}
-                            />
-                            
-                            <Legend />
-                        </RadarChart>
-                    </ResponsiveContainer>
-                </div>
-            );
-        };
-
-        // Rendu du composant dans le div radar-chart
-        ReactDOM.render(<CompetenceRadar />, document.getElementById('radar-chart'));
+            // Création du graphique
+            new Chart(ctx, {
+                type: 'radar',
+                data: data,
+                options: options
+            });
+        });
     </script>
 </body>
 </html>
