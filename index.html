@@ -236,6 +236,34 @@
             background-color: rgba(255, 255, 255, 0.2);
             transform: none;
         }
+        
+        /* Style pour la section de bilan annuel */
+        .annual-section {
+            margin-bottom: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .annual-header {
+            background: linear-gradient(135deg, #000000, #2c3e50);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .annual-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .annual-header-content {
+            display: flex;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -253,71 +281,83 @@
             <p>Chaque page hebdomadaire comprend une analyse détaillée des projets traités ainsi qu'une visualisation graphique de la répartition de mon temps de travail.</p>
         </section>
 
-        <!-- Février 2025 -->
-<section class="month-section month-february collapsed">
-    <div class="month-header">
-        <div class="month-header-content">
-            <h2>Février 2025</h2>
-            <a href="./bilan-fevrier-2025.html" class="report-btn">
-                <i class="fas fa-chart-pie"></i> Bilan mensuel
-            </a>
-        </div>
-        <i class="fas fa-chevron-down collapse-icon"></i>
-    </div>
-    <div class="month-content">
-        <!-- Semaine 1 -->
-        <div class="week-card">
-            <div class="week-header">
-                <h3>Semaine du 3 au 7 Février</h3>
+        <!-- Bilan Annuel -->
+        <section class="annual-section">
+            <div class="annual-header">
+                <h2>Bilan Annuel 2025 - BOD x JUNO</h2>
+                <a href="./bilan-annuel-2025.html" class="report-btn">
+                    <i class="fas fa-chart-line"></i> Bilan annuel
+                </a>
             </div>
-            <div class="week-content">
-                <div class="week-projects">
-                    <strong>Projets principaux :</strong> Formation AREP ARCHI, NDDM - Modélisation, MBDA Colisée - Coordination
-                </div>
-                <a href="./semaine-3-7fevrier.html" class="btn">Voir le détail</a>
-            </div>
-        </div>
-        
-        <!-- Semaine 2 -->
-        <div class="week-card">
-            <div class="week-header">
-                <h3>Semaine du 10 au 14 Février</h3>
-            </div>
-            <div class="week-content">
-                <div class="week-projects">
-                    <strong>Projets principaux :</strong> Formation AREP FAMILLES, NDDM - Modélisation, Conférence PLU-Bioclimatique Paris
-                </div>
-                <a href="./semaine-10-14fevrier.html" class="btn">Voir le détail</a>
-            </div>
-        </div>
-        
-        <!-- Semaine 3 -->
-        <div class="week-card">
-            <div class="week-header">
-                <h3>Semaine du 17 au 21 Février</h3>
-            </div>
-            <div class="week-content">
-                <div class="week-projects">
-                    <strong>Projets principaux :</strong> Notre-Dame des Marins, AREP FAMILLES - Support, Notion Road Map, CHU NANTES - Remodélisation, ECA 2, Centre de Formation Maritime
-                </div>
-                <a href="./semaine-17-21fevrier.html" class="btn">Voir le détail</a>
-            </div>
-        </div>
+        </section>
 
-        <!-- Semaine 4 -->
-        <div class="week-card">
-            <div class="week-header">
-                <h3>Semaine du 24 au 28 Février</h3>
-            </div>
-            <div class="week-content">
-                <div class="week-projects">
-                    <strong>Projets principaux :</strong> Centre de Formation Maritime, ECA 2 - Préparation formation, CHU NANTES - Modélisation, Notre-Dame des Marins, Accord Cadre - RIVP 
+        <!-- Février 2025 -->
+        <section class="month-section month-february collapsed">
+            <div class="month-header">
+                <div class="month-header-content">
+                    <h2>Février 2025</h2>
+                    <a href="./bilan-fevrier-2025.html" class="report-btn">
+                        <i class="fas fa-chart-pie"></i> Bilan mensuel
+                    </a>
                 </div>
-                <a href="./semaine-24-28fevrier.html" class="btn">Voir le détail</a>
+                <i class="fas fa-chevron-down collapse-icon"></i>
             </div>
-        </div>
-    </div>
-</section>
+            <div class="month-content">
+                <!-- Semaine 1 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 3 au 7 Février</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Formation AREP ARCHI, NDDM - Modélisation, MBDA Colisée - Coordination
+                        </div>
+                        <a href="./semaine-3-7fevrier.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+                
+                <!-- Semaine 2 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 10 au 14 Février</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Formation AREP FAMILLES, NDDM - Modélisation, Conférence PLU-Bioclimatique Paris
+                        </div>
+                        <a href="./semaine-10-14fevrier.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+                
+                <!-- Semaine 3 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 17 au 21 Février</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Notre-Dame des Marins, AREP FAMILLES - Support, Notion Road Map, CHU NANTES - Remodélisation, ECA 2, Centre de Formation Maritime
+                        </div>
+                        <a href="./semaine-17-21fevrier.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+
+                <!-- Semaine 4 -->
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Semaine du 24 au 28 Février</h3>
+                    </div>
+                    <div class="week-content">
+                        <div class="week-projects">
+                            <strong>Projets principaux :</strong> Centre de Formation Maritime, ECA 2 - Préparation formation, CHU NANTES - Modélisation, Notre-Dame des Marins, Accord Cadre - RIVP 
+                        </div>
+                        <a href="./semaine-24-28fevrier.html" class="btn">Voir le détail</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Reste du code inchangé -->
         <!-- Mars 2025 -->
         <section class="month-section month-march collapsed">
             <div class="month-header">
@@ -665,8 +705,10 @@
                     return;
                 }
                 
-                const monthSection = header.parentElement;
-                monthSection.classList.toggle('collapsed');
+                const section = header.parentElement;
+                section.classList.toggle('collapsed');
             });
         });
     </script>
+</body>
+</html>
