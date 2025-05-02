@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 21-25 Avril 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>21 - 25 Avril 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 21 au 25 avril 2025, illustrant l'équilibre entre formation, développement d'outils et missions administratives.</p>
+            <p><strong>Temps total travaillé :</strong> 38 heures</p>
+            <p><strong>Activités principales :</strong> Formation BASE KKAA (16h - 42%), Appel d'offre AMO BIM Strasbourg (10h - 26%), Power BI Road Map (6h - 16%), Notion Road Map (5h - 13%), M04-LOGEMENT (1h - 3%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Formation (42%), Administratif (26%), R&D (29%), Assistance technique (3%)</p>
+        </div>
+
+        <h2>ENTRE FORMATION, R&D ET EXPERTISE TECHNIQUE</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            <p>Cette semaine illustre parfaitement la polyvalence requise dans ma progression vers l'habilitation. Entre formation, réponse à appel d'offres, développement d'outils internes et assistance technique, j'ai navigué entre différentes facettes du métier, mobilisant tour à tour mes compétences techniques, pédagogiques, rédactionnelles et relationnelles.</p>
+            <p>La formation dispensée a renforcé ma posture d'expert et ma capacité à transmettre des connaissances complexes, compétence essentielle dans la relation future avec les maîtres d'ouvrage. La participation à l'appel d'offres m'a confronté aux mécanismes de la commande publique et aux stratégies de positionnement d'une agence sur des marchés spécialisés. Le développement d'outils internes m'a sensibilisé aux enjeux d'optimisation des processus, dimension entrepreneuriale du métier souvent sous-estimée. Enfin, l'assistance technique m'a rappelé l'importance de l'efficacité et de la précision dans les interventions ponctuelles.</p>
+            <p>Cette semaine confirme ma conviction que l'architecte contemporain est avant tout un professionnel polyvalent, capable de mobiliser des compétences diverses au service d'une vision intégrée de son métier. Loin d'être une dispersion, cette diversité d'interventions nourrit une compréhension riche et nuancée de la pratique architecturale, essentielle à mon futur exercice en nom propre.</p>
+            <p>« L'architecte n'est pas qu'un concepteur, il est aussi un pédagogue », m'avait un jour expliqué Thomas. Cette remarque prend tout son sens lors de ces sessions où je dois traduire des concepts techniques en instructions pratiques, tout en gardant à l'esprit la finalité architecturale des outils enseignés.</p>
+            <p>En regardant par la fenêtre de notre espace de travail au CALBO, j'observe le mouvement des nuages dans le ciel changeant d'avril. Cette variabilité météorologique me semble refléter la diversité des missions qui composent ma semaine et, plus largement, la richesse de ma formation pratique.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 21 Avril', 'Mardi 22 Avril', 'Mercredi 23 Avril', 'Jeudi 24 Avril', 'Vendredi 25 Avril'],
+                datasets: [
+                    {
+                        label: 'Power BI Road Map',
+                        data: [6, 0, 0, 0, 0],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Administratif - Appel d\'offre HUS',
+                        data: [2, 8, 0, 0, 0],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Formation BASE KKAA',
+                        data: [0, 0, 8, 8, 0],
+                        backgroundColor: '#36b9cc',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Notion Road Map',
+                        data: [0, 0, 0, 0, 5],
+                        backgroundColor: '#f6c23e',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'M04-LOGEMENT - Assistance',
+                        data: [0, 0, 0, 0, 1],
+                        backgroundColor: '#e74a3b',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Power BI Road Map (6h)', 'Administratif - Appel d\'offre HUS (10h)', 'Formation BASE KKAA (16h)', 'Notion Road Map (5h)', 'M04-LOGEMENT - Assistance (1h)'],
+                datasets: [{
+                    data: [6, 10, 16, 5, 1],
+                    backgroundColor: [
+                        '#1cc88a',
+                        '#4e73df',
+                        '#36b9cc',
+                        '#f6c23e',
+                        '#e74a3b'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
