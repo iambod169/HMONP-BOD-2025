@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilan Mensuel Avril 2025 - HMONP</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.1.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+            position: relative;
+        }
+        .chart-title {
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .summary {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .data-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        .insight-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .insight-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #6F8381;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .insight-card p {
+            line-height: 1.6;
+            color: #555;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #6F8381, #2c3e50);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-card h3 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+        .stat-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        .tabs {
+            display: flex;
+            margin-top: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+        .tab-button {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #7f8c8d;
+            transition: all 0.3s;
+        }
+        .tab-button.active {
+            color: #6F8381;
+            border-bottom: 3px solid #6F8381;
+            margin-bottom: -2px;
+        }
+        .tab-button:hover {
+            color: #6F8381;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Retour à l'accueil
+        </a>
+        
+        <h1>Bilan Mensuel - Avril 2025</h1>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p>Heures travaillées</p>
+                <h3>150</h3>
+                <p>Total du mois</p>
+            </div>
+            <div class="stat-card">
+                <p>Projets</p>
+                <h3>12</h3>
+                <p>Différents projets</p>
+            </div>
+            <div class="stat-card">
+                <p>Formation</p>
+                <h3>32h</h3>
+                <p>21.3% du temps</p>
+            </div>
+            <div class="stat-card">
+                <p>BIM & R&D</p>
+                <h3>63h</h3>
+                <p>42% du temps</p>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'timeDistribution')">Répartition du temps</button>
+            <button class="tab-button" onclick="openTab(event, 'projectEvolution')">Évolution hebdomadaire</button>
+            <button class="tab-button" onclick="openTab(event, 'rawData')">Données brutes</button>.
+        </div>
+
+        <div id="timeDistribution" class="tab-content active">
+            <div class="chart-container" style="height: 400px;">
+                <h2 class="chart-title">Répartition du temps par type d'activité</h2>
+                <canvas id="donutChart"></canvas>
+            </div>
+            
+            <div class="insight-card">
+                <h1></h1>
+                <h3>Analyse de la distribution du temps</h3>
+                <p>Le mois d'avril a été marqué par une forte concentration sur l'expertise BIM et la R&D (42% du temps), suivie par la formation (21.3%). Cette répartition illustre parfaitement la double nature de mon parcours professionnel, entre transmission de savoirs et développement d'outils et méthodologies innovantes. La participation significative aux appels d'offres (13.3%) et aux activités de représentation (6.7%) témoigne d'une implication croissante dans la dimension stratégique et commerciale de l'agence. L'apparition notable d'activités de maîtrise d'œuvre directe, avec le démarrage du projet Gigot OG (4%), marque une évolution significative dans mon parcours HMONP, m'offrant enfin l'opportunité de me confronter aux responsabilités concrètes de conception architecturale.</p>
+            </div>
+        </div>
+
+        <div id="projectEvolution" class="tab-content">
+            <div class="chart-container">
+                <h2 class="chart-title">Évolution des projets au cours du mois</h2>
+                <canvas id="streamChart"></canvas>
+            </div>
+            
+            <div class="insight-card">
+                <h1></h1>
+                <h3>Évolution de l'activité</h3>
+                <p>L'évolution du temps par type d'activité sur le mois montre une alternance structurée entre les différentes facettes de ma pratique professionnelle. La première semaine a combiné formation spécialisée (16h), activités administratives (13h) et développement d'outils (7h). La deuxième semaine a vu l'émergence d'une dimension nouvelle avec le démarrage du projet Gigot OG - Paris (4h), tout en poursuivant le travail sur le Centre de Formation Maritime (16h). La troisième semaine a équilibré formation (14h) et activités de représentation (8h), enrichies par une dimension technique substantielle avec le développement de Power BI (7h). La dernière semaine a privilégié la formation (16h) et les missions administratives (10h), consolidant ainsi mon double positionnement de formateur et d'expert technique. Cette rythmique mensuelle, ponctuée par des temps forts de transmission, de développement et de réflexion, constitue une structuration équilibrée qui nourrit ma maturation professionnelle.</p>
+            </div>
+        </div>
+
+        <div id="rawData" class="tab-content">
+            <h2 class="chart-title">Données pour Power BI</h2>
+            
+            <h3>Données hebdomadaires par projet</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Semaine</th>
+                        <th>Projet</th>
+                        <th>Heures</th>
+                        <th>Type d'activité</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Semaine 1 (31 mars-4 avril)</td><td>Formation Base Revit - ANMA_LIM</td><td>16</td><td>Formation</td></tr>
+                    <tr><td>Semaine 1 (31 mars-4 avril)</td><td>ADMINISTRATIF - BIM World</td><td>8</td><td>Administration</td></tr>
+                    <tr><td>Semaine 1 (31 mars-4 avril)</td><td>ADMINISTRATIF - Accord Cadre RIVP</td><td>4</td><td>Administration</td></tr>
+                    <tr><td>Semaine 1 (31 mars-4 avril)</td><td>Notion Road Map - Plans de charge</td><td>7</td><td>R&D</td></tr>
+                    <tr><td>Semaine 1 (31 mars-4 avril)</td><td>ADMINISTRATIF - Support HMONP</td><td>1</td><td>Administration</td></tr>
+                    
+                    <tr><td>Semaine 2 (7-11 avril)</td><td>ADMINISTRATIF - Échange MSP</td><td>2</td><td>Administration</td></tr>
+                    <tr><td>Semaine 2 (7-11 avril)</td><td>R&D - Power BI Road Map</td><td>7</td><td>R&D</td></tr>
+                    <tr><td>Semaine 2 (7-11 avril)</td><td>BIM - CENTRE DE FORMATION MARITIME</td><td>7</td><td>Production</td></tr>
+                    <tr><td>Semaine 2 (7-11 avril)</td><td>Représentation - Colloque</td><td>8</td><td>Représentation</td></tr>
+                    <tr><td>Semaine 2 (7-11 avril)</td><td>Formation ANMA_LIM</td><td>14</td><td>Formation</td></tr>
+                    
+                    <tr><td>Semaine 3 (14-18 avril)</td><td>CENTRE DE FORMATION MARITIME</td><td>16</td><td>Production</td></tr>
+                    <tr><td>Semaine 3 (14-18 avril)</td><td>Power BI Road Map</td><td>6</td><td>R&D</td></tr>
+                    <tr><td>Semaine 3 (14-18 avril)</td><td>Appel d'offre AMO BIM HUS</td><td>12</td><td>Administration</td></tr>
+                    <tr><td>Semaine 3 (14-18 avril)</td><td>GIGOT OG - PARIS</td><td>4</td><td>Maîtrise d'œuvre</td></tr>
+                    
+                    <tr><td>Semaine 4 (21-25 avril)</td><td>Formation BASE KKAA</td><td>16</td><td>Formation</td></tr>
+                    <tr><td>Semaine 4 (21-25 avril)</td><td>Appel d'offre AMO BIM Strasbourg</td><td>10</td><td>Administration</td></tr>
+                    <tr><td>Semaine 4 (21-25 avril)</td><td>Power BI Road Map</td><td>6</td><td>R&D</td></tr>
+                    <tr><td>Semaine 4 (21-25 avril)</td><td>Notion Road Map</td><td>5</td><td>R&D</td></tr>
+                    <tr><td>Semaine 4 (21-25 avril)</td><td>M04-LOGEMENT - FONTENAY SOUS BOIS</td><td>1</td><td>Assistance</td></tr>
+                </tbody>
+            </table>
+            
+            <h3>Données agrégées par type d'activité</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Type d'activité</th>
+                        <th>Heures</th>
+                        <th>Pourcentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Formation</td><td>32</td><td>21.3%</td></tr>
+                    <tr><td>Production BIM</td><td>23</td><td>15.3%</td></tr>
+                    <tr><td>R&D</td><td>31</td><td>20.7%</td></tr>
+                    <tr><td>Administration</td><td>37</td><td>24.7%</td></tr>
+                    <tr><td>Assistance</td><td>1</td><td>0.7%</td></tr>
+                    <tr><td>Représentation</td><td>10</td><td>6.7%</td></tr>
+                    <tr><td>Notion Road Map</td><td>12</td><td>8%</td></tr>
+                    <tr><td>Maîtrise d'œuvre</td><td>4</td><td>2.7%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary">
+            <h2>Synthèse mensuelle</h2>
+            <p>Ce mois d'avril 2025 s'est révélé particulièrement riche en expériences professionnelles diversifiées, offrant un panorama représentatif des multiples facettes de mon parcours au sein de l'Atelier Juno. Par une matinée ensoleillée où les cerisiers commençaient à fleurir devant notre espace de travail, j'ai pris conscience de l'évolution significative de mon positionnement professionnel au cours de ces dernières semaines.</p>
+            
+            <p>L'animation des formations Revit pour ANMA_LIM puis pour KKAA, avec leur dimension hybride technique et méthodologique, a considérablement renforcé ma capacité à transmettre des savoirs complexes. "La vraie expertise, c'est savoir adapter son discours à chaque interlocuteur", me rappelait souvent Thomas lors de nos échanges sur ma progression HMONP. Cette expérience m'a confronté au défi d'articuler enseignement technique et réflexion architecturale, consolidant ma position d'interface entre ces deux dimensions souvent perçues comme antagonistes.</p>
+            
+            <p>Le développement continu des outils Power BI et Notion Road Map illustre mon engagement dans une démarche d'innovation méthodologique. La création de ces gabarits et tutoriels ne relève pas simplement d'une expertise technique, mais d'une vision stratégique de l'optimisation des processus de travail. Cette initiative personnelle démontre ma capacité à identifier des besoins organisationnels et à concevoir des solutions adaptées, compétence essentielle pour un futur architecte en son nom propre.</p>
+            
+            <p>Ma participation à l'appel d'offre pour les Hôpitaux de Strasbourg, avec la rédaction du mémoire technique et la mise en valeur de notre expertise spécifique, témoigne de mon implication croissante dans la dimension stratégique et commerciale de l'agence. Cette expérience m'a sensibilisé aux enjeux économiques et partenariaux de la profession, complétant ma compréhension du métier d'architecte dans sa dimension entrepreneuriale.</p>
+            
+            <p>L'opportunité de participer activement au démarrage du projet Gigot OG représente une étape cruciale dans mon parcours vers l'habilitation. Elle me permet d'appréhender concrètement les responsabilités de l'architecte dans l'établissement de la relation contractuelle et dans la définition du cadre d'exercice de sa mission, dimensions essentielles de la profession réglementée à laquelle j'aspire.</p>
+            
+            <p>Pour le mois de mai, je souhaite approfondir mes compétences en gestion de projet et développer davantage mon implication dans le projet OG Paris, afin d'avoir une vision plus complète du processus de conception architecturale. Je compte également mettre en application mon apprentissage de Power BI dans un cadre opérationnel, notamment pour l'analyse des maquettes de l'Institut Gustave Roussy, transformant ainsi un outil expérimental en ressource concrète pour l'agence.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Configuration du graphique en anneau (donut chart)
+        const ctxDonut = document.getElementById('donutChart').getContext('2d');
+        const donutChart = new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: ['Formation', 'Production BIM', 'R&D', 'Administration', 'Assistance', 'Représentation', 'Notion Road Map', 'Maîtrise d\'œuvre'],
+                datasets: [{
+                    data: [32, 23, 31, 37, 1, 10, 12, 4],
+                    backgroundColor: [
+                        '#9b59b6',
+                        '#3498db',
+                        '#f1c40f',
+                        '#2ecc71',
+                        '#e74c3c',
+                        '#1abc9c',
+                        '#34495e',
+                        '#e67e22'
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 15
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            font: {
+                                size: 14
+                            },
+                            padding: 20
+                        }
+                    },
+                    datalabels: {
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: (value, ctx) => {
+                            const total = ctx.dataset.data.reduce((acc, data) => acc + data, 0);
+                            const percentage = (value * 100 / total).toFixed(1) + '%';
+                            return percentage;
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                const total = context.dataset.data.reduce((acc, data) => acc + data, 0);
+                                const percentage = (value * 100 / total).toFixed(1) + '%';
+                                const projectDetails = getProjectsByActivityType(label);
+                                return [`${label}: ${value}h (${percentage})`, ...projectDetails];
+                            }
+                        }
+                    }
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
+
+        // Fonction pour obtenir les projets par type d'activité
+        function getProjectsByActivityType(activityType) {
+            const projects = {
+                'Formation': [
+                    'Formation Base Revit - ANMA_LIM: 16h',
+                    'Formation ANMA_LIM: 14h',
+                    'Formation BASE KKAA: 16h'
+                ],
+                'Production BIM': [
+                    'BIM - CENTRE DE FORMATION MARITIME: 7h',
+                    'CENTRE DE FORMATION MARITIME: 16h'
+                ],
+                'R&D': [
+                    'R&D - Power BI Road Map: 13h',
+                    'Power BI Road Map: 12h',
+                    'Notion Road Map: 6h'
+                ],
+                'Administration': [
+                    'ADMINISTRATIF - BIM World: 8h',
+                    'ADMINISTRATIF - Accord Cadre RIVP: 4h',
+                    'ADMINISTRATIF - Support HMONP: 1h',
+                    'ADMINISTRATIF - Échange MSP: 2h',
+                    'Appel d\'offre AMO BIM HUS: 12h',
+                    'Appel d\'offre AMO BIM Strasbourg: 10h'
+                ],
+                'Assistance': [
+                    'M04-LOGEMENT - FONTENAY SOUS BOIS: 1h'
+                ],
+                'Représentation': [
+                    'Représentation - Colloque: 8h',
+                    'Autres événements professionnels: 2h'
+                ],
+                'Notion Road Map': [
+                    'Notion Road Map - Plans de charge: 7h',
+                    'Notion Road Map: 5h'
+                ],
+                'Maîtrise d\'œuvre': [
+                    'GIGOT OG - PARIS: 4h'
+                ]
+            };
+            return projects[activityType] || [];
+        }
+
+        // Configuration du graphique à ruban (stream chart / area chart)
+        const ctxStream = document.getElementById('streamChart').getContext('2d');
+        const streamChart = new Chart(ctxStream, {
+            type: 'line',
+            data: {
+                labels: ['Semaine 1 (31 mars-4 avril)', 'Semaine 2 (7-11 avril)', 'Semaine 3 (14-18 avril)', 'Semaine 4 (21-25 avril)'],
+                datasets: [
+                    {
+                        label: 'Formation',
+                        data: [16, 14, 0, 16],
+                        backgroundColor: 'rgba(155, 89, 182, 0.6)',
+                        borderColor: 'rgba(155, 89, 182, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Production BIM',
+                        data: [0, 7, 16, 0],
+                        backgroundColor: 'rgba(52, 152, 219, 0.6)',
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'R&D',
+                        data: [7, 7, 6, 11],
+                        backgroundColor: 'rgba(241, 196, 15, 0.6)',
+                        borderColor: 'rgba(241, 196, 15, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Administration',
+                        data: [13, 2, 12, 10],
+                        backgroundColor: 'rgba(46, 204, 113, 0.6)',
+                        borderColor: 'rgba(46, 204, 113, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Maîtrise d\'œuvre',
+                        data: [0, 0, 4, 0],
+                        backgroundColor: 'rgba(230, 126, 34, 0.6)',
+                        borderColor: 'rgba(230, 126, 34, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Représentation',
+                        data: [0, 8, 0, 0],
+                        backgroundColor: 'rgba(26, 188, 156, 0.6)',
+                        borderColor: 'rgba(26, 188, 156, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Assistance',
+                        data: [0, 0, 0, 1],
+                        backgroundColor: 'rgba(231, 76, 60, 0.6)',
+                        borderColor: 'rgba(231, 76, 60, 1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            afterTitle: function(context) {
+                                return 'Projets concernés:';
+                            },
+                            afterLabel: function(context) {
+                                const activityType = context.dataset.label;
+                                const weekIndex = context.dataIndex;
+                                const weekLabels = ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4'];
+                                const week = weekLabels[weekIndex];
+                                return getProjectsByActivityTypeAndWeek(activityType, week);
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    }
+                },
+                elements: {
+                    line: {
+                        fill: true
+                    }
+                }
+            }
+        });
+
+        // Fonction pour obtenir les projets par type d'activité et par semaine
+        function getProjectsByActivityTypeAndWeek(activityType, week) {
+            const projectsByWeek = {
+                'Formation': {
+                    'Semaine 1': ['Formation Base Revit - ANMA_LIM: 16h'],
+                    'Semaine 2': ['Formation ANMA_LIM: 14h'],
+                    'Semaine 3': [],
+                    'Semaine 4': ['Formation BASE KKAA: 16h']
+                },
+                'Production BIM': {
+                    'Semaine 1': [],
+                    'Semaine 2': ['BIM - CENTRE DE FORMATION MARITIME: 7h'],
+                    'Semaine 3': ['CENTRE DE FORMATION MARITIME: 16h'],
+                    'Semaine 4': []
+                },
+                'R&D': {
+                    'Semaine 1': ['Notion Road Map - Plans de charge: 7h'],
+                    'Semaine 2': ['R&D - Power BI Road Map: 7h'],
+                    'Semaine 3': ['Power BI Road Map: 6h'],
+                    'Semaine 4': ['Power BI Road Map: 6h', 'Notion Road Map: 5h']
+                },
+                'Administration': {
+                    'Semaine 1': ['ADMINISTRATIF - BIM World: 8h', 'ADMINISTRATIF - Accord Cadre RIVP: 4h', 'ADMINISTRATIF - Support HMONP: 1h'],
+                    'Semaine 2': ['ADMINISTRATIF - Échange MSP: 2h'],
+                    'Semaine 3': ['Appel d\'offre AMO BIM HUS: 12h'],
+                    'Semaine 4': ['Appel d\'offre AMO BIM Strasbourg: 10h']
+                },
+                'Maîtrise d\'œuvre': {
+                    'Semaine 1': [],
+                    'Semaine 2': [],
+                    'Semaine 3': ['GIGOT OG - PARIS: 4h'],
+                    'Semaine 4': []
+                },
+                'Représentation': {
+                    'Semaine 1': [],
+                    'Semaine 2': ['Représentation - Colloque: 8h'],
+                    'Semaine 3': [],
+                    'Semaine 4': []
+                },
+                                    'Assistance': {
+                    'Semaine 1': [],
+                    'Semaine 2': [],
+                    'Semaine 3': [],
+                    'Semaine 4': ['M04-LOGEMENT - FONTENAY SOUS BOIS: 1h']
+                }
+            };
+            
+            return projectsByWeek[activityType]?.[week] || ['Aucun projet'];
+        }
+        
+        // Fonction pour gérer les onglets
+        function openTab(evt, tabName) {
+            // Masquer tous les contenus des onglets
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Désactiver tous les boutons d'onglets
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            // Afficher le contenu de l'onglet sélectionné et activer le bouton
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
