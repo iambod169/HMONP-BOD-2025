@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planification Hebdomadaire HMONP - 31 Mars-4 Avril 2025</title>
+    <title>Journal de Bord HMONP - 31 Mars-4 Avril 2025</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
@@ -26,6 +26,12 @@
             text-align: center;
             margin-bottom: 30px;
         }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
         .chart-container {
             margin-top: 30px;
             height: 500px;
@@ -35,6 +41,13 @@
             padding: 15px;
             background-color: #f9f9f9;
             border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
         }
         .legend {
             display: flex;
@@ -59,7 +72,7 @@
             align-items: center;
             justify-content: center;
             padding: 10px 15px;
-            background-color: #4e73df;
+            background-color: #6F8381;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -68,10 +81,13 @@
             transition: background-color 0.2s;
         }
         .home-button:hover {
-            background-color: #2e59d9;
+            background-color: #00090f;
         }
         .home-button i {
             margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A; /* Vert forêt foncé */
         }
     </style>
 </head>
@@ -81,7 +97,7 @@
             <i class="fas fa-home"></i> Accueil
         </a>
         
-        <h1>Planification Hebdomadaire HMONP<br>31 Mars - 4 Avril 2025</h1>
+        <h1>Journal de Bord HMONP<br>31 Mars - 4 Avril 2025</h1>
         
         <div class="chart-container">
             <canvas id="ganttChart"></canvas>
@@ -97,6 +113,18 @@
             <p><strong>Temps total travaillé :</strong> 36 heures</p>
             <p><strong>Activité principale :</strong> Formation Base Revit - ANMA_LIM (16h - 44% du temps)</p>
             <p><strong>Répartition par type d'activité :</strong> Formation (44%), Activités administratives (36%), Développement d'outils (20%)</p>
+        </div>
+
+        <h2>ENTRE FORMATION TECHNIQUE ET DÉVELOPPEMENT ADMINISTRATIF</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            <p>Cette semaine illustre parfaitement la <strong>diversité des missions</strong> qui caractérise mon parcours au sein de l'Atelier Juno. La juxtaposition d'activités aussi diverses que la <strong>finalisation d'un appel d'offres</strong>, l'animation d'une formation technique, la <strong>participation à un salon professionnel</strong> et le développement d'outils de gestion interne offre un panorama complet des facettes multiples du métier d'architecte contemporain.</p>
+            <p>La finalisation de l'appel d'offres RIVP m'a confronté aux <strong>réalités administratives et économiques de la commande publique</strong>, dimension essentielle mais souvent négligée de notre profession. Cette expérience a renforcé ma conviction que l'architecte doit aujourd'hui <strong>maîtriser tant le langage de la création que celui des procédures</strong>, pour défendre efficacement la qualité architecturale dans un contexte fortement normé.</p>
+            <p>L'animation de la formation Revit Paysage pour ANMA a mobilisé une part importante de mon temps, témoignant de l'<strong>importance de l'activité de transmission dans notre modèle économique</strong>. Cette position de formateur, au-delà de sa dimension technique, m'a permis d'adopter une posture réflexive sur les outils numériques et leur impact sur les processus de conception, questionnement central pour ma pratique future.</p>
+            <p>Ma participation au <strong>BIM World</strong> a été l'occasion d'une prise de recul salutaire sur les pratiques de l'agence et sur l'évolution globale du secteur. Cette immersion dans l'écosystème BIM m'a permis d'entrevoir les <strong>potentialités futures de ces technologies</strong> pour la pratique architecturale, tout en identifiant les risques de standardisation qu'elles peuvent induire si elles ne sont pas appréhendées avec un regard critique.</p>
+            <p>Le développement d'outils de gestion interne (<strong>Notion</strong>) révèle une dimension souvent invisible mais fondamentale de la pratique en agence : l'<strong>organisation du travail et l'optimisation des ressources</strong>.</p>
+            <p>Cette semaine m'a également confronté au <strong>défi permanent de l'articulation entre activités techniques (formation, développement d'outils) et ambition architecturale</strong>. Cette tension, caractéristique de ma position au sein de l'Atelier Juno, constitue à la fois une difficulté quotidienne et une <strong>opportunité exceptionnelle de développer une approche intégrée</strong> de la pratique professionnelle, où expertise technique et sensibilité créative se nourrissent mutuellement.</p>
         </div>
     </div>
 
