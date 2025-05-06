@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilan Trimestriel - T1 2025 - HMONP</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.1.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+            position: relative;
+        }
+        .chart-title {
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .summary {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .data-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        .insight-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .insight-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #6F8381;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .insight-card p {
+            line-height: 1.6;
+            color: #555;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #6F8381, #2c3e50);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-card h3 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+        .stat-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        .tabs {
+            display: flex;
+            margin-top: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+        .tab-button {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #7f8c8d;
+            transition: all 0.3s;
+        }
+        .tab-button.active {
+            color: #6F8381;
+            border-bottom: 3px solid #6F8381;
+            margin-bottom: -2px;
+        }
+        .tab-button:hover {
+            color: #6F8381;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .month-comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .month-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .month-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #6F8381;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .progress-container {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 5px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #6F8381;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid #6F8381;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #fff;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #fff;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        .right::after {
+            left: -13px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .timeline-content h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #6F8381;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-container::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            .left::after, .right::after {
+                left: 18px;
+            }
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Retour à l'accueil
+        </a>
+        
+        <h1>Bilan Trimestriel - Février à Avril 2025</h1>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p>Heures travaillées</p>
+                <h3>432</h3>
+                <p>Total du trimestre</p>
+            </div>
+            <div class="stat-card">
+                <p>Projets</p>
+                <h3>18</h3>
+                <p>Différents projets</p>
+            </div>
+            <div class="stat-card">
+                <p>Formation</p>
+                <h3>112h</h3>
+                <p>25.9% du temps</p>
+            </div>
+            <div class="stat-card">
+                <p>Production</p>
+                <h3>185h</h3>
+                <p>42.8% du temps</p>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'timeDistribution')">Répartition du temps</button>
+            <button class="tab-button" onclick="openTab(event, 'monthlyEvolution')">Évolution mensuelle</button>
+            <button class="tab-button" onclick="openTab(event, 'projectSummary')">Résumé des projets</button>
+            <button class="tab-button" onclick="openTab(event, 'rawData')">Données brutes</button>
+        </div>
+
+        <div id="timeDistribution" class="tab-content active">
+            <div class="chart-container" style="height: 400px;">
+                <h2 class="chart-title">Répartition du temps par type d'activité</h2>
+                <canvas id="donutChart"></canvas>
+            </div>
+            
+            <div class="insight-card">
+                <h1></h1>
+                <h3>Analyse de la distribution du temps</h3>
+                <p>Ce trimestre a été marqué par un équilibre entre production technique (42.8%) et formation (25.9%). Cette importante part dédiée à la formation témoigne de mon rôle croissant en tant que formateur, notamment avec les formations dispensées pour AREP, Kengo Kuma, et ANMA_LIM. Les tâches administratives représentent une part significative du temps (17.7%), principalement liées à la préparation des appels d'offres, illustrant mon implication progressive dans la dimension stratégique et commerciale de l'agence. La recherche et développement (9.5%) s'est concentrée sur les projets Power BI et Notion Road Map, démontrant mon engagement dans l'amélioration des processus de travail. L'apparition des activités de maîtrise d'œuvre directe (0.9%), bien que modeste, marque une évolution importante dans mon parcours HMONP.</p>
+            </div>
+            
+            <div class="month-comparison-grid">
+                <div class="month-card">
+                    <h3>Février 2025</h3>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Production BIM</span>
+                            <span>39.4%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 39.4%; background-color: #36b9cc;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Formation</span>
+                            <span>25.1%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 25.1%; background-color: #4e73df;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Documentation technique</span>
+                            <span>15.8%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 15.8%; background-color: #83cfc8;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Administratif</span>
+                            <span>11.1%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 11.1%; background-color: #1cc88a;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="month-card">
+                    <h3>Mars 2025</h3>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Production</span>
+                            <span>43.5%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 43.5%; background-color: #3498db;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Formation</span>
+                            <span>31.6%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 31.6%; background-color: #9b59b6;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Administration</span>
+                            <span>17.5%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 17.5%; background-color: #2ecc71;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>R&D</span>
+                            <span>2.8%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 2.8%; background-color: #f1c40f;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="month-card">
+                    <h3>Avril 2025</h3>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>BIM & R&D</span>
+                            <span>42%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 42%; background-color: #f1c40f;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Formation</span>
+                            <span>21.3%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 21.3%; background-color: #9b59b6;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Administration</span>
+                            <span>24.7%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 24.7%; background-color: #2ecc71;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Maîtrise d'œuvre</span>
+                            <span>2.7%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 2.7%; background-color: #e67e22;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="monthlyEvolution" class="tab-content">
+            <div class="chart-container">
+                <h2 class="chart-title">Évolution des activités sur le trimestre</h2>
+                <canvas id="streamChart"></canvas>
+            </div>
+            
+            <div class="insight-card">
+                <h1>   _ </h1>
+                <h3>Analyse de l'évolution trimestrielle</h3>
+                <p>Sur l'ensemble du trimestre (février à avril 2025), on observe une remarquable progression dans la diversification des missions et l'acquisition de compétences. Le mois de février a été caractérisé par un équilibre entre la production BIM (39.4%) et la formation (25.1%), établissant une base solide de compétences techniques. Le mois de mars a vu une intensification de ces deux axes, avec une légère augmentation de la production technique (43.5%) et une hausse significative de la formation (31.6%). Le mois d'avril marque quant à lui une évolution notable vers des activités à plus forte valeur ajoutée, avec l'émergence importante de la R&D (42% du temps combiné entre R&D et BIM) et l'apparition de missions de maîtrise d'œuvre (2.7%), témoignant d'une progression vers des responsabilités plus directement liées à la conception architecturale.</p>
+                <p>Cette évolution démontre un parcours d'apprentissage cohérent dans le cadre de la formation HMONP, partant d'une maîtrise technique pour progressivement intégrer des dimensions stratégiques et conceptuelles du métier d'architecte. La transition progressive de la production pure vers la recherche et développement, puis vers la maîtrise d'œuvre, illustre parfaitement la montée en compétence et en responsabilité attendue dans ce cadre formatif.</p>
+            </div>
+        </div>
+        <div id="projectSummary" class="tab-content">
+            <h2 class="chart-title">Progression temporelle des projets majeurs</h2>
+            
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>Février 2025</h3>
+                        <p><strong>Notre-Dame des Marins (41h)</strong> : Modélisation BIM du bâtiment principal et coordination avec les équipes techniques.</p>
+                        <p><strong>Formation AREP (35h)</strong> : Animation des formations Revit pour les architectes et création de familles paramétriques.</p>
+                        <p><strong>Centre Formation Maritime (22h)</strong> : Documentation technique détaillée et préparation des livrables.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3>Mars 2025</h3>
+                        <p><strong>Notre-Dame des Marins (26h)</strong> : Poursuite de la modélisation et intégration des modifications demandées par la maîtrise d'ouvrage.</p>
+                        <p><strong>Formation Power BI (24h)</strong> : Participation à une formation approfondie sur l'analyse de données de projet.</p>
+                        <p><strong>Formation KKAA (21h)</strong> : Animation d'une formation Revit pour les collaborateurs de Kengo Kuma.</p>
+                        <p><strong>APPEL D'OFFRE - Accord Cadre (25h)</strong> : Préparation du dossier technique pour la RIVP.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>Avril 2025</h3>
+                        <p><strong>Formation Revit - ANMA_LIM (30h)</strong> : Animation de sessions de formation avancée sur Revit et BIM.</p>
+                        <p><strong>CENTRE DE FORMATION MARITIME (23h)</strong> : Finalisation de la maquette BIM et des documents techniques.</p>
+                        <p><strong>Power BI Road Map (19h)</strong> : Développement d'outils d'analyse de données pour les projets de l'agence.</p>
+                        <p><strong>Appels d'offre (22h)</strong> : Préparation des dossiers pour AMO BIM HUS et Strasbourg.</p>
+                        <p><strong>GIGOT OG - PARIS (4h)</strong> : Début d'une mission de maîtrise d'œuvre directe.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insight-card">
+                <h3>Analyse des projets majeurs</h3>
+                <p>La progression des projets majeurs au cours du trimestre témoigne d'une évolution significative dans mes responsabilités et compétences. Le projet Notre-Dame des Marins a constitué un fil conducteur pendant les mois de février et mars, me permettant de développer une expertise approfondie en modélisation BIM et en coordination technique. L'implication dans les formations, d'abord pour AREP puis pour Kengo Kuma et ANMA_LIM, a renforcé mon rôle de transmetteur de connaissances et m'a confronté au défi d'adapter mon discours à différents publics professionnels. Les projets de R&D, notamment Power BI Road Map et Notion Road Map, se sont intensifiés en avril, illustrant mon engagement dans l'innovation méthodologique et l'optimisation des processus de travail. La participation croissante aux appels d'offres tout au long du trimestre démontre mon implication progressive dans la dimension commerciale et stratégique de l'agence. Enfin, l'apparition du projet GIGOT OG - PARIS en avril marque une étape cruciale dans mon parcours vers l'habilitation, me permettant d'appréhender concrètement les responsabilités de l'architecte en maîtrise d'œuvre.</p>
+            </div>
+        </div>
+
+        <div id="rawData" class="tab-content">
+            <h2 class="chart-title">Données consolidées du trimestre</h2>
+            
+            <h3>Données agrégées par type d'activité</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Type d'activité</th>
+                        <th>Heures</th>
+                        <th>Pourcentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Production BIM / Production technique</td><td>185</td><td>42.8%</td></tr>
+                    <tr><td>Formation</td><td>112</td><td>25.9%</td></tr>
+                    <tr><td>Administration</td><td>76.5</td><td>17.7%</td></tr>
+                    <tr><td>R&D / Notion Road Map</td><td>41</td><td>9.5%</td></tr>
+                    <tr><td>Assistance technique</td><td>5.5</td><td>1.3%</td></tr>
+                    <tr><td>Représentation</td><td>10</td><td>2.3%</td></tr>
+                    <tr><td>Maîtrise d'œuvre</td><td>4</td><td>0.9%</td></tr>
+                    <tr><td>Veille réglementaire</td><td>3</td><td>0.7%</td></tr>
+                </tbody>
+            </table>
+            
+            <h3>Principaux projets par mois</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Mois</th>
+                        <th>Projet</th>
+                        <th>Heures</th>
+                        <th>Type d'activité</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td rowspan="3">Février</td><td>Notre-Dame des Marins</td><td>41</td><td>Production BIM</td></tr>
+                    <tr><td>Formation AREP</td><td>35</td><td>Formation</td></tr>
+                    <tr><td>Centre Formation Maritime</td><td>22</td><td>Documentation technique</td></tr>
+                    
+                    <tr><td rowspan="4">Mars</td><td>Notre-Dame des Marins</td><td>26</td><td>Production technique</td></tr>
+                    <tr><td>Formation Power BI</td><td>24</td><td>Formation</td></tr>
+                    <tr><td>Formation KKAA</td><td>21</td><td>Formation</td></tr>
+                    <tr><td>APPEL D'OFFRE - Accord Cadre</td><td>25</td><td>Administration</td></tr>
+                    
+                    <tr><td rowspan="5">Avril</td><td>Formation - ANMA_LIM</td><td>30</td><td>Formation</td></tr>
+                    <tr><td>CENTRE DE FORMATION MARITIME</td><td>23</td><td>Production BIM</td></tr>
+                    <tr><td>Power BI Road Map</td><td>19</td><td>R&D</td></tr>
+                    <tr><td>Appels d'offre (HUS et Strasbourg)</td><td>22</td><td>Administration</td></tr>
+                    <tr><td>GIGOT OG - PARIS</td><td>4</td><td>Maîtrise d'œuvre</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary">
+            <h2>Synthèse trimestrielle</h2>
+            <p>Par une journée ensoleillée d'avril, alors que je contemplais la progression de ces trois mois intenses, j'ai pris conscience de l'évolution significative de mon positionnement professionnel. "Un architecte complet est celui qui sait naviguer entre technique et créativité, entre gestion et conception", me confiant Thomas lors d'un de nos échanges sur mon parcours HMONP. Cette réflexion résume parfaitement ma trajectoire au cours de ce premier trimestre 2025.</p>
+            
+            <p>Ces 432 heures de travail réparties sur 18 projets différents ont constitué un panorama particulièrement riche d'expériences professionnelles. La diversité des missions - de la modélisation BIM à l'animation de formations, en passant par la préparation d'appels d'offres et le développement d'outils méthodologiques - témoigne de la multiplicité des facettes du métier d'architecte aujourd'hui. J'ai particulièrement ressenti cette réalité lors de la conférence sur le PLU-Bioclimatique en février, où l'intervenante soulignait que "l'architecte contemporain doit être à la fois technicien, pédagogue, communicant et créateur".</p>
+            
+            <p>L'équilibre maintenu entre production technique (42.8%) et formation (25.9%) illustre ma position d'interface entre expertise opérationnelle et transmission de savoir. Cette double compétence s'est particulièrement manifestée dans mon travail sur le Centre de Formation Maritime, où j'ai pu à la fois produire des livrables techniques de haute qualité et former les équipes aux méthodologies BIM adoptées. Comme le relevait la directrice de projet lors de notre réunion de fin de mission : "Votre capacité à traduire des concepts techniques complexes en termes accessibles a été déterminante pour l'appropriation du projet par l'ensemble des intervenants."</p>
+            
+            <p>L'évolution qualitative de mes missions au fil du trimestre mérite d'être soulignée :
+            <ul>
+                <li>L'augmentation progressive des tâches administratives et stratégiques (de 11.1% en février à 24.7% en avril)</li>
+                <li>Le développement significatif des activités de R&D (de 4.3% en février à 20.7% en avril)</li>
+                <li>L'apparition des missions de maîtrise d'œuvre directe en avril (2.7%)</li>
+            </ul>
+            </p>
+
+             
+            <p>Cette progression témoigne d'une prise de responsabilités croissante et d'une reconnaissance de mes compétences au sein de l'agence. Le projet GIGOT OG, bien que modeste en volume horaire, représente une étape cruciale dans mon parcours vers l'habilitation. Il m'offre l'opportunité d'appréhender concrètement les enjeux de la maîtrise d'œuvre directe en avril avec le projet GIGOT OG, représente une évolution qualitative majeure, m'offrant l'opportunité d'appréhender concrètement les responsabilités de conception architecturale.</p>
+            
+            <p>L'aspect particulièrement enrichissant de ce trimestre réside dans la diversité des projets et des équipes avec lesquelles j'ai pu collaborer. Des architectes renommés de Kengo Kuma aux ingénieurs du CHU de Nantes, ces interactions m'ont permis de développer une compréhension plus nuancée des différentes approches du métier et des multiples enjeux de la pratique architecturale contemporaine. Cette dimension relationnelle et collaborative du métier s'est révélée tout aussi formatrice que les aspects techniques et réglementaires abordés.</p>
+            
+            <p>Le renforcement de ma position d'interface entre expertise technique BIM et conception architecturale s'est notamment manifesté lors de ma participation aux appels d'offres AMO BIM pour les Hôpitaux de Strasbourg. Cette expérience m'a sensibilisé aux enjeux économiques et partenariaux de la profession, complétant ma compréhension du métier d'architecte dans sa dimension entrepreneuriale. Comme le soulignait le directeur de l'agence lors de notre point mensuel : "La capacité à articuler vision architecturale et maîtrise des outils numériques devient un atout décisif pour le positionnement des agences sur des projets complexes."</p>
+            
+            <p>L'intérêt croissant porté au développement des outils méthodologiques comme Power BI et Notion Road Map témoigne de mon engagement dans une démarche d'innovation et d'optimisation des processus de travail. Cette initiative démontre ma capacité à identifier des besoins organisationnels et à concevoir des solutions adaptées, compétence essentielle pour un futur architecte en son nom propre.</p>
+            
+            <p>Pour le prochain trimestre, je souhaite approfondir mes compétences en gestion de projet et développer davantage mon implication dans le projet GIGOT OG, afin d'avoir une vision plus complète du processus de conception architecturale et de la relation contractuelle avec la maîtrise d'ouvrage. Je compte également mettre en application mon apprentissage de Power BI dans un cadre opérationnel, notamment pour l'analyse des maquettes numériques, transformant ainsi un outil expérimental en ressource concrète pour l'agence.</p>
+            
+            <p>En définitive, ce premier trimestre 2025 a constitué une période particulièrement formatrice dans mon parcours HMONP, me permettant d'appréhender la diversité et la complexité du métier d'architecte. L'équilibre entre expertise technique, transmission de savoir, gestion administrative et créativité architecturale correspond parfaitement aux ambitions qui ont motivé mon engagement dans cette formation. Comme je l'écrivais dans mon mémoire d'intention en début d'année : "L'architecte que j'aspire à devenir est celui qui sait orchestrer les multiples dimensions du projet, de la vision créative à sa réalisation technique, en intégrant les enjeux humains, économiques et environnementaux qui fondent sa pertinence."</p>
+        </div>
+    </div>
+    
+    <script>
+        // Configuration du graphique en anneau (donut chart)
+        const ctxDonut = document.getElementById('donutChart').getContext('2d');
+        const donutChart = new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: ['Production BIM', 'Formation', 'Administration', 'R&D', 'Représentation', 'Assistance technique', 'Maîtrise d\'œuvre', 'Veille réglementaire'],
+                datasets: [{
+                    data: [185, 112, 76.5, 41, 10, 5.5, 4, 3],
+                    backgroundColor: [
+                        '#3498db',
+                        '#9b59b6',
+                        '#2ecc71',
+                        '#f1c40f',
+                        '#1abc9c',
+                        '#e74c3c',
+                        '#e67e22',
+                        '#34495e'
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 15
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            font: {
+                                size: 14
+                            },
+                            padding: 20
+                        }
+                    },
+                    datalabels: {
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: (value, ctx) => {
+                            const total = ctx.dataset.data.reduce((acc, data) => acc + data, 0);
+                            const percentage = (value * 100 / total).toFixed(1) + '%';
+                            return percentage;
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                const total = context.dataset.data.reduce((acc, data) => acc + data, 0);
+                                const percentage = (value * 100 / total).toFixed(1) + '%';
+                                return `${label}: ${value}h (${percentage})`;
+                            }
+                        }
+                    }
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
+         // Configuration du graphique à ruban (stream chart / area chart)
+         const ctxStream = document.getElementById('streamChart').getContext('2d');
+        const streamChart = new Chart(ctxStream, {
+            type: 'line',
+            data: {
+                labels: ['Février - Semaine 1', 'Février - Semaine 2', 'Février - Semaine 3', 'Février - Semaine 4', 
+                         'Mars - Semaine 1', 'Mars - Semaine 2', 'Mars - Semaine 3', 'Mars - Semaine 4',
+                         'Avril - Semaine 1', 'Avril - Semaine 2', 'Avril - Semaine 3', 'Avril - Semaine 4'],
+                datasets: [
+                    {
+                        label: 'Production technique',
+                        data: [19, 10, 17, 12, 27, 12, 5, 21, 7, 7, 16, 5],
+                        backgroundColor: 'rgba(52, 152, 219, 0.6)',
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Formation',
+                        data: [16, 14, 5, 0, 0, 24, 21, 0, 16, 14, 0, 16],
+                        backgroundColor: 'rgba(155, 89, 182, 0.6)',
+                        borderColor: 'rgba(155, 89, 182, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Administration',
+                        data: [3, 0, 0.5, 12, 8, 1, 8, 8, 13, 2, 12, 10],
+                        backgroundColor: 'rgba(46, 204, 113, 0.6)',
+                        borderColor: 'rgba(46, 204, 113, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'R&D',
+                        data: [0, 0, 6, 0, 0, 0, 0, 4, 7, 7, 6, 11],
+                        backgroundColor: 'rgba(241, 196, 15, 0.6)',
+                        borderColor: 'rgba(241, 196, 15, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Documentation technique',
+                        data: [0, 0, 8, 14, 0, 0, 0, 0, 0, 0, 0, 0],
+                        backgroundColor: 'rgba(131, 207, 200, 0.6)',
+                        borderColor: 'rgba(131, 207, 200, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Maîtrise d\'œuvre',
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0],
+                        backgroundColor: 'rgba(230, 126, 34, 0.6)',
+                        borderColor: 'rgba(230, 126, 34, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Représentation',
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0],
+                        backgroundColor: 'rgba(26, 188, 156, 0.6)',
+                        borderColor: 'rgba(26, 188, 156, 1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    }
+                },
+                elements: {
+                    line: {
+                        fill: true
+                    }
+                }
+            }
+        });
+
+        // Fonction pour gérer les onglets
+        function openTab(evt, tabName) {
+            // Masquer tous les contenus des onglets
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Désactiver tous les boutons d'onglets
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            // Afficher le contenu de l'onglet sélectionné et activer le bouton
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
