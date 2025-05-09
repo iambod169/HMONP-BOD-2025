@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 5-9 Mai 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>5 - 9 Mai 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 5 au 9 mai 2025, illustrant l'équilibre entre expertise BIM, maîtrise d'œuvre et R&D.</p>
+            <p><strong>Temps total travaillé :</strong> 32 heures</p>
+            <p><strong>Activités principales :</strong> Institut Gustave Roussy (16h - 50%), GIGOT OG - PARIS (8h - 25%), Centre de Formation Maritime (4h - 12.5%), Power BI Road Map (3h - 9.4%), Missions d'assistance technique (1h - 3.1%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Expertise BIM (62.5%), Maîtrise d'œuvre (25%), R&D (9.4%), Assistance technique (3.1%)</p>
+        </div>
+
+        <h2>ENTRE EXPERTISE BIM, MAÎTRISE D'ŒUVRE ET R&D : UNE SEMAINE À LA CROISÉE DES PRATIQUES</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            <p>Cette semaine illustre parfaitement la richesse de mon expérience à l'Atelier Juno, où je navigue constamment entre expertise technique et maîtrise d'œuvre. Loin d'être cloisonnées, ces deux dimensions s'enrichissent mutuellement : mon expertise BIM nourrit ma compréhension des projets architecturaux, tandis que mon implication dans le processus de conception me permet d'appréhender plus finement les enjeux de la modélisation numérique.</p>
+            <p>Je perçois de plus en plus clairement les bénéfices de cette position d'interface. D'une part, elle me donne accès à une compréhension approfondie des mécanismes de production architecturale contemporains, intégrant pleinement la dimension numérique. D'autre part, elle me permet de développer une approche singulière du projet, où la maîtrise technique constitue non pas une fin en soi, mais un levier pour la qualité architecturale.</p>
+            <p>À l'approche de l'habilitation, je mesure combien cette expérience bicéphale m'a préparé à appréhender la complexité de la pratique architecturale contemporaine. La diversité des missions que j'ai pu mener cette semaine reflète la multiplicité des compétences désormais attendues de l'architecte : expertise technique, capacité méthodologique, vision synthétique, coordination interdisciplinaire.</p>
+            <p>Cette polyvalence, loin de diluer mon identité professionnelle, la renforce en l'ancrant dans une compréhension fine des différentes dimensions du projet architectural. Elle dessine les contours d'une pratique en nom propre où l'architecte, fort de sa maîtrise technique et méthodologique, peut pleinement assumer son rôle de concepteur et de coordinateur au service de la qualité architecturale.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 5 Mai', 'Mardi 6 Mai', 'Mercredi 7 Mai', 'Jeudi 8 Mai', 'Vendredi 9 Mai'],
+                datasets: [
+                    {
+                        label: 'Institut Gustave Roussy',
+                        data: [6, 6, 4, 0, 0],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'GIGOT OG - PARIS',
+                        data: [0, 2, 3, 0, 3],
+                        backgroundColor: '#e74a3b',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Centre de Formation Maritime',
+                        data: [0, 0, 0, 0, 4],
+                        backgroundColor: '#36b9cc',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Power BI Road Map',
+                        data: [2, 0, 0, 0, 1],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Assistance technique',
+                        data: [0, 0, 1, 0, 0],
+                        backgroundColor: '#f6c23e',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Institut Gustave Roussy (16h)', 'GIGOT OG - PARIS (8h)', 'Centre de Formation Maritime (4h)', 'Power BI Road Map (3h)', 'Assistance technique (1h)'],
+                datasets: [{
+                    data: [16, 8, 4, 3, 1],
+                    backgroundColor: [
+                        '#4e73df',
+                        '#e74a3b',
+                        '#36b9cc',
+                        '#1cc88a',
+                        '#f6c23e'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
