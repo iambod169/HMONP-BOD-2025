@@ -1,0 +1,22 @@
+# Création d'une fonction personnalisée pour vérifier les valeurs non convertibles
+def FindNonConvertibleValues(stringList):
+    indexList = [];
+    valueList = [];
+    
+    for i in range(len(stringList)):
+        try:
+            # Essaie de convertir en nombre
+            float(stringList[i]);
+        except:
+            # Si la conversion échoue, ajoute l'index et la valeur aux listes
+            indexList.append(i);
+            valueList.append(stringList[i]);
+    
+    return [indexList, valueList];
+
+# Utilisation sur vos listes X, Y et Z
+OUT = [
+    FindNonConvertibleValues(IN[0]), # Liste X
+    FindNonConvertibleValues(IN[1]), # Liste Y
+    FindNonConvertibleValues(IN[2])  # Liste Z
+];
