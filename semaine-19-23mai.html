@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 19-23 Mai 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A; /* Vert forêt foncé */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>19 - 23 Mai 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 19 au 23 mai 2025, illustrant une remarquable diversité d'interventions allant de la prospection commerciale à la conception architecturale.</p>
+            <p><strong>Temps total travaillé :</strong> 38 heures</p>
+            <p><strong>Activités principales :</strong> Appel d'offres RIVP - Phase offre (16h - 42%), GIGOT OG - PARIS (8h - 21%), Formation ANMA (8h - 21%), Power BI Road Map (6h - 16%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Prospection commerciale (42%), Conception architecturale (21%), Formation (21%), R&D (16%)</p>
+        </div>
+
+        <h2>DIVERSITÉ ET CONSOLIDATION PROFESSIONNELLE</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            <p>Cette semaine se caractérise par une <strong>remarquable diversité</strong> d'interventions qui illustrent parfaitement la richesse de mon expérience à l'Atelier Juno. De la <strong>prospection commerciale à la conception architecturale</strong>, en passant par la <strong>formation</strong> et l'<strong>innovation technologique</strong>, j'ai pu mobiliser l'ensemble des compétences développées au cours de ces trois années d'immersion professionnelle.</p>
+            <p>Le <strong>démarrage de la réponse à l'appel d'offres RIVP phase offre</strong> marque une étape significative dans ma compréhension des mécanismes de la commande publique. Cette expérience complète, de la candidature initiale à la proposition technique en cours, me donne les <strong>clés pour aborder sereinement ce segment de marché</strong> dans ma future pratique en nom propre. Elle démontre également que notre <strong>positionnement bicéphale constitue un atout différenciant</strong> valorisable commercialement.</p>
+            <p>La mission de conception sur <strong>GIGOT OG</strong> confirme mon appétence pour la pratique architecturale "pure" tout en illustrant comment mon expertise technique enrichit ma démarche conceptuelle. Cette <strong>articulation</strong> féconde entre <strong>maîtrise technique</strong> et <strong>créativité</strong> dessine les contours d'une pratique architecturale contemporaine où l'innovation numérique sert la qualité spatiale.</p>
+            <p>L'animation de la <strong>formation ANMA</strong> et la finalisation de la Road Map Power BI témoignent de ma capacité à <strong>développer et transmettre l'expertise technique</strong>. Cette dimension pédagogique, essentielle dans un secteur en mutation technologique permanente, constitue une compétence différenciante pour ma future pratique professionnelle.</p>
+            <p>À l'approche de l'habilitation, cette semaine confirme <strong>la pertinence</strong> de mon parcours au sein de l'Atelier Juno. La <strong>diversité des missions accomplies</strong> témoigne d'une montée en compétence progressive qui m'a permis d'appréhender l'ensemble des dimensions de la pratique architecturale contemporaine. <strong>Cette vision intégrée du métier</strong>, nourrie par la double expertise de l'agence, constitue le socle de mon projet professionnel futur, où l'architecte assume pleinement ses <strong>responsabilités de concepteur, de coordinateur et d'innovateur</strong> au service de la qualité architecturale.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 19 Mai', 'Mardi 20 Mai', 'Mercredi 21 Mai', 'Jeudi 22 Mai', 'Vendredi 23 Mai'],
+                datasets: [
+                    {
+                        label: 'Formation ANMA',
+                        data: [8, 0, 0, 0, 0],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Power BI Road Map',
+                        data: [0, 6, 0, 0, 0],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Appel d\'offres RIVP',
+                        data: [0, 2, 8, 6, 0],
+                        backgroundColor: '#f6c23e',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'GIGOT OG - PARIS',
+                        data: [0, 0, 0, 0, 8],
+                        backgroundColor: '#e74a3b',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Appel d\'offres RIVP (16h)', 'GIGOT OG - PARIS (8h)', 'Formation ANMA (8h)', 'Power BI Road Map (6h)'],
+                datasets: [{
+                    data: [16, 8, 8, 6],
+                    backgroundColor: [
+                        '#f6c23e',
+                        '#e74a3b',
+                        '#4e73df',
+                        '#1cc88a'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
