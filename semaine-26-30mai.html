@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 26-30 Mai 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A; /* Vert forêt foncé */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>26 - 30 Mai 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 26 au 30 mai 2025, illustrant l'approfondissement des compétences dans trois domaines complémentaires : prospection commerciale, innovation technologique et relation client.</p>
+            <p><strong>Temps total travaillé :</strong> 30 heures</p>
+            <p><strong>Activités principales :</strong> Appel d'offres RIVP - Phase Offre (16h - 53%), Power BI Road Map (8h - 27%), GIGOT OG - PARIS (6h - 20%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Prospection commerciale (53%), Innovation technologique (27%), Relation client (20%)</p>
+        </div>
+
+        <h2>APPROFONDISSEMENT ET CONSOLIDATION PROFESSIONNELLE</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            <p>Cette semaine se caractérise par un approfondissement significatif de mes compétences dans trois domaines complémentaires : la <strong>prospection commerciale</strong> avec le perfectionnement du mémoire RIVP, l'<strong>innovation technologique</strong> avec le développement de la Road Map Power BI, et la <strong>relation client</strong> avec l'avancement du projet GIGOT OG.</p>
+            <p>L'approfondissement du dossier RIVP illustre l'<strong>importance de la persévérance et de la rigueur méthodologique</strong> dans la préparation des marchés publics. Cette expérience confirme que la qualité d'une proposition résulte d'un <strong>processus itératif</strong> où chaque phase d'amélioration renforce la pertinence et la force de conviction du dossier. Cette compétence de perfectionnement progressif constitue un atout essentiel pour ma future pratique en nom propre.</p>
+            <p>La <strong>recherche sur les nouvelles méthodes de visualisation Power BI</strong> témoigne de ma capacité à maintenir une veille technologique active et à transformer l'innovation en avantage opérationnel. Cette dimension prospective, nourrie par ma double culture technique et architecturale, constitue selon moi l'une des clés de la performance des agences contemporaines.</p>
+            <p>L'<strong>avancement du projet GIGOT OG</strong> confirme <strong>ma progression dans la maîtrise de la relation client</strong> et <strong>du processus de conception intégrée</strong>. Cette mission illustre parfaitement comment l'<strong>expertise technique</strong> peut <strong>enrichir la démarche créative</strong> sans la contraindre, perspective centrale dans ma vision du métier d'architecte.</p>
+            <p>À quelques semaines de l'échéance du dossier RIVP et à l'approche de l'habilitation, cette semaine confirme la cohérence de mon parcours de formation à l'Atelier Juno. La diversité des compétences mobilisées - <strong>prospection, innovation, conception, relation client</strong> - témoigne d'une montée en compétence progressive qui m'a préparé à assumer l'ensemble des responsabilités de l'architecte contemporain. Cette <strong>vision intégrée du métier</strong>, enrichie par la double expertise de l'agence, constitue le fondement de mon projet professionnel futur.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 26 Mai', 'Mardi 27 Mai', 'Mercredi 28 Mai', 'Jeudi 29 Mai', 'Vendredi 30 Mai'],
+                datasets: [
+                    {
+                        label: 'Appel d\'offres RIVP',
+                        data: [8, 8, 0, 0, 0],
+                        backgroundColor: '#f6c23e',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Power BI Road Map',
+                        data: [0, 0, 8, 0, 0],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'GIGOT OG - PARIS',
+                        data: [0, 0, 0, 0, 6],
+                        backgroundColor: '#e74a3b',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Appel d\'offres RIVP (16h)', 'Power BI Road Map (8h)', 'GIGOT OG - PARIS (6h)'],
+                datasets: [{
+                    data: [16, 8, 6],
+                    backgroundColor: [
+                        '#f6c23e',
+                        '#1cc88a',
+                        '#e74a3b'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
