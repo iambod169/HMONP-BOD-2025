@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 2-6 Juin 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A; /* Vert forêt foncé */
+        }
+        .narrative-block {
+            font-style: italic;
+            color: #555;
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 3px solid #6F8381;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>2 - 6 Juin 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 2 au 6 juin 2025, illustrant une semaine de consolidation professionnelle entre expertise et transmission.</p>
+            <p><strong>Temps total travaillé :</strong> 36 heures</p>
+            <p><strong>Activités principales :</strong> Formation REVIT AREP BASE (21h - 58%), Appel d'offres RIVP finalisation (14h - 39%), Power BI Road Map présentation (1h - 3%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Formation et transmission (58%), Prospection commerciale (39%), Innovation technologique (3%)</p>
+        </div>
+
+        <h2>EXPERTISE ET TRANSMISSION : UNE SEMAINE DE CONSOLIDATION PROFESSIONNELLE</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            
+            <div class="narrative-block">
+                Par une matinée de début juin, alors que la lumière filtrait à travers les larges baies vitrées du siège d'AREP, j'ai pris la mesure de cette nouvelle étape dans mon parcours professionnel. Trois jours de formation intensive m'attendaient, face à un groupe de cinq professionnels aux profils variés - architectes, ingénieurs, designers d'intérieur - tous unis par la nécessité commune de maîtriser les outils numériques de la conception contemporaine.
+            </div>
+            
+            <p>Cette semaine se caractérise par une <strong>consolidation significative de mes compétences</strong> dans deux domaines complémentaires : la transmission d'expertise avec la formation AREP et la stratégie commerciale avec la finalisation du dossier RIVP. L'animation de cette formation REVIT sur trois jours confirme ma capacité à transformer l'expertise technique en ressource pédagogique structurée.</p>
+            
+            <p>L'<strong>encadrement de cette formation sur trois jours consécutifs</strong> m'a permis d'observer la progression des stagiaires dans la durée et d'adapter mon approche pédagogique en temps réel. Comment maintenir l'engagement d'un groupe hétérogène sur plusieurs jours ? Comment équilibrer les besoins spécifiques de chaque métier représenté ? Ces questionnements m'ont conduit à développer une méthodologie d'apprentissage différenciée, alternant théorie appliquée et exercices pratiques adaptés aux réalités professionnelles de chacun.</p>
+            
+            <p>La richesse des échanges avec les participants a confirmé l'importance de la transmission comme vecteur de perfectionnement personnel. En explicitant les logiques du BIM, j'ai moi-même approfondi ma compréhension des enjeux transversaux de la conception numérique. Cette posture de <strong>formateur-expert illustre parfaitement la dimension collaborative</strong> que peut revêtir la pratique architecturale contemporaine.</p>
+            
+            <div class="narrative-block">
+                "L'expertise technique, loin d'être un simple outil, constitue un langage commun permettant de fédérer des compétences pluridisciplinaires", ai-je réalisé en observant les échanges spontanés qui se nouaient entre les participants de différents métiers.
+            </div>
+            
+            <p>La <strong>finalisation du dossier RIVP</strong> (14 heures réparties sur les 2 et 6 juin) témoigne de ma progression dans la maîtrise des enjeux commerciaux et stratégiques de la profession. L'étude détaillée du Bordereau de Prix Unitaires et du Détail Quantitatif Estimatif m'a confronté à une dimension souvent méconnue de la pratique architecturale : la traduction financière de l'expertise. Comment valoriser équitablement nos compétences BIM dans un cadre tarifaire standardisé ?</p>
+            
+            <p>L'élaboration d'une <strong>proposition de planning biannuel pour la répartition des sites de projets</strong> illustre cette capacité d'anticipation méthodologique que j'ai développée grâce à mon expérience des processus numériques. Cette approche systémique, qui associe vision stratégique et maîtrise opérationnelle, témoigne de la valeur ajoutée qu'apporte une double culture technique et architecturale.</p>
+            
+            <p>La <strong>standardisation des outils Power BI</strong>, bien que ne représentant qu'une heure de travail, illustre parfaitement la dimension collective de l'innovation technologique à l'Atelier Juno. La création d'un gabarit standardisé répond à un objectif stratégique : transformer une expertise individuelle en ressource collective accessible. Cette démocratisation des outils d'analyse constitue l'un des défis majeurs des agences contemporaines.</p>
+            
+            <p>À l'approche de l'habilitation HMONP, cette semaine confirme la cohérence de mon parcours de formation. La diversité des compétences mobilisées - <strong>pédagogie, stratégie commerciale, innovation méthodologique</strong> - témoigne d'une vision intégrée du métier d'architecte qui dépasse la simple dichotomie entre technique et créativité. Cette approche transversale, nourrie par la double expertise de l'Atelier Juno, constitue le fondement de ma vision professionnelle future.</p>
+            
+            <div class="narrative-block">
+                Cette capacité de médiation technique s'avérera déterminante dans ma future pratique en nom propre, où l'architecte doit orchestrer des équipes aux profils variés, créant des ponts entre les différentes expertises au service d'une vision architecturale commune.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 2 Juin', 'Mardi 3 Juin', 'Mercredi 4 Juin', 'Jeudi 5 Juin', 'Vendredi 6 Juin'],
+                datasets: [
+                    {
+                        label: 'Power BI Road Map',
+                        data: [1, 0, 0, 0, 0],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Appel d\'offres RIVP',
+                        data: [7, 0, 0, 0, 7],
+                        backgroundColor: '#f6c23e',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Formation REVIT AREP BASE',
+                        data: [0, 7, 7, 7, 0],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Formation REVIT AREP BASE (21h)', 'Appel d\'offres RIVP (14h)', 'Power BI Road Map (1h)'],
+                datasets: [{
+                    data: [21, 14, 1],
+                    backgroundColor: [
+                        '#4e73df',
+                        '#f6c23e',
+                        '#1cc88a'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
