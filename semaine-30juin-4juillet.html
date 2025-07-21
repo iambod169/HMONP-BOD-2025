@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 30 Juin-4 Juillet 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A; /* Vert forêt foncé */
+        }
+        .narrative-block {
+            font-style: italic;
+            color: #555;
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 3px solid #6F8381;
+            background-color: #f8f9fa;
+        }
+        .mission-block {
+            background-color: #fff8dc;
+            border-left: 4px solid #f1c40f;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>30 Juin - 4 Juillet 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 30 juin au 4 juillet 2025, illustrant une semaine de transitions et nouveaux défis professionnels.</p>
+            <p><strong>Temps total travaillé :</strong> 28.5 heures</p>
+            <p><strong>Activités principales :</strong> Cité des Musiques Actuelles - BIM Management (16h - 56%), Extension Archives Nationales - Power BI (8h - 28%), Formation Enscape (4h - 14%), Finalisation RIVP (0.5h - 2%)</p>
+            <p><strong>Répartition par type d'activité :</strong> BIM Management (56%), Innovation méthodologique (28%), Formation (14%), Prospection (2%)</p>
+        </div>
+
+        <h2>TRANSITIONS ET NOUVEAUX DÉFIS : UNE SEMAINE DE DIVERSIFICATION PROFESSIONNELLE</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            
+            <div class="narrative-block">
+                Par une matinée estivale de début juillet, en contemplant les premiers rayons de soleil qui traversaient les fenêtres de notre espace de travail, j'ai pris la mesure de ce tournant décisif dans mon parcours professionnel. Cette semaine marquait le démarrage de ma première mission de BIM Management autonome - un passage symbolique du rôle d'assistant à celui de coordinateur de processus numériques.
+            </div>
+            
+            <p>Cette semaine marque une <strong>étape décisive dans mon parcours professionnel</strong> avec le démarrage de ma première mission de BIM Management autonome. La diversité des compétences mobilisées - coordination technique, innovation méthodologique, transmission pédagogique, stratégie commerciale - témoigne de la maturité professionnelle acquise au sein de l'Atelier Juno.</p>
+            
+            <div class="mission-block">
+                <h4>Cité des Musiques Actuelles : Initiation au BIM Management opérationnel</h4>
+                <p>Du 1er au 3 juillet, cette mission de 16 heures m'a confronté à la <strong>complexité organisationnelle du BIM Management</strong> dans un projet multi-lots. Comment orchestrer la production de maquettes numériques par des équipes aux niveaux de maturité BIM hétérogènes ? Cette question centrale m'a conduit à développer une approche méthodologique structurée, articulant diagnostic des compétences, élaboration d'un plan de coordination et mise en place d'outils de suivi adaptés.</p>
+            </div>
+            
+            <p>Le <strong>passage au BIM Management opérationnel</strong> sur la Cité des Musiques Actuelles constitue une évolution majeure de mon statut professionnel. Cette responsabilité nouvelle révèle comment l'expertise technique peut se transformer en capacité de coordination et de management de projet. Cette transition illustre parfaitement la valeur formatrice de la structure bicéphale de l'agence.</p>
+            
+            <p>La <strong>rédaction de la convention BIM</strong> à partir d'un CCBIM antérieur au concours m'a révélé l'importance de l'adaptation contextuelle des documents de référence. Cette mise à jour nécessaire illustre parfaitement la dimension évolutive du BIM Management, où chaque projet requiert une approche spécifique malgré l'existence de standards. Cette capacité d'adaptation constitue selon moi l'une des compétences fondamentales du BIM Manager contemporain.</p>
+            
+            <div class="narrative-block">
+                "Au-delà des aspects techniques, cette mission révèle la dimension relationnelle du BIM Management, où la réussite dépend autant de la maîtrise des outils que de la capacité à fédérer des équipes aux cultures professionnelles variées."
+            </div>
+            
+            <div class="mission-block">
+                <h4>Extension Archives Nationales : Innovation méthodologique et analyse de données</h4>
+                <p>Les 2 et 4 juillet, j'ai consacré 8 heures au <strong>développement d'un gabarit Power BI</strong> pour analyser les données de la maquette. Cette mission illustre parfaitement la convergence entre expertise BIM et capacités d'analyse de données qui caractérise ma pratique professionnelle. Comment rendre accessible aux équipes de maîtrise d'œuvre la richesse informationnelle des maquettes BIM ?</p>
+            </div>
+            
+            <p>Le <strong>développement du gabarit Power BI pour les Archives Nationales</strong> confirme ma capacité à concevoir des solutions méthodologiques innovantes. Cette approche, qui transforme les données de maquette en intelligence opérationnelle, préfigure les évolutions futures de la pratique architecturale vers plus de data-driven design. La capacité à concevoir des outils d'aide à la décision adaptés aux spécificités de chaque projet constitue un avantage concurrentiel déterminant.</p>
+            
+            <p>Cette mission confirme ma conviction que <strong>l'avenir de la pratique architecturale</strong> réside dans cette capacité à transformer l'expertise technique en ressource créative. L'analyse de données de maquette ne constitue pas une fin en soi, mais un moyen d'enrichir la démarche conceptuelle par une meilleure compréhension des contraintes et opportunités du projet.</p>
+            
+            <div class="mission-block">
+                <h4>Formation Enscape : Transmission de l'expertise en rendu architectural</h4>
+                <p>Le 30 juin, j'ai animé une formation de 4 heures sur les rendus Enscape dans Revit, complétant ainsi ma palette de compétences formatrices par la <strong>dimension visuelle de la conception numérique</strong>. Comment former efficacement aux outils de visualisation sans négliger la dimension artistique du rendu ?</p>
+            </div>
+            
+            <p>La <strong>formation Enscape enrichit mon positionnement d'expert-formateur</strong> par la dimension visuelle de la conception numérique. Cette compétence pédagogique, articulant technique et créativité, constitue un atout différenciant pour ma future pratique professionnelle. L'enseignement des techniques de rendu architectural m'a permis d'explorer la frontière entre expertise technique et sensibilité créative.</p>
+            
+            <div class="narrative-block">
+                La finalisation du dossier RIVP, bien que ne représentant que 30 minutes, matérialise symboliquement la capacité de l'Atelier Juno à mobiliser ses compétences bicéphales pour répondre aux exigences des marchés publics complexes. Cette étape marque l'aboutissement de plusieurs semaines de travail collaboratif.
+            </div>
+            
+            <p>À quelques semaines de l'obtention de l'habilitation HMONP, cette semaine confirme la cohérence de mon parcours de formation. La capacité à <strong>assumer des responsabilités de BIM Management</strong> tout en maintenant une activité de transmission et d'innovation méthodologique témoigne d'une vision intégrée du métier d'architecte. Cette approche transversale, nourrie par la double expertise de l'Atelier Juno, constitue le fondement de mon projet professionnel futur où <strong>expertise technique et sensibilité architecturale se nourrissent mutuellement</strong>.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 30 Juin', 'Mardi 1 Juillet', 'Mercredi 2 Juillet', 'Jeudi 3 Juillet', 'Vendredi 4 Juillet'],
+                datasets: [
+                    {
+                        label: 'Formation Enscape',
+                        data: [4, 0, 0, 0, 0],
+                        backgroundColor: '#9b59b6',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Finalisation RIVP',
+                        data: [0.5, 0, 0, 0, 0],
+                        backgroundColor: '#f6c23e',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Cité des Musiques Actuelles',
+                        data: [0, 6, 5, 5, 3],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Extension Archives Nationales',
+                        data: [0, 0, 2, 2, 4],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Cité des Musiques Actuelles (19h)', 'Extension Archives Nationales (8h)', 'Formation Enscape (4h)', 'Finalisation RIVP (0.5h)'],
+                datasets: [{
+                    data: [19, 8, 4, 0.5],
+                    backgroundColor: [
+                        '#4e73df',
+                        '#1cc88a',
+                        '#9b59b6',
+                        '#f6c23e'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
