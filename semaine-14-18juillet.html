@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 15-18 Juillet 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A; /* Vert forêt foncé */
+        }
+        .narrative-block {
+            font-style: italic;
+            color: #555;
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 3px solid #6F8381;
+            background-color: #f8f9fa;
+        }
+        .formation-block {
+            background-color: #f0f8ff;
+            border-left: 4px solid #4e73df;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .coordination-block {
+            background-color: #f8fff8;
+            border-left: 4px solid #1cc88a;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>15 - 18 Juillet 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 15 au 18 juillet 2025, illustrant une semaine d'approfondissement et coordination opérationnelle.</p>
+            <p><strong>Temps total travaillé :</strong> 28 heures</p>
+            <p><strong>Activités principales :</strong> Formation LAND ACT REVIT2 - Modélisation avancée (14h - 50%), Cité des Musiques Actuelles - Coordination opérationnelle (14h - 50%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Formation experte (50%), BIM Management opérationnel (50%)</p>
+        </div>
+
+        <h2>APPROFONDISSEMENT ET COORDINATION : UNE SEMAINE DE CONSOLIDATION OPÉRATIONNELLE</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            
+            <div class="narrative-block">
+                Par une matinée de mi-juillet, en préparant les contenus avancés pour la seconde session LandAct - phases, filtres, variantes, création de familles - j'ai mesuré cette évolution qualitative de ma pratique formatrice. Comment transmettre efficacement la logique paramétrique des familles REVIT à des professionnelles du paysage habituées à des processus de conception plus intuitifs ? Cette interrogation allait guider toute la semaine.
+            </div>
+            
+            <p>Cette semaine illustre parfaitement la <strong>complémentarité entre expertise technique et capacité de coordination</strong> qui caractérise ma pratique professionnelle mature. La formation avancée LandAct et la coordination opérationnelle de la Cité des Musiques révèlent deux facettes d'une même compétence : la maîtrise des processus numériques au service de l'efficacité collective.</p>
+            
+            <div class="formation-block">
+                <h4>Formation LAND ACT REVIT2 : Transmission d'une expertise avancée</h4>
+                <p>Du 15 au 16 juillet, cette formation avancée de 14 heures, centrée sur les <strong>fonctionnalités expertes</strong> - phases, filtres, variantes, création de familles et maquettes partagées - marque une évolution qualitative de ma pratique formatrice. L'approfondissement vers des aspects aussi spécialisés que la gestion des phases de projet ou la création de familles paramétriques m'a confronté à des niveaux d'abstraction croissants.</p>
+                <p>La formation aux maquettes partagées a révélé la <strong>dimension collaborative avancée du BIM</strong>, où la coordination technique devient stratégie organisationnelle. Cette expérience confirme que la transmission constitue un vecteur d'approfondissement de l'expertise, où l'exercice pédagogique nourrit la maîtrise technique du formateur.</p>
+            </div>
+            
+            <p>L'<strong>approfondissement de la formation BIM vers des aspects experts</strong> confirme l'évolution de mon positionnement de transmetteur de savoirs spécialisés. Cette capacité à enseigner des compétences de haut niveau témoigne d'une expertise reconnue qui ouvre des perspectives de rayonnement professionnel au-delà du périmètre strict de l'Atelier Juno.</p>
+            
+            <div class="narrative-block">
+                "Cette mission de formation avancée témoigne de la progression naturelle de mon positionnement d'expert-formateur. La capacité à transmettre des compétences de haut niveau révèle une maturité professionnelle qui préfigure ma future pratique, où l'expertise technique constituera un levier de différenciation et de rayonnement professionnel."
+            </div>
+            
+            <div class="coordination-block">
+                <h4>Cité des Musiques Actuelles : Orchestration d'un BIM Management opérationnel</h4>
+                <p>Du 17 au 18 juillet, j'ai consacré 14 heures à la <strong>structuration opérationnelle du projet</strong>, articulant coordination humaine et organisation technique. Cette mission marque une étape décisive dans ma pratique du BIM Management, passant de la conception documentaire à l'orchestration opérationnelle.</p>
+                <p>La restructuration de l'organisation des dossiers de projet sur Kroqi, privilégiant la simplicité d'usage et la cohérence logique, illustre cette <strong>approche réflexive qui intègre les retours d'expérience</strong> pour améliorer l'efficacité processuelle.</p>
+            </div>
+            
+            <p>La <strong>coordination opérationnelle de la Cité des Musiques</strong> révèle la dimension stratégique du BIM Management dans sa phase mature. Cette mission, qui articule gestion technique et médiation humaine, illustre parfaitement la valeur ajoutée de la double culture architecturale et informatique. La capacité à concevoir des solutions organisationnelles "justes et flexibles" constitue une compétence rare et recherchée.</p>
+            
+            <p>L'<strong>échange téléphonique avec chaque membre de la maîtrise d'œuvre</strong> pour établir les missions de modélisation selon les phases d'avancement constitue le cœur de cette semaine. Cette approche individualisée m'a permis d'appréhender la diversité des contraintes et des capacités techniques de chaque intervenant. Comment concevoir une convention à la fois juste dans la répartition des responsabilités et flexible dans son adaptation aux réalités de chaque acteur ?</p>
+            
+            <div class="narrative-block">
+                "Cette démarche de coordination personnalisée révèle la dimension humaine du BIM Management, où la réussite technique dépend de la qualité des relations interprofessionnelles. La capacité à fédérer des compétences hétérogènes autour d'un objectif commun constitue l'une des compétences fondamentales de l'architecte coordinateur contemporain."
+            </div>
+            
+            <p>La <strong>mise au point sur les modèles numériques</strong> présents dans le serveur a révélé l'importance de la gestion de l'obsolescence dans les processus BIM. Ces maquettes, issues du stade concours et désormais inadaptées aux exigences de la phase PRO, nécessitaient une refonte complète. Cette situation m'a confronté à la dimension temporelle du BIM Management, où la valeur de l'information numérique dépend de sa pertinence contextuelle.</p>
+            
+            <p>La <strong>complémentarité entre transmission experte et coordination opérationnelle</strong> confirme la cohérence de mon parcours professionnel. Cette double dimension révèle une approche intégrée du BIM Management qui dépasse la simple maîtrise logicielle pour embrasser les enjeux organisationnels et relationnels de la coordination numérique.</p>
+            
+            <p>À quelques semaines de l'obtention de l'habilitation HMONP, cette semaine témoigne de la <strong>maturité professionnelle acquise</strong> au sein de l'Atelier Juno. La capacité à intervenir simultanément sur des missions de formation experte et de coordination complexe révèle une autonomie qui préfigure ma future pratique en nom propre. Cette approche, qui associe rayonnement pédagogique et excellence opérationnelle, constitue le fondement d'un positionnement professionnel différenciant.</p>
+            
+            <p>La diversité des compétences mobilisées - <strong>pédagogie experte, coordination technique, médiation interprofessionnelle</strong> - confirme la richesse formatrice de la structure bicéphale de l'agence. Cette expérience m'a permis de développer une vision transversale des enjeux numériques qui enrichira considérablement ma future pratique architecturale, où la maîtrise des processus collaboratifs constituera un avantage stratégique déterminant.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Mardi 15 Juillet', 'Mercredi 16 Juillet', 'Jeudi 17 Juillet', 'Vendredi 18 Juillet'],
+                datasets: [
+                    {
+                        label: 'Formation LAND ACT REVIT2',
+                        data: [7, 7, 0, 0],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Cité des Musiques Actuelles',
+                        data: [0, 0, 7, 7],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Formation LAND ACT REVIT2 (14h)', 'Cité des Musiques Actuelles (14h)'],
+                datasets: [{
+                    data: [14, 14],
+                    backgroundColor: [
+                        '#4e73df',
+                        '#1cc88a'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
