@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 7-11 Juillet 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A; /* Vert forêt foncé */
+        }
+        .narrative-block {
+            font-style: italic;
+            color: #555;
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 3px solid #6F8381;
+            background-color: #f8f9fa;
+        }
+        .mission-block {
+            background-color: #fff8dc;
+            border-left: 4px solid #1cc88a;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .specialization-block {
+            background-color: #f0f8ff;
+            border-left: 4px solid #4e73df;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>7 - 11 Juillet 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 7 au 11 juillet 2025, illustrant une semaine de spécialisation et coordination méthodologique.</p>
+            <p><strong>Temps total travaillé :</strong> 35 heures</p>
+            <p><strong>Activités principales :</strong> Formation LAND ACT REVIT - BIM Paysage (21h - 60%), Cité des Musiques Actuelles - Édition convention BIM (14h - 40%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Formation spécialisée (60%), Coordination documentaire BIM (40%)</p>
+        </div>
+
+        <h2>SPÉCIALISATION ET COORDINATION : UNE SEMAINE D'APPROFONDISSEMENT MÉTHODOLOGIQUE</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            
+            <div class="narrative-block">
+                En préparant les supports spécifiques pour la formation LandAct, j'ai pris conscience de cette évolution significative dans ma pratique formatrice : passer d'une transmission généraliste à une pédagogie spécialisée, adaptée aux spécificités métier du paysage. Matthieu m'avait transmis les documents de l'agence, révélant une charte BIM particulièrement aboutie et des projets aux enjeux techniques distincts de ceux de l'architecture.
+            </div>
+            
+            <p>Cette semaine se caractérise par un <strong>approfondissement de mes compétences</strong> dans deux dimensions complémentaires : la spécialisation sectorielle avec la formation LandAct et la coordination documentaire avec l'édition de convention BIM. Cette dualité illustre parfaitement l'évolution de mon positionnement professionnel vers une expertise reconnue et transversale.</p>
+            
+            <div class="specialization-block">
+                <h4>Formation LAND ACT REVIT : Transmission d'une expertise sectorielle</h4>
+                <p>Du 7 au 9 juillet, cette formation de 21 heures destinée aux collaboratrices de l'agence de paysage LandAct marque une évolution significative : <strong>passer d'une transmission généraliste à une pédagogie spécialisée</strong>. Comment transposer les logiques BIM de l'architecture vers le paysage tout en respectant les spécificités de cette discipline ?</p>
+                <p>L'objectif fixé était ambitieux : permettre aux trois collaboratrices de démarrer dès la phase PRO-DCE la production de maquettes numériques détaillées, intégrant étiquettes personnalisées et calculs automatisés de surfaces. Cette exigence m'a obligé à concevoir un programme intensif, alternant théorie appliquée et mise en situation sur des cas concrets de l'agence.</p>
+            </div>
+            
+            <p>La <strong>formation des paysagistes de LandAct</strong> confirme la valeur transversale de mon expertise BIM au-delà du secteur architectural. Cette adaptabilité intersectorielle témoigne de la maturité professionnelle acquise et ouvre des perspectives de positionnement sur des marchés de niche. La capacité à décliner une expertise généraliste vers des applications sectorielles spécifiques constitue un avantage concurrentiel déterminant.</p>
+            
+            <div class="narrative-block">
+                "L'adaptation de mes compétences formatrices à un secteur spécialisé révèle la transversalité de l'expertise BIM au-delà des frontières disciplinaires traditionnelles. Cette expérience confirme que la maîtrise des processus numériques constitue désormais un langage commun aux professions de la conception."
+            </div>
+            
+            <div class="mission-block">
+                <h4>Cité des Musiques Actuelles : Élaboration d'une convention BIM contextuelle</h4>
+                <p>Du 10 au 11 juillet, j'ai consacré 14 heures à l'<strong>édition de la convention BIM</strong> pour le projet de la Cité des Musiques Actuelles. Cette mission, prolongeant le travail entamé la semaine précédente, m'a permis d'approfondir ma compréhension des enjeux documentaires du BIM Management.</p>
+                <p>Le processus s'est appuyé sur un plan d'exécution BIM existant, nécessitant une <strong>adaptation contextuelle approfondie</strong>. Comment extraire la substantifique moelle d'un document de référence tout en l'adaptant aux spécificités du nouveau projet ?</p>
+            </div>
+            
+            <p>L'<strong>élaboration de la convention BIM</strong> pour la Cité des Musiques révèle la dimension stratégique du BIM Management documentaire. Cette compétence, qui articule analyse réglementaire et adaptation contextuelle, illustre parfaitement la valeur ajoutée de la double culture technique et architecturale. La maîtrise de ces processus documentaires complexes constitue une compétence rare et recherchée.</p>
+            
+            <p>L'<strong>extraction minutieuse des exigences</strong> formulées par l'AMO BIM dans le Cahier des Charges initial a constitué un exercice particulièrement formateur. Cette phase d'analyse documentaire m'a confronté à la complexité des interactions entre acteurs du BIM Management, révélant comment les exigences techniques se traduisent en obligations contractuelles.</p>
+            
+            <div class="narrative-block">
+                "Cette mission confirme que la réussite du BIM Management réside autant dans la capacité d'adaptation documentaire que dans l'expertise technique pure. Cette compétence de synthèse et de contextualisation constituera un atout déterminant dans ma future pratique."
+            </div>
+            
+            <p>La <strong>complémentarité entre transmission spécialisée et coordination technique</strong> confirme l'évolution de mon positionnement professionnel vers une expertise reconnue. Cette double dimension - pédagogique et opérationnelle - témoigne d'une vision intégrée du BIM Management qui dépasse la simple maîtrise logicielle pour embrasser les enjeux organisationnels et humains de la coordination numérique.</p>
+            
+            <p>À l'approche de l'habilitation HMONP, cette semaine illustre parfaitement comment l'<strong>expertise technique peut devenir un vecteur d'autonomisation professionnelle</strong>. La capacité à intervenir sur des projets complexes tout en transmettant des savoirs spécialisés révèle une maturité qui préfigure ma future pratique en nom propre.</p>
+            
+            <p>La diversité des compétences mobilisées cette semaine - <strong>adaptation intersectorielle, coordination documentaire, transmission spécialisée</strong> - témoigne de la richesse formatrice de mon parcours à l'Atelier Juno. Cette structure bicéphale m'a permis de développer une vision transversale des enjeux numériques qui enrichira considérablement ma future pratique architecturale, où la maîtrise des processus BIM constituera un avantage stratégique déterminant.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 7 Juillet', 'Mardi 8 Juillet', 'Mercredi 9 Juillet', 'Jeudi 10 Juillet', 'Vendredi 11 Juillet'],
+                datasets: [
+                    {
+                        label: 'Formation LAND ACT REVIT',
+                        data: [7, 7, 7, 0, 0],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Cité des Musiques Actuelles',
+                        data: [0, 0, 0, 7, 7],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Formation LAND ACT REVIT (21h)', 'Cité des Musiques Actuelles (14h)'],
+                datasets: [{
+                    data: [21, 14],
+                    backgroundColor: [
+                        '#4e73df',
+                        '#1cc88a'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
