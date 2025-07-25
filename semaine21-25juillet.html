@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 21-25 Juillet 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #6F8381;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A; /* Vert forêt foncé */
+        }
+        .narrative-block {
+            font-style: italic;
+            color: #555;
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 3px solid #6F8381;
+            background-color: #f8f9fa;
+        }
+        .coordination-block {
+            background-color: #f8fff8;
+            border-left: 4px solid #1cc88a;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .negotiation-block {
+            background-color: #fff8f0;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .audit-block {
+            background-color: #f0f0ff;
+            border-left: 4px solid #6c5ce7;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+        
+        <h1>Journal de Bord HMONP<br>21 - 25 Juillet 2025</h1>
+        
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+        
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition de votre temps de travail du 21 au 25 juillet 2025, illustrant une semaine d'intensification et de convergence stratégique.</p>
+            <p><strong>Temps total travaillé :</strong> 31 heures</p>
+            <p><strong>Activités principales :</strong> Cité des Musiques Actuelles - Coordination (19h - 61%), Extension Archives Nationales - Audits Power BI (6h - 19%), MATHSTIC Phase 02 - Compilation audit (3h - 10%), Négociation RIVP (3h - 10%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Coordination opérationnelle (61%), Développement d'outils (29%), Négociation commerciale (10%)</p>
+        </div>
+
+        <h2>INTENSIFICATION ET NÉGOCIATION : UNE SEMAINE DE CONVERGENCE STRATÉGIQUE</h2>
+        
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+            
+            <div class="narrative-block">
+                Par une matinée de fin juillet, en préparant la relance institutionnelle pour la Cité des Musiques, j'ai pris la mesure de cette intensification remarquable des responsabilités qui caractérise cette semaine. Comment concilier exigence de rigueur processuelle et respect des temporalités administratives ? Cette interrogation allait guider une semaine de convergence entre coordination opérationnelle, développement d'outils et négociation commerciale.
+            </div>
+            
+            <p>Cette semaine se caractérise par une <strong>intensification remarquable des responsabilités</strong>, conjuguant coordination opérationnelle complexe, développement d'outils innovants et négociation commerciale stratégique. Cette convergence d'enjeux témoigne de la maturité professionnelle acquise et de la confiance accordée par l'équipe dirigeante.</p>
+            
+            <div class="coordination-block">
+                <h4>Cité des Musiques Actuelles : Intensification de la coordination opérationnelle</h4>
+                <p>Du 21 au 23 juillet, j'ai consacré 19 heures à l'<strong>intensification de la coordination</strong>, articulant relance institutionnelle et développement d'outils de pilotage. Cette mission révèle la dimension stratégique du BIM Management dans sa phase de maturité opérationnelle.</p>
+                <p>La <strong>réunion de mise au point BDNA</strong> du 22 juillet avec la majorité des intervenants MOE et l'équipe de la Sirène a constitué un moment décisif de fédération collective. Cette séance de coordination élargie m'a permis d'observer la complexité des interactions entre maîtrise d'œuvre et maîtrise d'usage.</p>
+            </div>
+            
+            <p>L'<strong>intensification de la coordination sur la Cité des Musiques</strong> révèle la dimension systémique du BIM Management mature. Cette capacité à orchestrer simultanément relances institutionnelles, restructurations organisationnelles et développement d'outils de pilotage illustre une vision intégrée de la coordination technique qui dépasse la simple gestion logicielle.</p>
+            
+            <p>La <strong>proposition d'organisation Kroqi</strong> constitue un enjeu technique et méthodologique majeur. Cette restructuration, issue des enseignements tirés des premières semaines de coordination, illustre la capacité d'adaptation continue nécessaire au BIM Management efficace. L'élaboration d'une architecture informationnelle plus intuitive répond à un objectif stratégique : optimiser l'appropriation des outils par l'ensemble des intervenants.</p>
+            
+            <div class="narrative-block">
+                "La capacité à animer ces instances multi-acteurs constitue selon moi l'une des compétences fondamentales de l'architecte coordinateur contemporain."
+            </div>
+            
+            <div class="audit-block">
+                <h4>Développement d'outils d'audit transversaux</h4>
+                <p>Le 24 juillet, j'ai travaillé sur deux projets complémentaires de développement d'outils Power BI : <strong>3 heures avec Dany</strong> sur la compilation d'audit MATHSTIC Phase 02 et <strong>6 heures avec Thomas</strong> sur la préparation des audits Archives Nationales. Cette convergence méthodologique révèle la transférabilité de l'expertise d'analyse de données entre projets.</p>
+                <p>Comment transformer la complexité des processus collaboratifs en <strong>indicateurs de pilotage accessibles</strong> ? Cette problématique m'a guidé dans la conception d'une interface synthétique, conjuguant exhaustivité informationnelle et simplicité d'usage.</p>
+            </div>
+            
+            <p>Le <strong>développement d'outils d'audit transversaux</strong> confirme l'évolution de mon positionnement vers l'expertise méthodologique. Cette compétence, qui transforme l'analyse de données en intelligence opérationnelle, constitue un avantage concurrentiel déterminant dans un marché professionnel en quête d'optimisation processuelle.</p>
+            
+            <p>La <strong>collaboration avec Dany sur MATHSTIC</strong> m'a permis d'appréhender les spécificités de l'audit BIM en phase avancée de projet. Cette mission de compilation illustre parfaitement la valeur ajoutée de l'analyse automatisée : transformer des volumes importants de données techniques en synthèses opérationnelles.</p>
+            
+            <div class="negotiation-block">
+                <h4>Négociation RIVP : Confrontation aux réalités économiques</h4>
+                <p>Le 25 juillet, j'ai participé pendant 3 heures à la <strong>négociation de l'Accord-Cadre RIVP</strong>, expérience révélatrice des enjeux économiques de la profession. Cette mission m'a confronté à la dimension commerciale stratégique de la pratique architecturale contemporaine.</p>
+                <p>Comment défendre la valeur de l'expertise tout en s'adaptant aux <strong>contraintes budgétaires du donneur d'ordre</strong> ? Cette interrogation centrale illustre la tension permanente entre exigence qualitative et réalisme économique qui caractérise les marchés publics.</p>
+            </div>
+            
+            <p>La <strong>participation à la négociation RIVP</strong> marque une étape décisive dans ma compréhension des enjeux économiques de la profession. Cette confrontation aux réalités tarifaires du marché public enrichit considérablement ma vision de l'architecture comme activité entrepreneuriale, dimension essentielle pour ma future pratique en nom propre.</p>
+            
+            <p>L'<strong>échange sur les aspects techniques et financiers</strong> a révélé la nécessité d'ajuster nos tarifs à la baisse, confrontant l'agence à un dilemme stratégique récurrent. Cette pression tarifaire m'a permis d'appréhender concrètement les enjeux de positionnement concurrentiel et de rentabilité qui conditionnent la viabilité des structures architecturales.</p>
+            
+            <div class="narrative-block">
+                "Cette expérience de négociation constitue un apprentissage essentiel pour ma future pratique en nom propre. La capacité à défendre ses propositions tout en restant flexible sur les modalités d'exécution illustre l'équilibre délicat que doit maintenir l'architecte entrepreneur entre conviction professionnelle et pragmatisme commercial."
+            </div>
+            
+            <p>La <strong>complémentarité entre ces missions</strong> d'audit témoigne de la maturité acquise dans le développement d'outils transversaux. Cette capacité à concevoir des solutions méthodologiques adaptables illustre la valeur stratégique de la double expertise technique et architecturale.</p>
+            
+            <p>À l'approche de l'habilitation HMONP, cette semaine confirme la <strong>cohérence de ma progression professionnelle</strong>. La capacité à assumer simultanément des responsabilités opérationnelles complexes et des enjeux stratégiques révèle une autonomie qui préfigure ma future pratique architecturale. Cette approche intégrée, qui conjugue expertise technique et vision entrepreneuriale, constitue le fondement d'un positionnement professionnel différenciant.</p>
+            
+            <p>La diversité des compétences mobilisées cette semaine - <strong>coordination multi-acteurs, innovation méthodologique, négociation commerciale</strong> - témoigne de la richesse formatrice de mon parcours à l'Atelier Juno. Cette structure bicéphale m'a permis de développer une approche transversale qui articule excellence technique et pragmatisme économique.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration du graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 21 Juillet', 'Mardi 22 Juillet', 'Mercredi 23 Juillet', 'Jeudi 24 Juillet', 'Vendredi 25 Juillet'],
+                datasets: [
+                    {
+                        label: 'Cité des Musiques Actuelles',
+                        data: [7, 5, 7, 0, 0],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Extension Archives Nationales',
+                        data: [0, 0, 0, 6, 0],
+                        backgroundColor: '#6c5ce7',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'MATHSTIC Phase 02',
+                        data: [0, 2, 0, 1, 0],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Négociation RIVP',
+                        data: [0, 0, 0, 0, 3],
+                        backgroundColor: '#f39c12',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Configuration du graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: ['Cité des Musiques Actuelles (19h)', 'Extension Archives Nationales (6h)', 'MATHSTIC Phase 02 (3h)', 'Négociation RIVP (3h)'],
+                datasets: [{
+                    data: [19, 6, 3, 3],
+                    backgroundColor: [
+                        '#1cc88a',
+                        '#6c5ce7',
+                        '#4e73df',
+                        '#f39c12'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilan Mensuel Juillet 2025 - HMONP</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.1.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+     <!-- Favicon -->
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+            position: relative;
+        }
+        .chart-title {
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .summary {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .data-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        .insight-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .insight-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #6F8381;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .insight-card p {
+            line-height: 1.6;
+            color: #555;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #6F8381, #2c3e50);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-card h3 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+        .stat-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        .tabs {
+            display: flex;
+            margin-top: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+        .tab-button {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #7f8c8d;
+            transition: all 0.3s;
+        }
+        .tab-button.active {
+            color: #6F8381;
+            border-bottom: 3px solid #6F8381;
+            margin-bottom: -2px;
+        }
+        .tab-button:hover {
+            color: #6F8381;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        strong {
+            color:#3A5F3A;
+        }
+        .milestone-section {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #2c3e50;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 8px 32px rgba(255, 154, 158, 0.2);
+        }
+        .milestone-section h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Retour à l'accueil
+        </a>
+        
+        <h1>Bilan Mensuel - Juillet 2025</h1>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p>Heures travaillées</p>
+                <h3>122</h3>
+                <p>Total du mois</p>
+            </div>
+            <div class="stat-card">
+                <p>Semaines</p>
+                <h3>4</h3>
+                <p>Semaines complètes</p>
+            </div>
+            <div class="stat-card">
+                <p>Formation spécialisée</p>
+                <h3>35h</h3>
+                <p>28.7% du temps</p>
+            </div>
+            <div class="stat-card">
+                <p>BIM Management</p>
+                <h3>61h</h3>
+                <p>50% du temps</p>
+            </div>
+        </div>
+
+        <div class="milestone-section">
+            <h3><i class="fas fa-star"></i> Mois de consolidation et expertise avancée</h3>
+            <p><strong>Juillet 2025 marque l'apogée de votre parcours professionnel</strong> avec une montée en responsabilité exceptionnelle : de la formation experte intersectorielle (LandAct) à la coordination opérationnelle complexe (Cité des Musiques), en passant par la négociation commerciale stratégique (RIVP). Ce mois illustre parfaitement la <strong>maturité professionnelle acquise</strong> et votre capacité à assumer des missions de haut niveau en autonomie complète.</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'timeDistribution')">Répartition du temps</button>
+            <button class="tab-button" onclick="openTab(event, 'projectEvolution')">Évolution hebdomadaire</button>
+            <button class="tab-button" onclick="openTab(event, 'rawData')">Données brutes</button>
+        </div>
+
+        <div id="timeDistribution" class="tab-content active">
+            <div class="chart-container" style="height: 400px;">
+                <h2 class="chart-title">Répartition du temps par type d'activité</h2>
+                <canvas id="donutChart"></canvas>
+            </div>
+            
+            <div class="insight-card">
+                <h3>Analyse de la distribution du temps</h3>
+                <p>Juillet 2025 se caractérise par une <strong>diversification et une intensification remarquables</strong> des activités, témoignant d'une montée en compétence exceptionnelle. Le <strong>BIM Management opérationnel</strong> (50%) constitue le pilier de l'activité avec la coordination complexe de la Cité des Musiques Actuelles et l'édition de conventions BIM contextuelless. La <strong>formation spécialisée</strong> (28.7%) révèle une évolution qualitative vers la transmission d'expertises sectorielles avancées, notamment avec les formations LandAct sur la modélisation paysagère paramétrique.</p>
+                <p>Cette répartition illustre parfaitement l'évolution vers un positionnement d'<strong>expert-coordinateur</strong> capable d'orchestrer des processus complexes tout en transmettant des savoirs de haut niveau. La dimension de <strong>négociation commerciale</strong> (2.5%) et d'innovation méthodologique (18.8%) complète ce tableau d'un professionnel mature, prêt à assumer l'ensemble des responsabilités de l'architecte en nom propre.</p>
+            </div>
+        </div>
+
+        <div id="projectEvolution" class="tab-content">
+            <div class="chart-container">
+                <h2 class="chart-title">Évolution des projets au cours du mois</h2>
+                <canvas id="streamChart"></canvas>
+            </div>
+            
+            <div class="insight-card">
+                <h3>Évolution de l'activité</h3>
+                <p>L'évolution du temps par type d'activité révèle une <strong>progression structurée vers l'autonomie professionnelle</strong>. La première semaine (30 juin-4 juillet) a conjugué nouveaux défis avec le démarrage de la mission BIM Management autonome et consolidation des acquis formatifs. Les deuxième et troisième semaines (7-18 juillet) ont marqué un <strong>approfondissement de l'expertise</strong> avec les formations LandAct avancées et la coordination documentaire de conventions BIM complexes.</p>
+                <p>La quatrième semaine (21-25 juillet) a illustré cette <strong>convergence stratégique</strong> caractéristique de la maturité professionnelle : coordination opérationnelle intensifiée, développement d'outils d'audit transversaux et négociation commerciale. Cette rythmique mensuelle témoigne d'une capacité croissante à gérer la complexité et à articuler excellence technique et pragmatisme économique.</p>
+            </div>
+        </div>
+
+        <div id="rawData" class="tab-content">
+            <h2 class="chart-title">Données détaillées</h2>
+            
+            <h3>Données hebdomadaires par projet</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Semaine</th>
+                        <th>Projet principal</th>
+                        <th>Heures</th>
+                        <th>Type d'activité</th>
+                        <th>Enjeu clé</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>S1 (30/06-04/07)</td><td>Cité des Musiques Actuelles</td><td>16</td><td>BIM Management autonome</td><td>Première mission de coordination complète</td></tr>
+                    <tr><td>S1 (30/06-04/07)</td><td>Extension Archives Nationales</td><td>8</td><td>Innovation Power BI</td><td>Développement gabarit d'analyse</td></tr>
+                    <tr><td>S1 (30/06-04/07)</td><td>Formation Enscape</td><td>4</td><td>Formation rendu</td><td>Transmission expertise visuelle</td></tr>
+                    
+                    <tr><td>S2 (07-11/07)</td><td>Formation LandAct REVIT</td><td>21</td><td>Formation BIM Paysage</td><td>Adaptation intersectorielle</td></tr>
+                    <tr><td>S2 (07-11/07)</td><td>Cité des Musiques Actuelles</td><td>14</td><td>Édition convention BIM</td><td>Coordination documentaire</td></tr>
+                    
+                    <tr><td>S3 (15-18/07)</td><td>Formation LandAct REVIT2</td><td>14</td><td>Formation avancée</td><td>Compétences expertes (familles, phases)</td></tr>
+                    <tr><td>S3 (15-18/07)</td><td>Cité des Musiques Actuelles</td><td>14</td><td>Coordination opérationnelle</td><td>Structuration projet multi-lots</td></tr>
+                    
+                    <tr><td>S4 (21-25/07)</td><td>Cité des Musiques Actuelles</td><td>19</td><td>Intensification coordination</td><td>Pilotage et outils d'audit</td></tr>
+                    <tr><td>S4 (21-25/07)</td><td>Développement outils audit</td><td>9</td><td>Innovation méthodologique</td><td>Solutions transversales</td></tr>
+                    <tr><td>S4 (21-25/07)</td><td>Négociation RIVP</td><td>3</td><td>Commercial</td><td>Réalités économiques</td></tr>
+                </tbody>
+            </table>
+            
+            <h3>Données agrégées par type d'activité</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Type d'activité</th>
+                        <th>Heures</th>
+                        <th>Pourcentage</th>
+                        <th>Évolution vs Mai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>BIM Management & Coordination</td><td>61</td><td>50%</td><td>+17.4%</td></tr>
+                    <tr><td>Formation spécialisée</td><td>35</td><td>28.7%</td><td>+22.9%</td></tr>
+                    <tr><td>Innovation & R&D</td><td>23</td><td>18.8%</td><td>-18.6%</td></tr>
+                    <tr><td>Négociation commerciale</td><td>3</td><td>2.5%</td><td>-32%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="summary">
+            <h2>Synthèse mensuelle</h2>
+            <p>Le mois de juillet 2025 constitue l'<strong>apogée de mon parcours professionnel</strong> à l'Atelier Juno, marqué par une diversification et une intensification remarquables des responsabilités. Cette période révèle une <strong>maturité professionnelle exceptionnelle</strong>, illustrée par la capacité à assumer simultanément des missions de formation experte, de coordination opérationnelle complexe et de négociation commerciale stratégique.</p>
+            
+            <p>L'<strong>expertise BIM et coordination</strong> (50% du temps) trouve son expression la plus aboutie avec la mission autonome sur la Cité des Musiques Actuelles. Cette responsabilité, qui articule coordination humaine, gestion technique et développement d'outils d'audit, témoigne d'une évolution majeure : du statut d'assistant BIM à celui de coordinateur de processus numériques. "La capacité à orchestrer simultanément relances institutionnelles, restructurations organisationnelles et développement d'outils de pilotage illustre une vision intégrée de la coordination technique qui dépasse la simple gestion logicielle."</p>
+            
+            <p>La <strong>formation spécialisée</strong> (28.7%) révèle une évolution qualitative remarquable vers la transmission d'expertises sectorielles. Les formations LandAct, centrées sur la modélisation paysagère paramétrique (familles, phases, maquettes partagées), marquent le passage d'une pédagogie généraliste à une expertise sectorielle pointue. Cette adaptation intersectorielle confirme la transversalité de mes compétences BIM au-delà des frontières disciplinaires traditionnelles.</p>
+            
+            <p>L'<strong>innovation méthodologique</strong> (18.8%) se concrétise par le développement d'outils d'audit transversaux, notamment les gabarits Power BI pour les Archives Nationales et la compilation d'audit MATHSTIC. Cette capacité à concevoir des solutions adaptables illustre la valeur stratégique de la double expertise technique et architecturale. "Cette compétence, qui transforme l'analyse de données en intelligence opérationnelle, constitue un avantage concurrentiel déterminant."</p>
+            
+            <p>La <strong>négociation commerciale</strong> (2.5%), bien que limitée en volume, marque une étape décisive dans ma compréhension des enjeux économiques. La participation à la négociation RIVP m'a confronté aux réalités tarifaires du marché public, révélant "l'équilibre délicat que doit maintenir l'architecte entrepreneur entre conviction professionnelle et pragmatisme commercial."</p>
+            
+            <p>La <strong>progression hebdomadaire</strong> illustre une montée en compétence structurée : démarrage de missions autonomes (semaine 1), approfondissement de l'expertise sectorielle (semaines 2-3), convergence stratégique et intensification des responsabilités (semaine 4). Cette évolution témoigne d'une capacité croissante à gérer la complexité et à articuler excellence technique et vision entrepreneuriale.</p>
+            
+            <p>Les <strong>compétences transversales développées</strong> - coordination multi-acteurs, innovation méthodologique, adaptation intersectorielle, négociation commerciale - confirment la richesse formatrice de la structure bicéphale de l'Atelier Juno. Cette expérience forge une vision intégrée de la pratique architecturale contemporaine où l'expertise technique devient levier d'autonomisation professionnelle.</p>
+            
+            <p>À quelques semaines de l'habilitation HMONP, ce mois de juillet valide définitivement la <strong>cohérence de mon parcours de formation</strong>. La capacité démontrée à assumer des responsabilités de haut niveau en coordination, formation et négociation révèle une autonomie qui préfigure naturellement la future pratique en nom propre. Cette approche transversale, nourrie par la double expertise de l'agence, constitue le socle d'un positionnement professionnel différenciant.</p>
+            
+            <p>Pour août, l'objectif sera de <strong>capitaliser sur cette maturité acquise</strong> pour finaliser les dernières missions en cours et préparer sereinement la transition vers l'exercice autonome. La convergence réussie entre expertise technique et capacité entrepreneuriale dessine les contours d'une pratique architecturale contemporaine où l'innovation numérique sert la qualité du projet et l'efficacité collaborative.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Configuration du graphique en anneau (donut chart)
+        const ctxDonut = document.getElementById('donutChart').getContext('2d');
+        const donutChart = new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: ['BIM Management & Coordination', 'Formation spécialisée', 'Innovation & R&D', 'Négociation commerciale'],
+                datasets: [{
+                    data: [61, 35, 23, 3],
+                    backgroundColor: [
+                        '#1cc88a',
+                        '#4e73df',
+                        '#f6c23e',
+                        '#e74c3c'
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 15
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            font: {
+                                size: 14
+                            },
+                            padding: 20
+                        }
+                    },
+                    datalabels: {
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: (value, ctx) => {
+                            const total = ctx.dataset.data.reduce((acc, data) => acc + data, 0);
+                            const percentage = (value * 100 / total).toFixed(1) + '%';
+                            return percentage;
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                const total = context.dataset.data.reduce((acc, data) => acc + data, 0);
+                                const percentage = (value * 100 / total).toFixed(1) + '%';
+                                const projectDetails = getProjectsByActivityType(label);
+                                return [`${label}: ${value}h (${percentage})`, ...projectDetails];
+                            }
+                        }
+                    }
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
+
+        // Fonction pour obtenir les projets par type d'activité
+        function getProjectsByActivityType(activityType) {
+            const projects = {
+                'BIM Management & Coordination': [
+                    'Cité des Musiques Actuelles - Mission autonome: 61h',
+                    'Coordination documentaire et opérationnelle'
+                ],
+                'Formation spécialisée': [
+                    'Formation LandAct REVIT (2 sessions): 35h',
+                    'Formation Enscape rendu architectural: 4h'
+                ],
+                'Innovation & R&D': [
+                    'Extension Archives Nationales - Power BI: 8h',
+                    'Développement outils audit transversaux: 15h'
+                ],
+                'Négociation commerciale': [
+                    'Négociation Accord-Cadre RIVP: 3h'
+                ]
+            };
+            return projects[activityType] || [];
+        }
+
+        // Configuration du graphique à ruban (stream chart / area chart)
+        const ctxStream = document.getElementById('streamChart').getContext('2d');
+        const streamChart = new Chart(ctxStream, {
+            type: 'line',
+            data: {
+                labels: ['Semaine 1 (30/06-04/07)', 'Semaine 2 (07-11/07)', 'Semaine 3 (15-18/07)', 'Semaine 4 (21-25/07)'],
+                datasets: [
+                    {
+                        label: 'BIM Management & Coordination',
+                        data: [16, 14, 14, 19],
+                        backgroundColor: 'rgba(28, 200, 138, 0.6)',
+                        borderColor: 'rgba(28, 200, 138, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Formation spécialisée',
+                        data: [4, 21, 14, 0],
+                        backgroundColor: 'rgba(78, 115, 223, 0.6)',
+                        borderColor: 'rgba(78, 115, 223, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Innovation & R&D',
+                        data: [8, 0, 0, 9],
+                        backgroundColor: 'rgba(246, 194, 62, 0.6)',
+                        borderColor: 'rgba(246, 194, 62, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Négociation commerciale',
+                        data: [0.5, 0, 0, 3],
+                        backgroundColor: 'rgba(231, 76, 60, 0.6)',
+                        borderColor: 'rgba(231, 76, 60, 1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            afterTitle: function(context) {
+                                return 'Projets concernés:';
+                            },
+                            afterLabel: function(context) {
+                                const activityType = context.dataset.label;
+                                const weekIndex = context.dataIndex;
+                                const weekLabels = ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4'];
+                                const week = weekLabels[weekIndex];
+                                return getProjectsByActivityTypeAndWeek(activityType, week);
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    }
+                },
+                elements: {
+                    line: {
+                        fill: true
+                    }
+                }
+            }
+        });
+
+        // Fonction pour obtenir les projets par type d'activité et par semaine
+        function getProjectsByActivityTypeAndWeek(activityType, week) {
+            const projectsByWeek = {
+                'BIM Management & Coordination': {
+                    'Semaine 1': ['Cité des Musiques Actuelles - Démarrage mission: 16h'],
+                    'Semaine 2': ['Cité des Musiques - Édition convention BIM: 14h'],
+                    'Semaine 3': ['Cité des Musiques - Coordination opérationnelle: 14h'],
+                    'Semaine 4': ['Cité des Musiques - Intensification coordination: 19h']
+                },
+                'Formation spécialisée': {
+                    'Semaine 1': ['Formation Enscape rendu architectural: 4h'],
+                    'Semaine 2': ['Formation LandAct REVIT BIM Paysage: 21h'],
+                    'Semaine 3': ['Formation LandAct REVIT2 avancée: 14h'],
+                    'Semaine 4': []
+                },
+                'Innovation & R&D': {
+                    'Semaine 1': ['Extension Archives Nationales - Power BI: 8h'],
+                    'Semaine 2': [],
+                    'Semaine 3': [],
+                    'Semaine 4': ['Développement outils audit (Archives + MATHSTIC): 9h']
+                },
+                'Négociation commerciale': {
+                    'Semaine 1': ['Finalisation RIVP: 0.5h'],
+                    'Semaine 2': [],
+                    'Semaine 3': [],
+                    'Semaine 4': ['Négociation Accord-Cadre RIVP: 3h']
+                }
+            };
+            
+            return projectsByWeek[activityType]?.[week] || ['Aucun projet'];
+        }
+        
+        // Fonction pour gérer les onglets
+        function openTab(evt, tabName) {
+            // Masquer tous les contenus des onglets
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Désactiver tous les boutons d'onglets
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            // Afficher le contenu de l'onglet sélectionné et activer le bouton
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
