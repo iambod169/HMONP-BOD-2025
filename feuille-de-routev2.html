@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feuille de Route MSP 2025 - HMONP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .timeline-section {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background: #34495e;
+            color: white;
+            padding: 1.5rem 2rem;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .timeline-container {
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .timeline {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            padding: 0 1rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #2ecc71, #f1c40f, #e67e22, #9b59b6, #e74c3c);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .timeline-month {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #3498db;
+            margin: 0 auto 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-dot:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+        }
+        
+        .timeline-dot.active {
+            background: #3498db;
+            transform: scale(1.3);
+        }
+        
+        .timeline-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #34495e;
+        }
+        
+        .timeline-stats {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-top: 0.25rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+        
+        .project-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .project-discipline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            background: #3498db;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .project-duration {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-item {
+            text-align: center;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .detail-label {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-top: 0.25rem;
+        }
+        
+        .project-missions {
+            margin-top: 1rem;
+        }
+        
+        .missions-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .missions-list {
+            list-style: none;
+        }
+        
+        .mission-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ecf0f1;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .mission-item:last-child {
+            border-bottom: none;
+        }
+        
+        .mission-item::before {
+            content: '▸';
+            color: #3498db;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .budget-placeholder {
+            background: linear-gradient(45deg, #ecf0f1 25%, transparent 25%), 
+                        linear-gradient(-45deg, #ecf0f1 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #ecf0f1 75%), 
+                        linear-gradient(-45deg, transparent 75%, #ecf0f1 75%);
+            background-size: 6px 6px;
+            background-position: 0 0, 0 3px, 3px -3px, -3px 0px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .discipline-formation { border-left-color: #9b59b6; }
+        .discipline-production { border-left-color: #3498db; }
+        .discipline-rd { border-left-color: #f1c40f; }
+        .discipline-admin { border-left-color: #2ecc71; }
+        .discipline-maitrise { border-left-color: #e67e22; }
+        .discipline-coordination { border-left-color: #e74c3c; }
+        
+        .discipline-formation .project-discipline { background: #9b59b6; }
+        .discipline-production .project-discipline { background: #3498db; }
+        .discipline-rd .project-discipline { background: #f1c40f; color: #2c3e50; }
+        .discipline-admin .project-discipline { background: #2ecc71; }
+        .discipline-maitrise .project-discipline { background: #e67e22; }
+        .discipline-coordination .project-discipline { background: #e74c3c; }
+        
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Styles pour la timeline MSP horizontale */
+        .timeline-wrapper-msp {
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .timeline-msp {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-header-msp {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .month-column-msp {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin: 0 2px;
+        }
+        
+        .timeline-content-msp {
+            position: relative;
+            min-height: 600px;
+        }
+        
+        .activity-lane-msp {
+            position: relative;
+            height: 90px;
+            margin-bottom: 15px;
+            border-left: 3px solid #bdc3c7;
+            padding-left: 20px;
+        }
+        
+        .lane-label-msp {
+            position: absolute;
+            left: -160px;
+            top: 35px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: right;
+            width: 140px;
+            word-wrap: break-word;
+        }
+        
+        .activity-bar-msp {
+            position: absolute;
+            height: 25px;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .activity-bar-msp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .production-bim-msp { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .formation-msp { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .administration-msp { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+        .recherche-msp { background: linear-gradient(135deg, #f1c40f, #f39c12); }
+        .moe-msp { background: linear-gradient(135deg, #e67e22, #d35400); }
+        .coordination-msp { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .hmonp-session-msp { background: linear-gradient(135deg, #667eea, #764ba2); }
+        
+        .competence-flow-msp {
+            position: absolute;
+            top: -20px;
+            right: 10px;
+            font-size: 0.7rem;
+            color: #2c3e50;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: rgba(255,255,255,0.9);
+            padding: 2px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        
+        .activity-bar-msp:hover .competence-flow-msp {
+            opacity: 1;
+        }
+        
+        .progression-arrow-msp {
+            position: absolute;
+            right: -25px;
+            top: 3px;
+            width: 18px;
+            height: 18px;
+            background: #e74c3c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        .stats-overlay-msp {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .stat-item-msp {
+            text-align: center;
+        }
+        
+        .stat-value-msp {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1rem;
+        }
+        
+        .legend-msp {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .insights-msp {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .insights-msp h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .insights-msp p {
+            line-height: 1.6;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .timeline::before {
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 3px;
+                height: auto;
+                transform: translateX(-50%);
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .timeline-container {
+                padding: 1rem;
+                padding-left: 120px;
+            }
+            
+            .lane-label-msp {
+                left: -110px;
+                width: 90px;
+                font-size: 0.7rem;
+                top: 30px;
+            }
+            
+            .activity-lane-msp {
+                height: 75px;
+                margin-bottom: 10px;
+            }
+            
+            .activity-bar-msp {
+                font-size: 0.65rem;
+                padding: 0 6px;
+                height: 22px;
+            }
+            
+            .timeline-header-msp {
+                font-size: 0.8rem;
+            }
+            
+            .month-column-msp {
+                padding: 6px 2px;
+            }
+            
+            .legend-msp {
+                gap: 10px;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Feuille de Route MSP 2025</h1>
+            <p>Mise en Situation Professionnelle - HMONP | Atelier Juno</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Vue d'ensemble -->
+        <div class="timeline-section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line"></i> Vue d'ensemble - Février à Juillet 2025</h2>
+                <p style="color: #ecf0f1; margin-top: 0.5rem; font-style: italic;">Évolution des missions et progression vers l'autonomie professionnelle</p>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-wrapper-msp">
+                    <div class="stats-overlay-msp">
+                        <div class="stat-item-msp">
+                            <div class="stat-value-msp">828h</div>
+                            <div>Total travaillées</div>
+                        </div>
+                        <div class="stat-item-msp">
+                            <div class="stat-value-msp">35+</div>
+                            <div>Projets différents</div>
+                        </div>
+                        <div class="stat-item-msp">
+                            <div class="stat-value-msp">6</div>
+                            <div>Disciplines majeures</div>
+                        </div>
+                        <div class="stat-item-msp">
+                            <div class="stat-value-msp">15j</div>
+                            <div>Session HMONP (juin)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-msp">
+                        <div class="timeline-header-msp">
+                            <div class="month-column-msp">Février 2025</div>
+                            <div class="month-column-msp">Mars 2025</div>
+                            <div class="month-column-msp">Avril 2025</div>
+                            <div class="month-column-msp">Mai 2025</div>
+                            <div class="month-column-msp">Juin 2025</div>
+                            <div class="month-column-msp">Juillet 2025</div>
+                        </div>
+                        
+                        <div class="timeline-content-msp">
+                            <!-- Production BIM -->
+                            <div class="activity-lane-msp">
+                                <div class="lane-label-msp">Production BIM</div>
+                                <div class="activity-bar-msp production-bim-msp" style="left: 0%; width: 14%; top: 22px;">
+                                    Notre-Dame Marins
+                                    <div class="competence-flow-msp">→ Rigueur technique</div>
+                                </div>
+                                <div class="activity-bar-msp production-bim-msp" style="left: 16%; width: 12%; top: 50px;">
+                                    CHU Nantes
+                                </div>
+                                <div class="activity-bar-msp production-bim-msp" style="left: 47%; width: 10%; top: 22px;">
+                                    Institut G. Roussy
+                                </div>
+                            </div>
+                            
+                            <!-- Formation -->
+                            <div class="activity-lane-msp">
+                                <div class="lane-label-msp">Formation</div>
+                                <div class="activity-bar-msp formation-msp" style="left: 5%; width: 18%; top: 22px;">
+                                    AREP Architecture
+                                    <div class="competence-flow-msp">→ Transmission expertise</div>
+                                </div>
+                                <div class="activity-bar-msp formation-msp" style="left: 25%; width: 12%; top: 50px;">
+                                    KKAA Revit
+                                </div>
+                                <div class="activity-bar-msp formation-msp" style="left: 39%; width: 15%; top: 22px;">
+                                    ANMA LIM
+                                </div>
+                                <div class="activity-bar-msp formation-msp" style="left: 56%; width: 8%; top: 50px;">
+                                    AREP Base
+                                </div>
+                                <div class="activity-bar-msp formation-msp" style="left: 83%; width: 16%; top: 22px;">
+                                    LandAct Paysage
+                                    <div class="competence-flow-msp">→ Expertise intersectorielle</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Administration/Prospection -->
+                            <div class="activity-lane-msp">
+                                <div class="lane-label-msp">Prospection</div>
+                                <div class="activity-bar-msp administration-msp" style="left: 20%; width: 35%; top: 22px;">
+                                    Accord Cadre RIVP
+                                    <div class="competence-flow-msp">→ Vision commerciale</div>
+                                </div>
+                                <div class="activity-bar-msp administration-msp" style="left: 35%; width: 15%; top: 50px;">
+                                    AO BIM HUS
+                                </div>
+                                <div class="activity-bar-msp administration-msp" style="left: 59%; width: 12%; top: 50px;">
+                                    AO Strasbourg
+                                </div>
+                                <div class="activity-bar-msp administration-msp" style="left: 90%; width: 9%; top: 22px;">
+                                    Négociation RIVP
+                                </div>
+                            </div>
+                            
+                            <!-- R&D & Innovation -->
+                            <div class="activity-lane-msp">
+                                <div class="lane-label-msp">R&D Innovation</div>
+                                <div class="activity-bar-msp recherche-msp" style="left: 5%; width: 18%; top: 22px;">
+                                    Notion Road Map
+                                </div>
+                                <div class="activity-bar-msp recherche-msp" style="left: 25%; width: 35%; top: 50px;">
+                                    Power BI Road Map
+                                    <div class="competence-flow-msp">→ Innovation méthodologique</div>
+                                </div>
+                                <div class="activity-bar-msp recherche-msp" style="left: 80%; width: 15%; top: 22px;">
+                                    Outils audit
+                                </div>
+                            </div>
+                            
+                            <!-- Maîtrise d'œuvre -->
+                            <div class="activity-lane-msp">
+                                <div class="lane-label-msp">Maîtrise d'œuvre</div>
+                                <div class="activity-bar-msp moe-msp" style="left: 40%; width: 20%; top: 35px;">
+                                    GIGOT OG Paris
+                                    <div class="competence-flow-msp">→ MOE directe</div>
+                                    <div class="progression-arrow-msp">!</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Coordination/BIM Management -->
+                            <div class="activity-lane-msp">
+                                <div class="lane-label-msp">BIM Management</div>
+                                <div class="activity-bar-msp coordination-msp" style="left: 0%; width: 45%; top: 22px;">
+                                    Centre Formation Maritime
+                                    <div class="competence-flow-msp">→ Coordination technique</div>
+                                </div>
+                                <div class="activity-bar-msp coordination-msp" style="left: 82%; width: 17%; top: 50px;">
+                                    Cité des Musiques
+                                    <div class="competence-flow-msp">→ Coordination autonome</div>
+                                    <div class="progression-arrow-msp">★</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Session HMONP -->
+                            <div class="activity-lane-msp">
+                                <div class="lane-label-msp">Formation HMONP</div>
+                                <div class="activity-bar-msp hmonp-session-msp" style="left: 68%; width: 12%; top: 35px;">
+                                    Session Malaquais (15j)
+                                    <div class="competence-flow-msp">→ Vision entrepreneuriale</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="legend-msp">
+                    <div class="legend-item">
+                        <div class="legend-color production-bim-msp"></div>
+                        <span>Production BIM</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color formation-msp"></div>
+                        <span>Formation</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color administration-msp"></div>
+                        <span>Prospection/Administration</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color recherche-msp"></div>
+                        <span>R&D & Innovation</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color moe-msp"></div>
+                        <span>Maîtrise d'œuvre</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color coordination-msp"></div>
+                        <span>BIM Management</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color hmonp-session-msp"></div>
+                        <span>Formation HMONP</span>
+                    </div>
+                </div>
+                
+                <div class="insights-msp">
+                    <h3>Progression vers l'autonomie professionnelle</h3>
+                    <p><strong>Transfert de compétences BIM → Architecture :</strong> La timeline illustre parfaitement l'évolution d'une expertise technique (Production BIM) vers une pratique architecturale intégrée. La maîtrise technique acquise constitue le socle de rigueur méthodologique nécessaire à l'exercice de la maîtrise d'œuvre.</p>
+                    
+                    <p><strong>Formation comme passerelle :</strong> Les missions de formation développent la capacité de transmission et de communication, compétence essentielle au rôle de coordinateur. Cette dimension pédagogique résonne directement avec la fonction de médiateur entre les différents acteurs du projet architectural.</p>
+                    
+                    <p><strong>Émergence progressive de la MOE :</strong> L'apparition du projet GIGOT OG marque un tournant qualitatif, s'appuyant sur l'ensemble des compétences développées en amont. La mission Cité des Musiques (★) représente l'aboutissement : une coordination autonome de haut niveau.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projets détaillés -->
+        <div class="timeline-section">
+            <div class="section-header">
+                <h2><i class="fas fa-project-diagram"></i> Projets par Période</h2>
+            </div>
+            <div class="timeline-container">
+                <div class="projects-grid" id="projectsGrid">
+                    
+                    <!-- Formation AREP -->
+                    <div class="project-card discipline-formation">
+                        <div class="project-header">
+                            <div class="project-title">Formation AREP Architecture & Familles</div>
+                            <div class="project-meta">
+                                <span class="project-discipline">
+                                    <i class="fas fa-chalkboard-teacher"></i> Formation
+                                </span>
+                                <span class="project-duration">Février - Mars 2025</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-value">35h</div>
+                                    <div class="detail-label">Volume horaire</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">3</div>
+                                    <div class="detail-label">Sessions</div>
+                                </div>
+                                <div class="detail-item budget-placeholder">
+                                    <div class="detail-value">À définir</div>
+                                    <div class="detail-label">Budget</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Revit</div>
+                                    <div class="detail-label">Logiciel</div>
+                                </div>
+                            </div>
+                            <div class="project-missions">
+                                <div class="missions-title">
+                                    <i class="fas fa-tasks"></i> Missions réalisées
+                                </div>
+                                <ul class="missions-list">
+                                    <li class="mission-item">Animation formation Revit Architecture (16h)</li>
+                                    <li class="mission-item">Formation spécialisée Familles paramétriques (14h)</li>
+                                    <li class="mission-item">Création supports pédagogiques (5h)</li>
+                                    <li class="mission-item">Accompagnement équipes architectes seniors</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notre-Dame des Marins -->
+                    <div class="project-card discipline-production">
+                        <div class="project-header">
+                            <div class="project-title">Notre-Dame des Marins - Martigues</div>
+                            <div class="project-meta">
+                                <span class="project-discipline">
+                                    <i class="fas fa-building"></i> Production BIM
+                                </span>
+                                <span class="project-duration">Février - Mars 2025</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-value">67h</div>
+                                    <div class="detail-label">Volume horaire</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Logement</div>
+                                    <div class="detail-label">Programme</div>
+                                </div>
+                                <div class="detail-item budget-placeholder">
+                                    <div class="detail-value">À définir</div>
+                                    <div class="detail-label">Budget</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Martigues</div>
+                                    <div class="detail-label">Lieu</div>
+                                </div>
+                            </div>
+                            <div class="project-missions">
+                                <div class="missions-title">
+                                    <i class="fas fa-tasks"></i> Missions réalisées
+                                </div>
+                                <ul class="missions-list">
+                                    <li class="mission-item">Modélisation BIM complexe multi-bâtiments</li>
+                                    <li class="mission-item">Coordination technique et architecturale</li>
+                                    <li class="mission-item">Production de plans et coupes détaillées</li>
+                                    <li class="mission-item">Optimisation flux de travail BIM</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Centre Formation Maritime -->
+                    <div class="project-card discipline-coordination">
+                        <div class="project-header">
+                            <div class="project-title">Centre de Formation Maritime</div>
+                            <div class="project-meta">
+                                <span class="project-discipline">
+                                    <i class="fas fa-cogs"></i> BIM Management
+                                </span>
+                                <span class="project-duration">Février - Mai 2025</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-value">53h</div>
+                                    <div class="detail-label">Volume horaire</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Formation</div>
+                                    <div class="detail-label">Programme</div>
+                                </div>
+                                <div class="detail-item budget-placeholder">
+                                    <div class="detail-value">À définir</div>
+                                    <div class="detail-label">Budget</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Maritime</div>
+                                    <div class="detail-label">Secteur</div>
+                                </div>
+                            </div>
+                            <div class="project-missions">
+                                <div class="missions-title">
+                                    <i class="fas fa-tasks"></i> Missions réalisées
+                                </div>
+                                <ul class="missions-list">
+                                    <li class="mission-item">Documentation technique et coordination BIM (22h)</li>
+                                    <li class="mission-item">Gestion et structuration des maquettes (23h)</li>
+                                    <li class="mission-item">Coordination équipements spécialisés maritimes</li>
+                                    <li class="mission-item">Expertise BIM et audit qualité (8h)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Power BI Road Map -->
+                    <div class="project-card discipline-rd">
+                        <div class="project-header">
+                            <div class="project-title">Power BI Road Map - Innovation Agence</div>
+                            <div class="project-meta">
+                                <span class="project-discipline">
+                                    <i class="fas fa-lightbulb"></i> R&D Innovation
+                                </span>
+                                <span class="project-duration">Mars - Juillet 2025</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-value">75h</div>
+                                    <div class="detail-label">Volume horaire</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Innovation</div>
+                                    <div class="detail-label">Type</div>
+                                </div>
+                                <div class="detail-item budget-placeholder">
+                                    <div class="detail-value">Interne</div>
+                                    <div class="detail-label">Budget</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Transversal</div>
+                                    <div class="detail-label">Impact</div>
+                                </div>
+                            </div>
+                            <div class="project-missions">
+                                <div class="missions-title">
+                                    <i class="fas fa-tasks"></i> Missions réalisées
+                                </div>
+                                <ul class="missions-list">
+                                    <li class="mission-item">Formation intensive Power BI (24h)</li>
+                                    <li class="mission-item">Développement gabarits d'analyse (32h)</li>
+                                    <li class="mission-item">Création rapports Institut Gustave Roussy</li>
+                                    <li class="mission-item">Industrialisation processus d'audit BIM</li>
+                                    <li class="mission-item">Présentation équipe et formation collègues</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- GIGOT OG Paris -->
+                    <div class="project-card discipline-maitrise">
+                        <div class="project-header">
+                            <div class="project-title">GIGOT OG - Paris</div>
+                            <div class="project-meta">
+                                <span class="project-discipline">
+                                    <i class="fas fa-drafting-compass"></i> Maîtrise d'œuvre
+                                </span>
+                                <span class="project-duration">Avril - Mai 2025</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-value">27h</div>
+                                    <div class="detail-label">Volume horaire</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">ERP Cat. 5</div>
+                                    <div class="detail-label">Programme</div>
+                                </div>
+                                <div class="detail-item budget-placeholder">
+                                    <div class="detail-value">À définir</div>
+                                    <div class="detail-label">Budget</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Paris</div>
+                                    <div class="detail-label">Lieu</div>
+                                </div>
+                            </div>
+                            <div class="project-missions">
+                                <div class="missions-title">
+                                    <i class="fas fa-tasks"></i> Missions réalisées
+                                </div>
+                                <ul class="missions-list">
+                                    <li class="mission-item">Participation phases amont conception</li>
+                                    <li class="mission-item">Relations clients et réunions chantier</li>
+                                    <li class="mission-item">Coordination technique BIM/Architecture</li>
+                                    <li class="mission-item">Première expérience maîtrise d'œuvre directe</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Appel d'offres RIVP -->
+                    <div class="project-card discipline-admin">
+                        <div class="project-header">
+                            <div class="project-title">Accord Cadre RIVP - AMO BIM</div>
+                            <div class="project-meta">
+                                <span class="project-discipline">
+                                    <i class="fas fa-handshake"></i> Prospection
+                                </span>
+                                <span class="project-duration">Mars - Juin 2025</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-value">87h</div>
+                                    <div class="detail-label">Volume horaire</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Marché public</div>
+                                    <div class="detail-label">Type</div>
+                                </div>
+                                <div class="detail-item budget-placeholder">
+                                    <div class="detail-value">Prospection</div>
+                                    <div class="detail-label">Budget</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">AMO BIM</div>
+                                    <div class="detail-label">Mission</div>
+                                </div>
+                            </div>
+                            <div class="project-missions">
+                                <div class="missions-title">
+                                    <i class="fas fa-tasks"></i> Missions réalisées
+                                </div>
+                                <ul class="missions-list">
+                                    <li class="mission-item">Rédaction mémoire technique approfondie (48h)</li>
+                                    <li class="mission-item">Analyse cahier des charges RIVP</li>
+                                    <li class="mission-item">Valorisation expertise bicéphale agence</li>
+                                    <li class="mission-item">Négociation commerciale et finalisation</li>
+                                    <li class="mission-item">Préparation soutenance orale</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cité des Musiques Actuelles -->
+                    <div class="project-card discipline-coordination">
+                        <div class="project-header">
+                            <div class="project-title">Cité des Musiques Actuelles</div>
+                            <div class="project-meta">
+                                <span class="project-discipline">
+                                    <i class="fas fa-music"></i> BIM Management
+                                </span>
+                                <span class="project-duration">Juillet 2025</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-value">63h</div>
+                                    <div class="detail-label">Volume horaire</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Culturel</div>
+                                    <div class="detail-label">Programme</div>
+                                </div>
+                                <div class="detail-item budget-placeholder">
+                                    <div class="detail-value">À définir</div>
+                                    <div class="detail-label">Budget</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Autonome</div>
+                                    <div class="detail-label">Responsabilité</div>
+                                </div>
+                            </div>
+                            <div class="project-missions">
+                                <div class="missions-title">
+                                    <i class="fas fa-tasks"></i> Missions réalisées
+                                </div>
+                                <ul class="missions-list">
+                                    <li class="mission-item">Mission BIM Management autonome complète</li>
+                                    <li class="mission-item">Édition conventions BIM contextualelles</li>
+                                    <li class="mission-item">Coordination opérationnelle multi-lots</li>
+                                    <li class="mission-item">Développement outils d'audit transversaux</li>
+                                    <li class="mission-item">Pilotage et suivi qualité maquettes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formation LandAct -->
+                    <div class="project-card discipline-formation">
+                        <div class="project-header">
+                            <div class="project-title">Formation LandAct - BIM Paysage</div>
+                            <div class="project-meta">
+                                <span class="project-discipline">
+                                    <i class="fas fa-leaf"></i> Formation spécialisée
+                                </span>
+                                <span class="project-duration">Juillet 2025</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <div class="detail-value">35h</div>
+                                    <div class="detail-label">Volume horaire</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Paysage</div>
+                                    <div class="detail-label">Spécialité</div>
+                                </div>
+                                <div class="detail-item budget-placeholder">
+                                    <div class="detail-value">À définir</div>
+                                    <div class="detail-label">Budget</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-value">Intersectoriel</div>
+                                    <div class="detail-label">Adaptation</div>
+                                </div>
+                            </div>
+                            <div class="project-missions">
+                                <div class="missions-title">
+                                    <i class="fas fa-tasks"></i> Missions réalisées
+                                </div>
+                                <ul class="missions-list">
+                                    <li class="mission-item">Formation Revit paysage paramétrique (21h)</li>
+                                    <li class="mission-item">Session avancée familles et phases (14h)</li>
+                                    <li class="mission-item">Adaptation intersectorielle des compétences</li>
+                                    <li class="mission-item">Transmission expertise BIM secteur paysage</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Animation des points de timeline
+        document.querySelectorAll('.timeline-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                // Retirer active de tous les points
+                document.querySelectorAll('.timeline-dot').forEach(d => d.classList.remove('active'));
+                // Ajouter active au point cliqué
+                this.classList.add('active');
+                
+                // Animation des cartes (optionnel)
+                const month = this.dataset.month;
+                animateProjectCards(month);
+            });
+        });
+        
+        function animateProjectCards(month) {
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach((card, index) => {
+                card.style.animation = 'none';
+                setTimeout(() => {
+                    card.style.animation = `fadeInUp 0.6s ease forwards`;
+                    card.style.animationDelay = `${index * 0.1}s`;
+                }, 50);
+            });
+        }
+        
+        // Ajout des styles d'animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Animation initiale
+        window.addEventListener('load', () => {
+            animateProjectCards('initial');
+        });
+    </script>
+</body>
+</html>
