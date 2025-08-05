@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal de Bord HMONP | Balogun OD </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
      <!-- Favicon -->
     <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
     <style>
@@ -57,6 +58,55 @@
             margin-bottom: 2rem;
         }
         
+        /* Styles pour le graphique */
+        .chart-section {
+            background-color: rgba(0, 0, 0, 0.00);
+            padding: 2rem;
+            border-radius: 2px;
+            box-shadow: 0 0px 00px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .chart-container {
+            height: 500px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .chart-title {
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .period-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 20px 0;
+        }
+        
+        .period-item {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .period-t1 {
+            background-color: #e8f4f8;
+            color: #2c3e50;
+            border: 2px solid #3498db;
+        }
+        
+        .period-t2 {
+            background-color: #f0f8e8;
+            color: #2c3e50;
+            border: 2px solid #27ae60;
+        }
+        
         .month-section {
             margin-bottom: 1.5rem;
             background-color: white;
@@ -94,7 +144,7 @@
         
         .week-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 6px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -210,7 +260,7 @@
             background-color: rgba(255, 255, 255, 0.2);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 4px;
+            border-radius: 2px;
             padding: 0.4rem 0.8rem;
             margin-left: 1rem;
             font-size: 0.9rem;
@@ -241,7 +291,7 @@
         .annual-section {
             margin-bottom: 1.5rem;
             background-color: white;
-            border-radius: 8px;
+            border-radius: 4px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             overflow: hidden;
         }
@@ -304,7 +354,27 @@
             <p>Ce journal de bord documente mon parcours professionnel à l'Atelier Juno dans le cadre de ma formation HMONP. Il présente semaine par semaine les différentes missions réalisées, les compétences développées et les réflexions sur ma future pratique en tant qu'architecte en nom propre.</p>
             <p>Chaque page hebdomadaire comprend une analyse détaillée des projets traités ainsi qu'une visualisation graphique de la répartition de mon temps de travail.</p>
         </section>
+
+        <!-- Section graphique intégrée -->
+        <section class="chart-section">
+            <h2 class="chart-title">Évolution de mes activités sur 6 mois chez JUNO</h2>
+            
+            <div class="period-indicator">
+                <div class="period-item period-t1">
+                    <div>T1 2025</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Février - Avril</div>
+                </div>
+                <div class="period-item period-t2">
+                    <div>T2 2025</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Mai - Juillet</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="combinedStreamChart"></canvas>
+            </div>
         </section>
+        
         <!-- MSP Section -->
         <section class="msp-section">
             <div class="msp-header">
@@ -392,7 +462,6 @@
             </div>
         </section>
         
-        <!-- Reste du code inchangé -->
         <!-- Mars 2025 -->
         <section class="month-section month-march collapsed">
             <div class="month-header">
@@ -741,7 +810,7 @@
                      <i class="fas fa-chart-line"></i> Bilan trimestre T2
                   </a>
              </div>
-        
+        </section>
     </div>
     
     
@@ -749,6 +818,282 @@
         <p>© 2025 - Journal de Bord HMONP - Balogun Ola-Davies</p>
     </footer>
     <script>
+        // Configuration du graphique combiné
+        const ctx = document.getElementById('combinedStreamChart').getContext('2d');
+        
+        const combinedChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    // T1 2025 - Février à Avril
+                    'Fév S1', 'Fév S2', 'Fév S3', 'Fév S4', 
+                    'Mar S1', 'Mar S2', 'Mar S3', 'Mar S4',
+                    'Avr S1', 'Avr S2', 'Avr S3', 'Avr S4',
+                    // T2 2025 - Mai à Juillet
+                    'Mai S1', 'Mai S2', 'Mai S3', 'Mai S4',
+                    'Juin S1', 'Juil S1', 'Juil S2', 'Juil S3', 'Juil S4'
+                ],
+                datasets: [
+                    {
+                        label: 'BIM Management & Production',
+                        data: [
+                            // T1: Production technique
+                            19, 10, 17, 12, 27, 12, 5, 21, 7, 7, 16, 5,
+                            // T2: BIM Management & Coordination
+                            19, 1, 8, 6, 7, 16, 14, 14, 19
+                        ],
+                        backgroundColor: 'rgba(52, 152, 219, 0.5)',
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Formation & Transmission',
+                        data: [
+                            // T1: Formation
+                            16, 14, 5, 0, 0, 24, 21, 0, 16, 14, 0, 16,
+                            // T2: Formation spécialisée
+                            0, 0, 8, 0, 21, 4, 21, 14, 0
+                        ],
+                        backgroundColor: 'rgba(155, 89, 182, 0.6)',
+                        borderColor: 'rgba(155, 89, 182, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Administration & Commercial',
+                        data: [
+                            // T1: Administration
+                            3, 0, 0.5, 12, 8, 1, 8, 8, 13, 2, 12, 10,
+                            // T2: Prospection commerciale + autres admin
+                            0, 16, 11, 16, 7, 0.5, 0, 0, 3
+                        ],
+                        backgroundColor: 'rgba(46, 204, 113, 0.6)',
+                        borderColor: 'rgba(46, 204, 113, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'R&D & Innovation',
+                        data: [
+                            // T1: R&D
+                            0, 0, 6, 0, 0, 0, 0, 4, 7, 7, 6, 11,
+                            // T2: Innovation & R&D
+                            3, 16, 6, 8, 1, 8, 0, 0, 9
+                        ],
+                        backgroundColor: 'rgba(241, 196, 15, 0.6)',
+                        borderColor: 'rgba(241, 196, 15, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Maîtrise d\'œuvre',
+                        data: [
+                            // T1: Maîtrise d'œuvre
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0,
+                            // T2: Maîtrise d'œuvre
+                            8, 1, 8, 6, 0, 0, 0, 0, 0
+                        ],
+                        backgroundColor: 'rgba(230, 126, 34, 0.6)',
+                        borderColor: 'rgba(230, 126, 34, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Documentation technique',
+                        data: [
+                            // T1: Documentation technique
+                            0, 0, 8, 14, 0, 0, 0, 0, 0, 0, 0, 0,
+                            // T2: Pas d'équivalent direct
+                            0, 0, 0, 0, 0, 0, 0, 0, 0
+                        ],
+                        backgroundColor: 'rgba(131, 207, 200, 0.6)',
+                        borderColor: 'rgba(131, 207, 200, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Représentation',
+                        data: [
+                            // T1: Représentation
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0,
+                            // T2: Pas d'équivalent
+                            0, 0, 0, 0, 0, 0, 0, 0, 0
+                        ],
+                        backgroundColor: 'rgba(26, 188, 156, 0.6)',
+                        borderColor: 'rgba(26, 188, 156, 1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Réflexion académique',
+                        data: [
+                            // T1: Pas d'équivalent
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            // T2: Réflexion académique
+                            0, 5, 0, 0, 0, 0, 0, 0, 0
+                        ],
+                        backgroundColor: 'rgba(52, 73, 94, 0.6)',
+                        borderColor: 'rgba(52, 73, 94, 1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            maxRotation: 45,
+                            font: {
+                                size: 11
+                            }
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        ticks: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleColor: 'white',
+                        bodyColor: 'white',
+                        borderColor: 'rgba(255, 255, 255, 0.2)',
+                        borderWidth: 1,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 12
+                        },
+                        callbacks: {
+                            title: function(context) {
+                                const weekIndex = context[0].dataIndex;
+                                const periods = {
+                                    0: 'Trimestre 1 - Février 2025',
+                                    4: 'Trimestre 1 - Mars 2025',
+                                    8: 'Trimestre 1 - Avril 2025',
+                                    12: 'Trimestre 2 - Mai 2025',
+                                    16: 'Trimestre 2 - Juin 2025',
+                                    17: 'Trimestre 2 - Juillet 2025'
+                                };
+                                
+                                let period = 'Formation HMONP';
+                                for (const [startWeek, periodName] of Object.entries(periods)) {
+                                    if (weekIndex >= parseInt(startWeek)) {
+                                        period = periodName;
+                                    }
+                                }
+                                
+                                return `${context[0].label} - ${period}`;
+                            },
+                            afterTitle: function(context) {
+                                const total = context.reduce((sum, item) => sum + item.raw, 0);
+                                return `Total: ${total}h`;
+                            },
+                            label: function(context) {
+                                if (context.raw === 0) return null;
+                                const percentage = ((context.raw / context.chart.data.datasets.reduce((sum, dataset) => 
+                                    sum + dataset.data[context.dataIndex], 0)) * 100).toFixed(1);
+                                return `${context.dataset.label}: ${context.raw}h (${percentage}%)`;
+                            },
+                            afterBody: function(context) {
+                                const weekIndex = context[0].dataIndex;
+                                const keyProjects = getKeyProjectsByWeek(weekIndex);
+                                return keyProjects.length > 0 ? [``, `Projets clés:`, ...keyProjects] : [];
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15,
+                            font: {
+                                size: 13
+                            },
+                            filter: function(legendItem, chartData) {
+                                // Masquer les légendes pour les datasets vides
+                                const dataset = chartData.datasets[legendItem.datasetIndex];
+                                const hasData = dataset.data.some(value => value > 0);
+                                return hasData;
+                            }
+                        }
+                    }
+                },
+                elements: {
+                    line: {
+                        fill: true
+                    },
+                    point: {
+                        radius: 0,
+                        hoverRadius: 6
+                    }
+                }
+            }
+        });
+
+        // Fonction pour obtenir les projets clés par semaine
+        function getKeyProjectsByWeek(weekIndex) {
+            const projectsByWeek = [
+                // T1 2025
+                ['Notre-Dame des Marins', 'Formation AREP'], // Fév S1
+                ['Formation AREP'], // Fév S2
+                ['Centre Formation Maritime', 'Notion Road Map'], // Fév S3
+                ['Centre Formation Maritime'], // Fév S4
+                ['Notre-Dame des Marins'], // Mar S1
+                ['Formation Power BI', 'Formation KKAA'], // Mar S2
+                ['Formation KKAA'], // Mar S3
+                ['Notre-Dame des Marins', 'Formation Power BI'], // Mar S4
+                ['Formation ANMA_LIM', 'Power BI Road Map'], // Avr S1
+                ['Formation ANMA_LIM', 'Représentation'], // Avr S2
+                ['Centre Formation Maritime', 'Appels d\'offre'], // Avr S3
+                ['Power BI Road Map', 'GIGOT OG'], // Avr S4
+                
+                // T2 2025
+                ['Institut Gustave Roussy', 'GIGOT OG'], // Mai S1
+                ['Appel d\'offres RIVP', 'Power BI Road Map'], // Mai S2
+                ['Appel d\'offres RIVP', 'Formation ANMA'], // Mai S3
+                ['Appel d\'offres RIVP', 'GIGOT OG'], // Mai S4
+                ['Formation REVIT AREP', 'Finalisation RIVP'], // Juin S1
+                ['Cité des Musiques', 'Formation Enscape'], // Juil S1
+                ['Cité des Musiques', 'Formation LandAct'], // Juil S2
+                ['Cité des Musiques', 'Formation LandAct'], // Juil S3
+                ['Cité des Musiques', 'Innovation MATHSTIC'] // Juil S4
+            ];
+            
+            return projectsByWeek[weekIndex] || [];
+        }
+
         // Script pour gérer les sections dépliables
         document.querySelectorAll('.month-header').forEach(header => {
             header.addEventListener('click', (e) => {
