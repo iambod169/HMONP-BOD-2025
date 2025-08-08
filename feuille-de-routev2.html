@@ -20,7 +20,7 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            background: linear-gradient(135deg, #000000 0%, #00220a 100%);
             color: white;
             padding: 2rem 0;
             text-align: center;
@@ -42,20 +42,41 @@
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .home-button:hover {
+            background-color: #2c3e50;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .home-button i {
+            margin-right: 10px;
+        }
         .timeline-section {
-            background: white;
+            background: white(255, 255, 255);
             margin: 2rem 0;
-            border-radius: 12px;
+            border-radius: 3px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             overflow: hidden;
         }
         
         .section-header {
-            background: #34495e;
+            background: #102030;
             color: white;
             padding: 1.5rem 2rem;
-            border-bottom: 3px solid #3498db;
+            border-bottom: 5px solid #1c701c;
         }
         
         .section-header h2 {
@@ -335,25 +356,25 @@
         
         .timeline-content-msp {
             position: relative;
-            min-height: 600px;
+            min-height: 00px;
         }
         
         .activity-lane-msp {
             position: relative;
             height: 90px;
             margin-bottom: 15px;
-            border-left: 3px solid #bdc3c7;
+            border-left: 3px solid #193242;
             padding-left: 20px;
         }
         
         .lane-label-msp {
             position: absolute;
-            left: -160px;
+            left: 5px;
             top: 35px;
             font-size: 0.85rem;
             font-weight: 600;
-            color: #2c3e50;
-            text-align: right;
+            color: #b3beca;
+            text-align: LEFT;
             width: 140px;
             word-wrap: break-word;
         }
@@ -410,7 +431,7 @@
             top: 3px;
             width: 18px;
             height: 18px;
-            background: #e74c3c;
+            background: #000000;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -534,7 +555,13 @@
     </style>
 </head>
 <body>
+    
     <div class="header">
+        <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Retour à l'accueil
+        </a>
+        </div>
         <div class="container">
             <h1>Feuille de Route MSP 2025</h1>
             <p>Mise en Situation Professionnelle - HMONP | Atelier Juno</p>
@@ -545,7 +572,7 @@
         <!-- Vue d'ensemble -->
         <div class="timeline-section">
             <div class="section-header">
-                <h2><i class="fas fa-chart-line"></i> Vue d'ensemble - Février à Juillet 2025</h2>
+                <h2> Vue d'ensemble - Février à Juillet 2025 <i class="fas fa-calendar-alt"></i></h2>
                 <p style="color: #ecf0f1; margin-top: 0.5rem; font-style: italic;">Évolution des missions et progression vers l'autonomie professionnelle</p>
             </div>
             <div class="timeline-container">
@@ -556,7 +583,7 @@
                             <div>Total travaillées</div>
                         </div>
                         <div class="stat-item-msp">
-                            <div class="stat-value-msp">35+</div>
+                            <div class="stat-value-msp">25</div>
                             <div>Projets différents</div>
                         </div>
                         <div class="stat-item-msp">
@@ -587,7 +614,7 @@
                                     Notre-Dame Marins
                                     <div class="competence-flow-msp">→ Rigueur technique</div>
                                 </div>
-                                <div class="activity-bar-msp production-bim-msp" style="left: 9%; width: 19%; top: 23px;">
+                                <div class="activity-bar-msp production-bim-msp" style="left: 9%; width: 19%; top: 26px;">
                                     CHU Nantes
                                 </div>
                                 <div class="activity-bar-msp production-bim-msp" style="left: 47%; width: 10%; top: 50px;">
@@ -598,20 +625,21 @@
                             <!-- Formation -->
                             <div class="activity-lane-msp">
                                 <div class="lane-label-msp">Formation</div>
-                                <div class="activity-bar-msp formation-msp" style="left: 5%; width: 18%; top: 22px;">
+                                <div class="activity-bar-msp formation-msp" style="left: 5%; width: 18%; top: 0px;">
                                     AREP Architecture
                                     <div class="competence-flow-msp">→ Transmission expertise</div>
+                                    <div class="progression-arrow-msp">★</div>
                                 </div>
-                                <div class="activity-bar-msp formation-msp" style="left: 25%; width: 12%; top: 50px;">
+                                <div class="activity-bar-msp formation-msp" style="left: 25%; width: 12%; top: 22px;">
                                     KKAA Revit
                                 </div>
-                                <div class="activity-bar-msp formation-msp" style="left: 39%; width: 15%; top: 22px;">
+                                <div class="activity-bar-msp formation-msp" style="left: 39%; width: 15%; top: 50px;">
                                     ANMA LIM
                                 </div>
-                                <div class="activity-bar-msp formation-msp" style="left: 56%; width: 8%; top: 50px;">
+                                <div class="activity-bar-msp formation-msp" style="left: 56%; width: 8%; top: 0px;">
                                     AREP Base
                                 </div>
-                                <div class="activity-bar-msp formation-msp" style="left: 83%; width: 16%; top: 22px;">
+                                <div class="activity-bar-msp formation-msp" style="left: 83%; width: 16%; top: 50px;">
                                     LandAct Paysage
                                     <div class="competence-flow-msp">→ Expertise intersectorielle</div>
                                 </div>
@@ -623,6 +651,7 @@
                                 <div class="activity-bar-msp administration-msp" style="left: 20%; width: 35%; top: 22px;">
                                     Accord Cadre RIVP
                                     <div class="competence-flow-msp">→ Vision commerciale</div>
+                                    <div class="progression-arrow-msp">★</div>
                                 </div>
                                 <div class="activity-bar-msp administration-msp" style="left: 35%; width: 15%; top: 50px;">
                                     AO BIM HUS
@@ -630,7 +659,7 @@
                                 <div class="activity-bar-msp administration-msp" style="left: 59%; width: 12%; top: 50px;">
                                     AO Strasbourg
                                 </div>
-                                <div class="activity-bar-msp administration-msp" style="left: 90%; width: 9%; top: 22px;">
+                                <div class="activity-bar-msp administration-msp" style="left: 89%; width: 12%; top: 22px;">
                                     Négociation RIVP
                                 </div>
                             </div>
@@ -638,14 +667,14 @@
                             <!-- R&D & Innovation -->
                             <div class="activity-lane-msp">
                                 <div class="lane-label-msp">R&D Innovation</div>
-                                <div class="activity-bar-msp recherche-msp" style="left: 5%; width: 18%; top: 22px;">
+                                <div class="activity-bar-msp recherche-msp" style="left: 5%; width: 18%; top: 0px;">
                                     Notion Road Map
                                 </div>
-                                <div class="activity-bar-msp recherche-msp" style="left: 25%; width: 35%; top: 50px;">
+                                <div class="activity-bar-msp recherche-msp" style="left: 25%; width: 35%; top: 22px;">
                                     Power BI Road Map
                                     <div class="competence-flow-msp">→ Innovation méthodologique</div>
                                 </div>
-                                <div class="activity-bar-msp recherche-msp" style="left: 80%; width: 15%; top: 22px;">
+                                <div class="activity-bar-msp recherche-msp" style="left: 80%; width: 15%; top: 50px;">
                                     Outils audit
                                 </div>
                             </div>
@@ -653,10 +682,14 @@
                             <!-- Maîtrise d'œuvre -->
                             <div class="activity-lane-msp">
                                 <div class="lane-label-msp">Maîtrise d'œuvre</div>
+                                <div class="activity-bar-msp moe-msp" style="left: 0%; width: 15%; top: 0px;">
+                                    Maison indiv. - Chelles
+                                    <div class="competence-flow-msp">→ MOE directe</div>
+                                    <div class="progression-arrow-msp">★</div>
+                                </div>
                                 <div class="activity-bar-msp moe-msp" style="left: 40%; width: 20%; top: 35px;">
                                     GIGOT OG Paris
                                     <div class="competence-flow-msp">→ MOE directe</div>
-                                    <div class="progression-arrow-msp">!</div>
                                 </div>
                                 <div class="activity-bar-msp moe-msp" style="left: 80%; width: 20%; top: 50px;">
                                     Extension Chalet - Bourg Saint-Maurice
@@ -667,14 +700,13 @@
                             <!-- Coordination/BIM Management -->
                             <div class="activity-lane-msp">
                                 <div class="lane-label-msp">BIM Management</div>
-                                <div class="activity-bar-msp coordination-msp" style="left: 0%; width: 45%; top: 22px;">
+                                <div class="activity-bar-msp coordination-msp" style="left: 0%; width: 45%; top: 0px;">
                                     Centre Formation Maritime
                                     <div class="competence-flow-msp">→ Coordination technique</div>
                                 </div>
                                 <div class="activity-bar-msp coordination-msp" style="left: 82%; width: 17%; top: 50px;">
                                     Cité des Musiques
-                                    <div class="competence-flow-msp">→ Coordination autonome</div>
-                                    <div class="progression-arrow-msp">★</div>
+                                    <div class="competence-flow-msp">→ Coordination autonome</div>                                    
                                 </div>
                             </div>
                             
@@ -846,16 +878,16 @@
                                     <div class="detail-label">Volume horaire</div>
                                 </div>
                                 <div class="detail-item">
-                                    <div class="detail-value">Formation</div>
+                                    <div class="detail-value">Enseignement</div>
                                     <div class="detail-label">Programme</div>
                                 </div>
-                                <div class="detail-item budget-placeholder">
-                                    <div class="detail-value">À définir</div>
+                                <div class="detail-item">
+                                    <div class="detail-value">5 000 000€</div>
                                     <div class="detail-label">Budget</div>
                                 </div>
                                 <div class="detail-item">
-                                    <div class="detail-value">Maritime</div>
-                                    <div class="detail-label">Secteur</div>
+                                    <div class="detail-value">1 623 m²</div>
+                                    <div class="detail-label">Surface</div>
                                 </div>
                             </div>
                             <div class="project-missions">
@@ -964,12 +996,12 @@
                     <!-- Appel d'offres RIVP -->
                     <div class="project-card discipline-admin">
                         <div class="project-header">
-                            <div class="project-title">Accord Cadre RIVP - AMO BIM</div>
+                            <div class="project-title">Accord Cadre RIVP</div>
                             <div class="project-meta">
                                 <span class="project-discipline">
                                     <i class="fas fa-handshake"></i> Prospection
                                 </span>
-                                <span class="project-duration">Mars - Juin 2025</span>
+                                <span class="project-duration">Mars - Août 2025</span>
                             </div>
                         </div>
                         <div class="project-content">
@@ -987,7 +1019,7 @@
                                     <div class="detail-label">Budget</div>
                                 </div>
                                 <div class="detail-item">
-                                    <div class="detail-value">AMO BIM</div>
+                                    <div class="detail-value">MOE BIM</div>
                                     <div class="detail-label">Mission</div>
                                 </div>
                             </div>
