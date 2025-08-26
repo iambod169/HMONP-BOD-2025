@@ -1,1526 +1,478 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feuille de Route MSP 2025 - HMONP</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #000000 0%, #00220a 100%);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-        }
-        
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        .home-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 20px;
-            background-color: #6F8381;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-        .home-button:hover {
-            background-color: #2c3e50;
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-        }
-        .home-button i {
-            margin-right: 10px;
-        }
-        .timeline-section {
-            background: white(255, 255, 255);
-            margin: 2rem 0;
-            border-radius: 3px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        
-        .section-header {
-            background: #102030;
-            color: white;
-            padding: 1.5rem 2rem;
-            border-bottom: 5px solid #1c701c;
-        }
-        
-        .section-header h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-        }
-        
-        .timeline-container {
-            padding: 2rem;
-            position: relative;
-        }
-        
-        .timeline {
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            margin: 2rem 0;
-            padding: 0 1rem;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #3498db, #2ecc71, #f1c40f, #e67e22, #9b59b6, #e74c3c);
-            transform: translateY(-50%);
-            z-index: 1;
-        }
-        
-        .timeline-month {
-            position: relative;
-            text-align: center;
-            z-index: 2;
-        }
-        
-        .timeline-dot {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: white;
-            border: 4px solid #3498db;
-            margin: 0 auto 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-dot:hover {
-            transform: scale(1.2);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
-        }
-        
-        .timeline-dot.active {
-            background: #3498db;
-            transform: scale(1.3);
-        }
-        
-        .timeline-label {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #34495e;
-        }
-        
-        .timeline-stats {
-            font-size: 0.8rem;
-            color: #7f8c8d;
-            margin-top: 0.25rem;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .project-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border-left: 4px solid #3498db;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-        }
-        
-        .project-header {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-bottom: 1px solid #dee2e6;
-        }
-        
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-        
-        .project-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .project-discipline {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.25rem 0.75rem;
-            background: #3498db;
-            color: white;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .project-duration {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .detail-item {
-            text-align: center;
-            padding: 0.75rem;
-            background: #f8f9fa;
-            border-radius: 6px;
-        }
-        
-        .detail-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .detail-label {
-            font-size: 0.8rem;
-            color: #7f8c8d;
-            margin-top: 0.25rem;
-        }
-        
-        .project-missions {
-            margin-top: 1rem;
-        }
-        
-        .missions-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .missions-list {
-            list-style: none;
-        }
-        
-        .mission-item {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #ecf0f1;
-            font-size: 0.9rem;
-            color: #555;
-        }
-        
-        .mission-item:last-child {
-            border-bottom: none;
-        }
-        
-        .mission-item::before {
-            content: '▸';
-            color: #3498db;
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-        
-        .budget-placeholder {
-            background: linear-gradient(45deg, #ecf0f1 25%, transparent 25%), 
-                        linear-gradient(-45deg, #ecf0f1 25%, transparent 25%), 
-                        linear-gradient(45deg, transparent 75%, #ecf0f1 75%), 
-                        linear-gradient(-45deg, transparent 75%, #ecf0f1 75%);
-            background-size: 6px 6px;
-            background-position: 0 0, 0 3px, 3px -3px, -3px 0px;
-            color: #7f8c8d;
-            font-style: italic;
-        }
-        
-        .discipline-formation { border-left-color: #7C837E; }
-        .discipline-production { border-left-color: #495655; }
-        .discipline-rd { border-left-color: #B6C0CB; }
-        .discipline-admin { border-left-color: #9E9894; }
-        .discipline-maitrise { border-left-color: #2c4136; }
-        .discipline-coordination { border-left-color: #2D2F2E; }
-        
-        .discipline-formation .project-discipline { background: #7C837E; }
-        .discipline-production .project-discipline { background: #495655; }
-        .discipline-rd .project-discipline { background: #B6C0CB; color: #2c3e50; }
-        .discipline-admin .project-discipline { background: #9E9894; color: #2c3e50; }
-        .discipline-maitrise .project-discipline { background: #2c4136; }
-        .discipline-coordination .project-discipline { background: #2D2F2E; }
-        
-        .stats-overview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-        
-        .stat-label {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-        
-        /* Styles pour la timeline MSP horizontale */
-        .timeline-wrapper-msp {
-            position: relative;
-            margin: 40px 0;
-        }
-        
-        .timeline-msp {
-            position: relative;
-            padding: 20px 0;
-        }
-        
-        .timeline-header-msp {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .month-column-msp {
-            flex: 1;
-            text-align: center;
-            padding: 10px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
-            margin: 0 2px;
-        }
-        
-        .timeline-content-msp {
-            position: relative;
-            min-height: 600px;
-        }
-        
-        .activity-lane-msp {
-            position: relative;
-            height: 90px;
-            margin-bottom: 15px;
-            border-left: 3px solid #193242;
-            padding-left: 20px;
-        }
-        
-        .lane-label-msp {
-            position: absolute;
-            left: 5px;
-            top: 35px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #2c3e50;
-            text-align: left;
-            width: 140px;
-            word-wrap: break-word;
-            z-index: 10;
-        }
-        
-        .activity-bar-msp {
-            position: absolute;
-            height: 25px;
-            border-radius: 2px;
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .activity-bar-msp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        
-        .production-bim-msp { background: linear-gradient(135deg, #495655, #3a4441); }
-        .formation-msp { background: linear-gradient(135deg, #7C837E, #6a6f6b); }
-        .administration-msp { background: linear-gradient(135deg, #9E9894, #8a857f); }
-        .recherche-msp { background: linear-gradient(135deg, #B6C0CB, #a3adb7); color: #2c3e50; }
-        .moe-msp { background: linear-gradient(135deg, #2c4136, #1f2e28); }
-        .coordination-msp { background: linear-gradient(135deg, #2D2F2E, #1f2021); }
-        .hmonp-session-msp { background: linear-gradient(135deg, #3a4888, #3f255a); }
-        
-        /* Nouvelles classes pour l'affichage fixe des phases */
-        .project-phase-msp {
-            position: absolute;
-            bottom: -18px;
-            left: 2px;
-            font-size: 0.65rem;
-            color: #2c3e50;
-            background: rgba(255,255,255,0.95);
-            padding: 1px 4px;
-            border-radius: 3px;
-            white-space: nowrap;
-            font-weight: 600;
-            border: 1px solid rgba(52, 152, 219, 0.3);
-        }
-        
-        .competence-flow-msp {
-            position: absolute;
-            top: -20px;
-            right: 10px;
-            font-size: 0.7rem;
-            color: #2c3e50;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            background: rgba(255,255,255,0.9);
-            padding: 2px 6px;
-            border-radius: 4px;
-            white-space: nowrap;
-        }
-        
-        .activity-bar-msp:hover .competence-flow-msp {
-            opacity: 1;
-        }
-        
-        .progression-arrow-msp {
-            position: absolute;
-            right: -25px;
-            top: 3px;
-            width: 18px;
-            height: 18px;
-            background: #000000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: bold;
-        }
-        
-        .stats-overlay-msp {
-            position: absolute;
-            top: -50px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-around;
-            font-size: 0.8rem;
-            color: #7f8c8d;
-            margin-bottom: 20px;
-        }
-        
-        .stat-item-msp {
-            text-align: center;
-        }
-        
-        .stat-value-msp {
-            font-weight: bold;
-            color: #2c3e50;
-            font-size: 1rem;
-        }
-        
-        .legend-msp {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .legend-color {
-            width: 20px;
-            height: 12px;
-            border-radius: 2px;
-        }
-        
-        .insights-msp {
-            margin-top: 30px;
-            padding: 25px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
-        }
-        
-        .insights-msp h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-        
-        .insights-msp p {
-            line-height: 1.6;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            text-align: justify;
-        }
-
-        @media (max-width: 768px) {
-            .home-button {
-                top: 15px;
-                left: 15px;
-                padding: 10px 16px;
-                font-size: 0.9rem;
-            }
-            
-            .timeline {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .timeline::before {
-                left: 50%;
-                top: 0;
-                bottom: 0;
-                width: 3px;
-                height: auto;
-                transform: translateX(-50%);
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .project-meta {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .timeline-container {
-                padding: 2rem;
-                padding-left: 10px;
-            }
-            
-            .lane-label-msp {
-            position: absolute;
-            left: 1%;
-            top: 35px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #b3beca;
-            text-align: left;
-            width: 140px;
-            word-wrap: break-word;
-            }
-            
-            .activity-lane-msp {
-                height: 75px;
-                margin-bottom: 10px;
-            }
-            
-            .activity-bar-msp {
-                font-size: 0.65rem;
-                padding: 0 6px;
-                height: 22px;
-            }
-            
-            .timeline-header-msp {
-                font-size: 0.8rem;
-            }
-            
-            .month-column-msp {
-                padding: 6px 2px;
-            }
-            
-            .legend-msp {
-                gap: 10px;
-                padding: 0 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
+// Fonction principale pour appliquer les couleurs aux phases - CORRECTION IMPORTANTE
+function applyPhaseColorsSimple() {
+    console.log('Application des couleurs de phases...');
     
-    <div class="header">
-        <div class="container">
-            <h1>Feuille de Route MSP 2025</h1>
-            <p>Mise en Situation Professionnelle - HMONP | Atelier Juno</p>
-        </div>
-    </div>
+    const phases = document.querySelectorAll('.project-phase-msp');
+    console.log(`Nombre de phases trouvées : ${phases.length}`);
     
-    <!-- Bouton retour à l'accueil en position fixe -->
-    <a href="index.html" class="home-button">
-        <i class="fas fa-home"></i> Retour à l'accueil
-    </a>
+    phases.forEach(function(phase, index) {
+        const text = phase.textContent.trim().toUpperCase();
+        console.log(`Phase ${index + 1}: "${text}"`);
+        
+        // Supprimer les anciennes classes de phase
+        phase.classList.remove('phase-edl', 'phase-esq-faisa', 'phase-aps', 'phase-apd', 'phase-pc-pcm', 'phase-pro', 'phase-exe', 'phase-doe');
+        
+        // Appliquer la bonne classe selon le contenu
+        if (text.includes('EDL') || text.includes('ÉTAT')) {
+            phase.classList.add('phase-edl');
+            console.log('Appliqué : phase-edl');
+        } else if (text.includes('ESQ') || text.includes('FAISA') || text.includes('FAISABILITÉ') || text.includes('CANDIDATURE')) {
+            phase.classList.add('phase-esq-faisa');
+            console.log('Appliqué : phase-esq-faisa');
+        } else if (text.includes('APS') && !text.includes('EXE')) {
+            phase.classList.add('phase-aps');
+            console.log('Appliqué : phase-aps');
+        } else if (text.includes('APD') || text.includes('MEP')) {
+            phase.classList.add('phase-apd');
+            console.log('Appliqué : phase-apd');
+        } else if (text.includes('PC') || text.includes('PERMIS') || text.includes('AO') || text.includes('NÉGOCIATION')) {
+            phase.classList.add('phase-pc-pcm');
+            console.log('Appliqué : phase-pc-pcm');
+        } else if (text.includes('PRO') && !text.includes('EXE')) {
+            phase.classList.add('phase-pro');
+            console.log('Appliqué : phase-pro');
+        } else if (text.includes('EXE') || text.includes('COORDINATION') || text.includes('APPLICATION')) {
+            phase.classList.add('phase-exe');
+            console.log('Appliqué : phase-exe');
+        } else if (text.includes('DOE') || text.includes('COM') || text.includes('REVIT') || text.includes('FORMATION') || text.includes('DÉVELOPPEMENT') || text.includes('ATTENTE')) {
+            phase.classList.add('phase-doe');
+            console.log('Appliqué : phase-doe');
+        } else {
+            // Phase par défaut
+            phase.classList.add('phase-aps');
+            console.log('Appliqué par défaut : phase-aps');
+        }
+        
+        console.log(`Classes finales: ${phase.className}`);
+    });
     
-    <div class="container">
-        <!-- Vue d'ensemble -->
-        <div class="timeline-section">
-            <div class="section-header">
-                <h2> Vue d'ensemble - Février à Juillet 2025 <i class="fas fa-calendar-alt"></i></h2>
-                <p style="color: #ecf0f1; margin-top: 0.5rem; font-style: italic;">Évolution des missions et progression vers l'autonomie professionnelle</p>
+    console.log('Application des couleurs terminée');
+}
+
+// Animation des points de timeline
+document.querySelectorAll('.timeline-dot').forEach(dot => {
+    dot.addEventListener('click', function() {
+        // Retirer active de tous les points
+        document.querySelectorAll('.timeline-dot').forEach(d => d.classList.remove('active'));
+        // Ajouter active au point cliqué
+        this.classList.add('active');
+        
+        // Animation des cartes (optionnel)
+        const month = this.dataset.month;
+        animateProjectCards(month);
+    });
+});
+
+function animateProjectCards(month) {
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach((card, index) => {
+        card.style.animation = 'none';
+        setTimeout(() => {
+            card.style.animation = `fadeInUp 0.6s ease forwards`;
+            card.style.animationDelay = `${index * 0.1}s`;
+        }, 50);
+    });
+}
+
+// Animation initiale
+window.addEventListener('load', () => {
+    animateProjectCards('initial');
+    
+    // Animation spécifique pour les phases de projet
+    setTimeout(() => {
+        const phases = document.querySelectorAll('.project-phase-msp');
+        phases.forEach((phase, index) => {
+            phase.style.animationDelay = `${0.8 + (index * 0.1)}s`;
+        });
+    }, 100);
+    
+    // IMPORTANT: Appliquer les couleurs de phases après le chargement
+    setTimeout(function() {
+        applyPhaseColorsSimple();
+    }, 1000);
+});
+
+// Interaction avec les barres d'activité
+document.querySelectorAll('.activity-bar-msp').forEach(bar => {
+    bar.addEventListener('mouseenter', function() {
+        // Mettre en évidence la ligne correspondante
+        const lane = this.closest('.activity-lane-msp');
+        lane.style.backgroundColor = 'rgba(52, 152, 219, 0.05)';
+        lane.style.borderLeftColor = '#3498db';
+        
+        // Animation de la phase
+        const phase = this.querySelector('.project-phase-msp');
+        if (phase) {
+            phase.style.transform = 'scale(1.1)';
+            phase.style.fontWeight = '700';
+        }
+    });
+    
+    bar.addEventListener('mouseleave', function() {
+        const lane = this.closest('.activity-lane-msp');
+        lane.style.backgroundColor = '';
+        lane.style.borderLeftColor = '#193242';
+        
+        const phase = this.querySelector('.project-phase-msp');
+        if (phase) {
+            phase.style.transform = 'scale(1)';
+            phase.style.fontWeight = '600';
+        }
+    });
+});
+
+// Fonction pour filtrer les projets par discipline
+function filterProjects(discipline) {
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+        if (discipline === 'all' || card.classList.contains(`discipline-${discipline}`)) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.5s ease forwards';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Compteur de projets dynamique
+function updateProjectCounter() {
+    const visibleCards = document.querySelectorAll('.project-card:not([style*="display: none"])');
+    const counter = document.querySelector('.projects-counter');
+    if (counter) {
+        counter.textContent = `${visibleCards.length} projets affichés`;
+    }
+}
+
+// Observer pour les animations au scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, observerOptions);
+
+// Observer les cartes de projets
+document.querySelectorAll('.project-card').forEach(card => {
+    observer.observe(card);
+});
+
+// Amélioration de l'accessibilité
+document.querySelectorAll('.activity-bar-msp').forEach(bar => {
+    bar.setAttribute('tabindex', '0');
+    bar.setAttribute('role', 'button');
+    
+    bar.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            bar.click();
+        }
+    });
+});
+
+// Gestion du mode sombre (optionnel)
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+}
+
+// Restaurer le mode sombre au chargement
+if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+}
+
+// Gestion avancée des phases avec tooltips et interactions
+function createPhaseTooltips() {
+    const tooltipInfo = {
+        'phase-edl': 'État des Lieux - Analyse de l\'existant et diagnostic initial',
+        'phase-esq-faisa': 'Esquisse/Faisabilité - Études préliminaires et analyse de faisabilité',
+        'phase-aps': 'Avant-Projet Sommaire - Définition architecturale générale du projet',
+        'phase-apd': 'Avant-Projet Détaillé - Précision des choix architecturaux et techniques',
+        'phase-pc-pcm': 'Permis de Construire - Dossier réglementaire et autorisations administratives',
+        'phase-pro': 'Projet - Plans détaillés et spécifications pour consultation des entreprises',
+        'phase-exe': 'Projet d\'Exécution - Plans d\'exécution très détaillés pour la construction',
+        'phase-doe': 'Dossier Ouvrages Exécutés - Documentation finale et réception des travaux'
+    };
+    
+    const phaseElements = document.querySelectorAll('.project-phase-msp');
+    
+    phaseElements.forEach(phaseElement => {
+        const phaseClasses = Array.from(phaseElement.classList);
+        const phaseClass = phaseClasses.find(cls => cls.startsWith('phase-'));
+        
+        if (phaseClass && tooltipInfo[phaseClass]) {
+            phaseElement.setAttribute('title', tooltipInfo[phaseClass]);
+            phaseElement.style.cursor = 'help';
+        }
+        
+        // Interaction au clic pour afficher plus d'infos
+        phaseElement.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showPhaseDetails(this);
+        });
+    });
+}
+
+// Affichage des détails de phase
+function showPhaseDetails(phaseElement) {
+    const phaseText = phaseElement.textContent;
+    const rect = phaseElement.getBoundingClientRect();
+    
+    // Créer une popup temporaire avec les détails
+    const popup = document.createElement('div');
+    popup.style.cssText = `
+        position: fixed;
+        top: ${rect.bottom + 10}px;
+        left: ${rect.left}px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        z-index: 9999;
+        font-size: 0.85rem;
+        max-width: 300px;
+        line-height: 1.4;
+        font-family: 'Barlow', sans-serif;
+    `;
+    
+    const phaseClasses = Array.from(phaseElement.classList);
+    const phaseClass = phaseClasses.find(cls => cls.startsWith('phase-'));
+    
+    let description = 'Phase de projet architectural';
+    let details = '';
+    
+    if (phaseClass === 'phase-edl') {
+        description = 'État des Lieux';
+        details = 'Analyse de l\'existant, relevés architecturaux, diagnostic technique et réglementaire initial.';
+    }
+    if (phaseClass === 'phase-esq-faisa') {
+        description = 'Esquisse / Faisabilité';
+        details = 'Études préliminaires, analyse de faisabilité technique et financière, premières propositions.';
+    }
+    if (phaseClass === 'phase-aps') {
+        description = 'Avant-Projet Sommaire';
+        details = 'Définition architecturale générale, surfaces, volumes, implantation et choix constructifs principaux.';
+    }
+    if (phaseClass === 'phase-apd') {
+        description = 'Avant-Projet Détaillé';
+        details = 'Précision des choix architecturaux et techniques, plans détaillés, matériaux, estimation financière.';
+    }
+    if (phaseClass === 'phase-pc-pcm') {
+        description = 'Permis de Construire';
+        details = 'Constitution du dossier réglementaire, plans conformes, pièces administratives et autorisations.';
+    }
+    if (phaseClass === 'phase-pro') {
+        description = 'Projet (PRO)';
+        details = 'Plans détaillés avec spécifications techniques complètes pour consultation des entreprises.';
+    }
+    if (phaseClass === 'phase-exe') {
+        description = 'Projet d\'Exécution';
+        details = 'Plans d\'exécution très détaillés pour la construction, coordination tous corps d\'état, DCE.';
+    }
+    if (phaseClass === 'phase-doe') {
+        description = 'Dossier Ouvrages Exécutés';
+        details = 'Documentation finale, plans conformes à l\'exécution, notices, garanties et réception.';
+    }
+    
+    popup.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <div style="width: 40px; height: 20px; ${phaseElement.style.cssText}; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: bold;">
+                ${phaseText.split(' ')[0]}
             </div>
-            <div class="timeline-container">
-                <div class="timeline-wrapper-msp">
-                    <div class="stats-overlay-msp">
-                        <div class="stat-item-msp">
-                            <div class="stat-value-msp">828h</div>
-                            <div>Total travaillées</div>
-                        </div>
-                        <div class="stat-item-msp">
-                            <div class="stat-value-msp">27</div>
-                            <div>Projets différents</div>
-                        </div>
-                        <div class="stat-item-msp">
-                            <div class="stat-value-msp">6</div>
-                            <div>Disciplines majeures</div>
-                        </div>
-                        <div class="stat-item-msp">
-                            <div class="stat-value-msp">15j</div>
-                            <div>Session HMONP (juin)</div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-msp">
-                        <div class="timeline-header-msp">
-                            <div class="month-column-msp">Février 2025</div>
-                            <div class="month-column-msp">Mars 2025</div>
-                            <div class="month-column-msp">Avril 2025</div>
-                            <div class="month-column-msp">Mai 2025</div>
-                            <div class="month-column-msp">Juin 2025</div>
-                            <div class="month-column-msp">Juillet 2025</div>
-                        </div>
-                        
-                        <div class="timeline-content-msp">
-                              <!-- Maîtrise d'œuvre -->
-                            <div class="activity-lane-msp">
-                                <div class="lane-label-msp">Maîtrise d'œuvre</div>
-                                <div class="activity-bar-msp moe-msp" style="left: 15px; width: 15%; top: 0px;">
-                                    Maison indiv. - Chelles
-                                    <div class="project-phase-msp">ESQ → PRO</div>
-                                    <div class="competence-flow-msp">→ MOE directe</div>
-                                    <div class="progression-arrow-msp">★</div>
-                                </div>
-                                <div class="activity-bar-msp moe-msp" style="left: 40%; width: 20%; top: 35px;">
-                                    GIGOT OG Paris
-                                    <div class="project-phase-msp">EDL → FAISA</div>
-                                    <div class="competence-flow-msp">→ MOE directe</div>
-                                </div>
-                                <div class="activity-bar-msp moe-msp" style="left: 80%; width: 20%; top: 50px;">
-                                    Extension Chalet - Bourg Saint-Maurice
-                                    <div class="project-phase-msp">APS (en cours)</div>
-                                    <div class="competence-flow-msp">→ MOE déléguée</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Assistance MOE BIM -->
-                            <div class="activity-lane-msp">
-                                <div class="lane-label-msp">Assistance MOE BIM</div>
-                                <div class="activity-bar-msp production-bim-msp" style="left: 0%; width: 14%; top: 0px;">
-                                    Notre-Dame Marins
-                                    <div class="project-phase-msp">PRO</div>
-                                    <div class="competence-flow-msp">→ Rigueur technique</div>
-                                </div>
-                                <div class="activity-bar-msp production-bim-msp" style="left: 9%; width: 19%; top: 50px;">
-                                    CHU Nantes
-                                    <div class="project-phase-msp">PRO → EXE</div>
-                                </div>
-                                <div class="activity-bar-msp production-bim-msp" style="left: 47%; width: 10%; top: 50px;">
-                                    Institut G. Roussy
-                                    <div class="project-phase-msp">EXE</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Formation -->
-                            <div class="activity-lane-msp">
-                                <div class="lane-label-msp">Formation</div>
-                                <div class="activity-bar-msp formation-msp" style="left: 5%; width: 18%; top: 0px;">
-                                    AREP Architecture
-                                    <div class="project-phase-msp">Formation Avancée</div>
-                                    <div class="competence-flow-msp">→ Transmission expertise</div>
-                                    <div class="progression-arrow-msp">★</div>
-                                </div>
-                                <div class="activity-bar-msp formation-msp" style="left: 25%; width: 12%; top: 22px;">
-                                    KKAA Revit
-                                    <div class="project-phase-msp">Formation Base</div>
-                                </div>
-                                <div class="activity-bar-msp formation-msp" style="left: 39%; width: 15%; top: 50px;">
-                                    ANMA LIM
-                                    <div class="project-phase-msp">Formation BIM</div>
-                                </div>
-                                <div class="activity-bar-msp formation-msp" style="left: 56%; width: 8%; top: 0px;">
-                                    AREP Base
-                                    <div class="project-phase-msp">Formation Initiation</div>
-                                </div>
-                                <div class="activity-bar-msp formation-msp" style="left: 83%; width: 16%; top: 50px;">
-                                    LandAct Paysage
-                                    <div class="project-phase-msp">Formation Spécialisée</div>
-                                    <div class="competence-flow-msp">→ Expertise intersectorielle</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Administration/Prospection -->
-                            <div class="activity-lane-msp">
-                                <div class="lane-label-msp">Prospection</div>
-                                <div class="activity-bar-msp administration-msp" style="left: 20%; width: 35%; top: 22px;">
-                                    Accord Cadre RIVP
-                                    <div class="project-phase-msp">AO → Négociation</div>
-                                    <div class="competence-flow-msp">→ Vision commerciale</div>
-                                    <div class="progression-arrow-msp">★</div>
-                                </div>
-                                <div class="activity-bar-msp administration-msp" style="left: 35%; width: 15%; top: 50px;">
-                                    AO BIM HUS
-                                    <div class="project-phase-msp">Réponse AO</div>
-                                </div>
-                                <div class="activity-bar-msp administration-msp" style="left: 59%; width: 12%; top: 50px;">
-                                    AO Strasbourg
-                                    <div class="project-phase-msp">Candidature</div>
-                                </div>
-                                <div class="activity-bar-msp administration-msp" style="left: 89%; width: 12%; top: 22px;">
-                                    Négociation RIVP
-                                    <div class="project-phase-msp">Finalisation</div>
-                                </div>
-                            </div>
-                            
-                            <!-- R&D & Innovation -->
-                            <div class="activity-lane-msp">
-                                <div class="lane-label-msp">R&D Innovation</div>
-                                <div class="activity-bar-msp recherche-msp" style="left: 5%; width: 18%; top: 0px;">
-                                    Notion Road Map
-                                    <div class="project-phase-msp">Développement</div>
-                                </div>
-                                <div class="activity-bar-msp recherche-msp" style="left: 25%; width: 35%; top: 22px;">
-                                    Power BI Road Map
-                                    <div class="project-phase-msp">Formation → Application</div>
-                                    <div class="competence-flow-msp">→ Innovation méthodologique</div>
-                                </div>
-                                <div class="activity-bar-msp recherche-msp" style="left: 80%; width: 15%; top: 50px;">
-                                    Outils audit
-                                    <div class="project-phase-msp">Industrialisation</div>
-                                </div>
-                            </div>
-                            
-                          
-                            <!-- Coordination/BIM Management -->
-                            <div class="activity-lane-msp">
-                                <div class="lane-label-msp">BIM Management</div>
-                                <div class="activity-bar-msp coordination-msp" style="left: 0%; width: 45%; top: 0px;">
-                                    Centre Formation Maritime
-                                    <div class="project-phase-msp">Coordination PRO → EXE</div>
-                                    <div class="competence-flow-msp">→ Coordination technique</div>
-                                </div>
-                                <div class="activity-bar-msp coordination-msp" style="left: 82%; width: 17%; top: 50px;">
-                                    Cité des Musiques
-                                    <div class="project-phase-msp">BIM Management</div>
-                                    <div class="competence-flow-msp">→ Coordination autonome</div>                                    
-                                </div>
-                            </div>
-                            
-                            <!-- Session HMONP -->
-                            <div class="activity-lane-msp">
-                                <div class="lane-label-msp">Formation HMONP</div>
-                                <div class="activity-bar-msp hmonp-session-msp" style="left: 68%; width: 12%; top: 35px;">
-                                    Session Malaquais (15j)
-                                    <div class="project-phase-msp">Formation Intensive</div>
-                                    <div class="competence-flow-msp">→ Vision entrepreneuriale</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="legend-msp">
-                    <div class="legend-item">
-                        <div class="legend-color moe-msp" style="background: linear-gradient(135deg, #2c4136, #1f2e28);"></div>
-                        <span>Maîtrise d'œuvre</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color production-bim-msp" style="background: linear-gradient(135deg, #495655, #3a4441);"></div>
-                        <span>Assistance MOE BIM</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color formation-msp" style="background: linear-gradient(135deg, #7C837E, #6a6f6b);"></div>
-                        <span>Formation</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color administration-msp" style="background: linear-gradient(135deg, #9E9894, #8a857f);"></div>
-                        <span>Prospection/Administration</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color recherche-msp" style="background: linear-gradient(135deg, #B6C0CB, #a3adb7);"></div>
-                        <span>R&D & Innovation</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color coordination-msp" style="background: linear-gradient(135deg, #2D2F2E, #1f2021);"></div>
-                        <span>BIM Management</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color hmonp-session-msp" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
-                        <span>Formation HMONP</span>
-                    </div>
-                </div>
-                
-                <div class="insights-msp">
-                    <h3>Progression vers l'autonomie professionnelle</h3>
-                    <p><strong>Transfert de compétences BIM → Architecture :</strong> La timeline illustre parfaitement l'évolution d'une expertise technique (assistance MOE BIM) vers une pratique architecturale intégrée. La maîtrise technique acquise constitue le socle de rigueur méthodologique nécessaire à l'exercice de la maîtrise d'œuvre.</p>
-                    
-                    <p><strong>Formation comme passerelle :</strong> Les missions de formation développent la capacité de transmission et de communication, compétence essentielle au rôle de coordinateur. Cette dimension pédagogique résonne directement avec la fonction de médiateur entre les différents acteurs du projet architectural.</p>
-                    
-                    <p><strong>Émergence progressive de la MOE :</strong> L'apparition du projet GIGOT OG marque un tournant qualitatif, s'appuyant sur l'ensemble des compétences développées en amont. La mission Cité des Musiques (★) représente l'aboutissement : une coordination autonome de haut niveau.</p>
-                </div>
-            </div>
+            <strong style="color: #2c3e50;">${phaseText}</strong>
         </div>
-        <!-- Projets détaillés -->
-        <div class="timeline-section">
-            <div class="section-header">
-                <h2><i class="fas fa-project-diagram"></i> Projets par Période</h2>
-            </div>
-            <div class="timeline-container">
-                <div class="projects-grid" id="projectsGrid">
-
-                    <!-- Maison individuelle - Chelles -->
-                    <div class="project-card discipline-maitrise">
-                        <div class="project-header">
-                            <div class="project-title">Maison individuelle - Chelles</div>
-                            <div class="project-meta">
-                                <span class="project-discipline">
-                                    <i class="fas fa-home"></i> Maîtrise d'œuvre
-                                </span>
-                                <span class="project-duration">Février - Mars 2025</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <div class="detail-value">40 000€</div>
-                                    <div class="detail-label">Budget travaux</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">69 m²</div>
-                                    <div class="detail-label">Surface terrain</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">DP</div>
-                                    <div class="detail-label">Autorisation</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Rénovation</div>
-                                    <div class="detail-label">Programme</div>
-                                </div>
-                            </div>
-                            <div class="project-missions">
-                                 <div class="missions-title">
-                                    <i class="fas fa-clock"></i> Phases : ESQ → PRO (sans EXE)
-                                </div>
-                                <div class="missions-title">
-                                    <i class="fas fa-tasks"></i> Missions réalisées
-                                </div>
-                                <ul class="missions-list">
-                                    <li class="mission-item">Réaménagement intérieur complet</li>
-                                    <li class="mission-item">Fermeture du carport attenant</li>
-                                    <li class="mission-item">Dépôt déclaration préalable en mairie</li>
-                                    <li class="mission-item">Suivi projet jusqu'à la phase PRO</li>
-                                    <li class="mission-item">Première expérience MOE complète (ESQ-PRO)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Extension Chalet - Bourg Saint-Maurice -->
-                    <div class="project-card discipline-maitrise">
-                        <div class="project-header">
-                            <div class="project-title">Extension Chalet - Bourg Saint-Maurice</div>
-                            <div class="project-meta">
-                                <span class="project-discipline">
-                                    <i class="fas fa-mountain"></i> Maîtrise d'œuvre
-                                </span>
-                                <span class="project-duration">Juillet 2025 - En cours</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <div class="detail-value">14 000€</div>
-                                    <div class="detail-label">Budget mission</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">APS</div>
-                                    <div class="detail-label">Phase actuelle</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Scan 3D</div>
-                                    <div class="detail-label">Méthode</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Extension</div>
-                                    <div class="detail-label">Programme</div>
-                                </div>
-                            </div>
-                            <div class="project-missions">
-                                 <div class="missions-title">
-                                    <i class="fas fa-clock"></i> Phase : APS (en cours)
-                                </div>
-                                <div class="missions-title">
-                                    <i class="fas fa-tasks"></i> Missions en cours
-                                </div>
-                                <ul class="missions-list">
-                                    <li class="mission-item">Relevé scan 3D du chalet existant</li>
-                                    <li class="mission-item">Analyse de l'état architectural existant</li>
-                                    <li class="mission-item">Élaboration de plusieurs propositions d'extension</li>
-                                    <li class="mission-item">Intégration paysagère et réglementaire montagne</li>
-                                    <li class="mission-item">Mission déléguée avec autonomie technique</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- GIGOT OG Paris -->
-                    <div class="project-card discipline-maitrise">
-                        <div class="project-header">
-                            <div class="project-title">GIGOT OG - Paris</div>
-                            <div class="project-meta">
-                                <span class="project-discipline">
-                                    <i class="fas fa-drafting-compass"></i> Maîtrise d'œuvre
-                                </span>
-                                <span class="project-duration">Avril - Mai 2025</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <div class="detail-value">27h</div>
-                                    <div class="detail-label">Volume horaire</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">ERP Cat. 5</div>
-                                    <div class="detail-label">Programme</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">15k €</div>
-                                    <div class="detail-label">Budget</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Paris</div>
-                                    <div class="detail-label">Lieu</div>
-                                </div>
-                            </div>
-                            <div class="project-missions">
-                                 <div class="missions-title">
-                                    <i class="fas fa-clock"></i> Phases : EDL - ESQ/FAISA
-                                </div>
-                                <div class="missions-title">
-                                    <i class="fas fa-tasks"></i> Missions réalisées
-                                </div>
-                                <ul class="missions-list">
-                                    <li class="mission-item">Participation phases amont conception</li>
-                                    <li class="mission-item">Relations clients et réunions chantier</li>
-                                    <li class="mission-item">Coordination technique BIM/Architecture</li>
-                                    <li class="mission-item">Première expérience maîtrise d'œuvre directe</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <!-- Formation AREP -->
-                    <div class="project-card discipline-formation">
-                        <div class="project-header">
-                            <div class="project-title">Formation AREP Architecture & Familles</div>
-                            <div class="project-meta">
-                                <span class="project-discipline">
-                                    <i class="fas fa-chalkboard-teacher"></i> Formation
-                                </span>
-                                <span class="project-duration">Février - Mars 2025</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <div class="detail-value">35h</div>
-                                    <div class="detail-label">Volume horaire</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">3</div>
-                                    <div class="detail-label">Sessions</div>
-                                </div>
-                                <div class="detail-item budget-placeholder">
-                                    <div class="detail-value">À définir</div>
-                                    <div class="detail-label">Budget</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Revit</div>
-                                    <div class="detail-label">Logiciel</div>
-                                </div>
-                            </div>
-                            <div class="project-missions">
-                                <div class="missions-title">
-                                    <i class="fas fa-tasks"></i> Missions réalisées
-                                </div>
-                                <ul class="missions-list">
-                                    <li class="mission-item">Animation formation Revit Architecture (16h)</li>
-                                    <li class="mission-item">Formation spécialisée Familles paramétriques (14h)</li>
-                                    <li class="mission-item">Création supports pédagogiques (5h)</li>
-                                    <li class="mission-item">Accompagnement équipes architectes seniors</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Notre-Dame des Marins -->
-                    <div class="project-card discipline-production">
-                        <div class="project-header">
-                            <div class="project-title">Notre-Dame des Marins - Martigues</div>
-                            <div class="project-meta">
-                                <span class="project-discipline">
-                                    <i class="fas fa-building"></i> Assistance MOE BIM
-                                </span>
-                                <span class="project-duration">Février - Mars 2025</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <div class="detail-value">67h</div>
-                                    <div class="detail-label">Volume horaire</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Logement</div>
-                                    <div class="detail-label">Programme</div>
-                                </div>
-                                <div class="detail-item budget-placeholder">
-                                    <div class="detail-value">À définir</div>
-                                    <div class="detail-label">Budget</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Martigues</div>
-                                    <div class="detail-label">Lieu</div>
-                                </div>
-                            </div>
-                            <div class="project-missions">
-                                <div class="missions-title">
-                                    <i class="fas fa-tasks"></i> Missions réalisées
-                                </div>
-                                <ul class="missions-list">
-                                    <li class="mission-item">Modélisation BIM complexe multi-bâtiments</li>
-                                    <li class="mission-item">Coordination technique et architecturale</li>
-                                    <li class="mission-item">Production de plans et coupes détaillées</li>
-                                    <li class="mission-item">Optimisation flux de travail BIM</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Centre Formation Maritime -->
-                    <div class="project-card discipline-coordination">
-                        <div class="project-header">
-                            <div class="project-title">Centre de Formation Maritime</div>
-                            <div class="project-meta">
-                                <span class="project-discipline">
-                                    <i class="fas fa-cogs"></i> BIM Management
-                                </span>
-                                <span class="project-duration">Février - Mai 2025</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <div class="detail-value">53h</div>
-                                    <div class="detail-label">Volume horaire</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Enseignement</div>
-                                    <div class="detail-label">Programme</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">5 000 000€</div>
-                                    <div class="detail-label">Budget</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">1 623 m²</div>
-                                    <div class="detail-label">Surface</div>
-                                </div>
-                            </div>
-                            <div class="project-missions">
-                                <div class="missions-title">
-                                    <i class="fas fa-tasks"></i> Missions réalisées
-                                </div>
-                                <ul class="missions-list">
-                                    <li class="mission-item">Documentation technique et coordination BIM (22h)</li>
-                                    <li class="mission-item">Gestion et structuration des maquettes (23h)</li>
-                                    <li class="mission-item">Coordination équipements spécialisés maritimes</li>
-                                    <li class="mission-item">Expertise BIM et audit qualité (8h)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Power BI Road Map -->
-                    <div class="project-card discipline-rd">
-                        <div class="project-header">
-                            <div class="project-title">Power BI Road Map - Innovation Agence</div>
-                            <div class="project-meta">
-                                <span class="project-discipline">
-                                    <i class="fas fa-lightbulb"></i> R&D Innovation
-                                </span>
-                                <span class="project-duration">Mars - Juillet 2025</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <div class="detail-value">75h</div>
-                                    <div class="detail-label">Volume horaire</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Innovation</div>
-                                    <div class="detail-label">Type</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Interne</div>
-                                    <div class="detail-label">Budget</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Transversal</div>
-                                    <div class="detail-label">Impact</div>
-                                </div>
-                            </div>
-                            <div class="project-missions">
-                                <div class="missions-title">
-                                    <i class="fas fa-tasks"></i> Missions réalisées
-                                </div>
-                                <ul class="missions-list">
-                                    <li class="mission-item">Formation intensive Power BI (24h)</li>
-                                    <li class="mission-item">Développement gabarits d'analyse (32h)</li>
-                                    <li class="mission-item">Création rapports Institut Gustave Roussy</li>
-                                    <li class="mission-item">Industrialisation processus d'audit BIM</li>
-                                    <li class="mission-item">Présentation équipe et formation collègues</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-
-                    <!-- Appel d'offres RIVP -->
-                    <div class="project-card discipline-admin">
-                        <div class="project-header">
-                            <div class="project-title">Accord Cadre RIVP</div>
-                            <div class="project-meta">
-                                <span class="project-discipline">
-                                    <i class="fas fa-handshake"></i> Prospection
-                                </span>
-                                <span class="project-duration">Mars - Août 2025</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <div class="detail-value">87h</div>
-                                    <div class="detail-label">Volume horaire</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Marché public</div>
-                                    <div class="detail-label">Type</div>
-                                </div>
-                                <div class="detail-item budget-placeholder">
-                                    <div class="detail-value">Prospection</div>
-                                    <div class="detail-label">Budget</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">MOE BIM</div>
-                                    <div class="detail-label">Mission</div>
-                                </div>
-                            </div>
-                            <div class="project-missions">
-                                <div class="missions-title">
-                                    <i class="fas fa-tasks"></i> Missions réalisées
-                                </div>
-                                <ul class="missions-list">
-                                    <li class="mission-item">Rédaction mémoire technique approfondie (48h)</li>
-                                    <li class="mission-item">Analyse cahier des charges RIVP</li>
-                                    <li class="mission-item">Valorisation expertise bicéphale agence</li>
-                                    <li class="mission-item">Négociation commerciale et finalisation</li>
-                                    <li class="mission-item">Préparation soutenance orale</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Cité des Musiques Actuelles -->
-                    <div class="project-card discipline-coordination">
-                        <div class="project-header">
-                            <div class="project-title">Cité des Musiques Actuelles</div>
-                            <div class="project-meta">
-                                <span class="project-discipline">
-                                    <i class="fas fa-music"></i> BIM Management
-                                </span>
-                                <span class="project-duration">Juillet 2025</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <div class="detail-value">63h</div>
-                                    <div class="detail-label">Volume horaire</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Culturel</div>
-                                    <div class="detail-label">Programme</div>
-                                </div>
-                                <div class="detail-item budget-placeholder">
-                                    <div class="detail-value">À définir</div>
-                                    <div class="detail-label">Budget</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Autonome</div>
-                                    <div class="detail-label">Responsabilité</div>
-                                </div>
-                            </div>
-                            <div class="project-missions">
-                                <div class="missions-title">
-                                    <i class="fas fa-tasks"></i> Missions réalisées
-                                </div>
-                                <ul class="missions-list">
-                                    <li class="mission-item">Mission BIM Management autonome complète</li>
-                                    <li class="mission-item">Édition conventions BIM contextualelles</li>
-                                    <li class="mission-item">Coordination opérationnelle multi-lots</li>
-                                    <li class="mission-item">Développement outils d'audit transversaux</li>
-                                    <li class="mission-item">Pilotage et suivi qualité maquettes</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Formation LandAct -->
-                    <div class="project-card discipline-formation">
-                        <div class="project-header">
-                            <div class="project-title">Formation LandAct - BIM Paysage</div>
-                            <div class="project-meta">
-                                <span class="project-discipline">
-                                    <i class="fas fa-leaf"></i> Formation spécialisée
-                                </span>
-                                <span class="project-duration">Juillet 2025</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <div class="detail-value">35h</div>
-                                    <div class="detail-label">Volume horaire</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Paysage</div>
-                                    <div class="detail-label">Spécialité</div>
-                                </div>
-                                <div class="detail-item budget-placeholder">
-                                    <div class="detail-value">À définir</div>
-                                    <div class="detail-label">Budget</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-value">Intersectoriel</div>
-                                    <div class="detail-label">Adaptation</div>
-                                </div>
-                            </div>
-                            <div class="project-missions">
-                                <div class="missions-title">
-                                    <i class="fas fa-tasks"></i> Missions réalisées
-                                </div>
-                                <ul class="missions-list">
-                                    <li class="mission-item">Formation Revit paysage paramétrique (21h)</li>
-                                    <li class="mission-item">Session avancée familles et phases (14h)</li>
-                                    <li class="mission-item">Adaptation intersectorielle des compétences</li>
-                                    <li class="mission-item">Transmission expertise BIM secteur paysage</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+        <div style="color: #34495e; margin-bottom: 8px; font-weight: 600;">${description}</div>
+        <div style="color: #7f8c8d; font-size: 0.8rem;">${details}</div>
+        <div style="margin-top: 10px; font-size: 0.7rem; color: #95a5a6; text-align: center;">
+            Cliquez ailleurs pour fermer
         </div>
-    </div>
-    <script>
-        // Animation des points de timeline
-        document.querySelectorAll('.timeline-dot').forEach(dot => {
-            dot.addEventListener('click', function() {
-                // Retirer active de tous les points
-                document.querySelectorAll('.timeline-dot').forEach(d => d.classList.remove('active'));
-                // Ajouter active au point cliqué
-                this.classList.add('active');
-                
-                // Animation des cartes (optionnel)
-                const month = this.dataset.month;
-                animateProjectCards(month);
-            });
-        });
-        
-        function animateProjectCards(month) {
-            const cards = document.querySelectorAll('.project-card');
-            cards.forEach((card, index) => {
-                card.style.animation = 'none';
-                setTimeout(() => {
-                    card.style.animation = `fadeInUp 0.6s ease forwards`;
-                    card.style.animationDelay = `${index * 0.1}s`;
-                }, 50);
-            });
+    `;
+    
+    document.body.appendChild(popup);
+    
+    // Supprimer la popup après 5 secondes
+    setTimeout(() => {
+        if (popup.parentNode) {
+            popup.parentNode.removeChild(popup);
         }
-        
-        // Ajout des styles d'animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            /* Animation pour les barres d'activité */
-            .activity-bar-msp {
-                animation: slideInFromLeft 1s ease-out;
-                animation-fill-mode: both;
-            }
-            
-            @keyframes slideInFromLeft {
-                from {
-                    transform: translateX(-100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-            
-            /* Délais d'animation pour les différentes lignes */
-            .activity-lane-msp:nth-child(1) .activity-bar-msp { animation-delay: 0.1s; }
-            .activity-lane-msp:nth-child(2) .activity-bar-msp { animation-delay: 0.2s; }
-            .activity-lane-msp:nth-child(3) .activity-bar-msp { animation-delay: 0.3s; }
-            .activity-lane-msp:nth-child(4) .activity-bar-msp { animation-delay: 0.4s; }
-            .activity-lane-msp:nth-child(5) .activity-bar-msp { animation-delay: 0.5s; }
-            .activity-lane-msp:nth-child(6) .activity-bar-msp { animation-delay: 0.6s; }
-            .activity-lane-msp:nth-child(7) .activity-bar-msp { animation-delay: 0.7s; }
-            
-            /* Animation au survol des projets */
-            .project-card {
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            
-            .project-card:hover {
-                transform: translateY(-8px) scale(1.02);
-                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            }
-            
-            /* Animation des phases de projet */
-            .project-phase-msp {
-                animation: fadeInUp 0.8s ease-out;
-                animation-delay: 1.2s;
-                animation-fill-mode: both;
-            }
-            
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            /* Effet de pulsation pour les étoiles de progression */
-            .progression-arrow-msp {
-                animation: pulse 2s infinite;
-            }
-            
-            @keyframes pulse {
-                0% {
-                    transform: scale(1);
-                    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
-                }
-                70% {
-                    transform: scale(1.05);
-                    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-                }
-                100% {
-                    transform: scale(1);
-                    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Animation initiale
-        window.addEventListener('load', () => {
-            animateProjectCards('initial');
-            
-            // Animation spécifique pour les phases de projet
-            setTimeout(() => {
-                const phases = document.querySelectorAll('.project-phase-msp');
-                phases.forEach((phase, index) => {
-                    phase.style.animationDelay = `${0.8 + (index * 0.1)}s`;
-                });
-            }, 100);
-        });
-        
-        // Interaction avec les barres d'activité
-        document.querySelectorAll('.activity-bar-msp').forEach(bar => {
-            bar.addEventListener('mouseenter', function() {
-                // Mettre en évidence la ligne correspondante
-                const lane = this.closest('.activity-lane-msp');
-                lane.style.backgroundColor = 'rgba(52, 152, 219, 0.05)';
-                lane.style.borderLeftColor = '#3498db';
-                
-                // Animation de la phase
-                const phase = this.querySelector('.project-phase-msp');
-                if (phase) {
-                    phase.style.transform = 'scale(1.1)';
-                    phase.style.fontWeight = '700';
-                }
-            });
-            
-            bar.addEventListener('mouseleave', function() {
-                const lane = this.closest('.activity-lane-msp');
-                lane.style.backgroundColor = '';
-                lane.style.borderLeftColor = '#193242';
-                
-                const phase = this.querySelector('.project-phase-msp');
-                if (phase) {
-                    phase.style.transform = 'scale(1)';
-                    phase.style.fontWeight = '600';
-                }
-            });
-        });
-        
-        // Fonction pour filtrer les projets par discipline
-        function filterProjects(discipline) {
-            const cards = document.querySelectorAll('.project-card');
-            cards.forEach(card => {
-                if (discipline === 'all' || card.classList.contains(`discipline-${discipline}`)) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeInUp 0.5s ease forwards';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+    }, 5000);
+    
+    // Supprimer la popup au clic ailleurs
+    document.addEventListener('click', function removePopup() {
+        if (popup.parentNode) {
+            popup.parentNode.removeChild(popup);
         }
+        document.removeEventListener('click', removePopup);
+    });
+}
+
+// Statistiques des phases
+function generatePhaseStats() {
+    const phaseElements = document.querySelectorAll('.project-phase-msp');
+    const phaseCount = {};
+    
+    phaseElements.forEach(phaseElement => {
+        const phaseClasses = Array.from(phaseElement.classList);
+        const phaseClass = phaseClasses.find(cls => cls.startsWith('phase-'));
         
-        // Compteur de projets dynamique
-        function updateProjectCounter() {
-            const visibleCards = document.querySelectorAll('.project-card:not([style*="display: none"])');
-            const counter = document.querySelector('.projects-counter');
-            if (counter) {
-                counter.textContent = `${visibleCards.length} projets affichés`;
-            }
+        if (phaseClass) {
+            phaseCount[phaseClass] = (phaseCount[phaseClass] || 0) + 1;
         }
+    });
+    
+    console.log('Répartition des phases:', phaseCount);
+    
+    // Ajouter les stats à la légende des phases
+    const legend = document.querySelector('.phases-legend');
+    if (legend && Object.keys(phaseCount).length > 0) {
+        let statsHTML = '<div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #dee2e6;">';
+        statsHTML += '<div style="font-size: 0.9rem; color: #6c757d; margin-bottom: 8px;"><i class="fas fa-chart-bar"></i> <strong>Répartition dans les projets :</strong></div>';
         
-        // Observer pour les animations au scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        const phaseNames = {
+            'phase-edl': 'EDL',
+            'phase-esq-faisa': 'ESQ/FAISA',
+            'phase-aps': 'APS',
+            'phase-apd': 'APD',
+            'phase-pc-pcm': 'PC/PCM',
+            'phase-pro': 'PRO',
+            'phase-exe': 'EXE',
+            'phase-doe': 'DOE'
         };
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
-        
-        // Observer les cartes de projets
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
-        
-        // Amélioration de l'accessibilité
-        document.querySelectorAll('.activity-bar-msp').forEach(bar => {
-            bar.setAttribute('tabindex', '0');
-            bar.setAttribute('role', 'button');
-            
-            bar.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    bar.click();
-                }
-            });
-        });
-        
-        // Gestion du mode sombre (optionnel)
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        const statsParts = [];
+        for (const [phaseClass, count] of Object.entries(phaseCount)) {
+            if (phaseNames[phaseClass]) {
+                statsParts.push(`<span style="color: #2c3e50; font-weight: 600;">${phaseNames[phaseClass]}</span> <span style="background: #3498db; color: white; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem;">${count}</span>`);
+            }
         }
         
-        // Restaurer le mode sombre au chargement
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
+        statsHTML += '<div style="display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.8rem;">' + statsParts.join(' ') + '</div>';
+        statsHTML += '</div>';
+        legend.insertAdjacentHTML('beforeend', statsHTML);
+    }
+}
+
+// Initialisation complète du système
+function initializeCompleteSystem() {
+    console.log('Initialisation du système complet...');
+    
+    // Appliquer les couleurs des phases
+    applyPhaseColorsSimple();
+    
+    // Créer les tooltips après l'application des couleurs
+    setTimeout(() => {
+        createPhaseTooltips();
+    }, 200);
+    
+    // Générer les statistiques
+    setTimeout(() => {
+        generatePhaseStats();
+    }, 500);
+    
+    console.log('Système complet initialisé');
+}
+
+// Ré-appliquer les couleurs si nécessaire
+function forceReapplyColors() {
+    console.log('Force réapplication des couleurs...');
+    applyPhaseColorsSimple();
+    createPhaseTooltips();
+}
+
+// Attendre que tout soit chargé puis initialiser
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initializeCompleteSystem, 500);
+});
+
+// Aussi appliquer au chargement de la fenêtre (sécurité)
+window.addEventListener('load', function() {
+    setTimeout(initializeCompleteSystem, 1000);
+});
+
+// Réappliquer toutes les 2 secondes les premières 10 secondes (pour sécurité)
+let retryCount = 0;
+const retryInterval = setInterval(() => {
+    retryCount++;
+    console.log(`Tentative de réapplication ${retryCount}/5...`);
+    
+    const phases = document.querySelectorAll('.project-phase-msp');
+    const coloredPhases = document.querySelectorAll('.project-phase-msp[class*="phase-"]');
+    
+    if (phases.length > 0 && coloredPhases.length === 0) {
+        console.log('Phases détectées mais pas colorées, réapplication...');
+        forceReapplyColors();
+    }
+    
+    if (retryCount >= 5) {
+        clearInterval(retryInterval);
+        console.log('Arrêt des tentatives de réapplication');
+    }
+}, 2000);
+
+// Observer pour détecter les nouveaux éléments ajoutés dynamiquement
+const phaseObserver = new MutationObserver(function(mutations) {
+    let shouldReapply = false;
+    
+    mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach(function(node) {
+                if (node.nodeType === 1 && 
+                    (node.classList.contains('project-phase-msp') || 
+                     node.querySelector('.project-phase-msp'))) {
+                    shouldReapply = true;
+                }
+            });
         }
+    });
+    
+    if (shouldReapply) {
+        console.log('Nouveaux éléments détectés, réapplication...');
+        setTimeout(initializeCompleteSystem, 100);
+    }
+});
+
+phaseObserver.observe(document.body, {
+    childList: true,
+    subtree: true
+});
+
+// Export des fonctions pour usage externe et débogage
+window.PhaseManagement = {
+    applyColors: applyPhaseColorsSimple,
+    init: initializeCompleteSystem,
+    forceReapply: forceReapplyColors,
+    showStats: generatePhaseStats
+};
+
+// Test manuel disponible dans la console
+window.testPhaseColors = function() {
+    console.log('=== TEST MANUEL DES COULEURS DE PHASES ===');
+    forceReapplyColors();
+    
+    setTimeout(() => {
+        const phases = document.querySelectorAll('.project-phase-msp');
+        const coloredPhases = document.querySelectorAll('.project-phase-msp[class*="phase-"]');
+        console.log(`Total des phases: ${phases.length}`);
+        console.log(`Phases colorées: ${coloredPhases.length}`);
         
-    </script>
-</body>
-</html>
+        if (phases.length === coloredPhases.length) {
+            console.log('✅ Toutes les phases sont correctement colorées');
+        } else {
+            console.log('❌ Certaines phases ne sont pas colorées');
+            phases.forEach((phase, index) => {
+                const hasColor = Array.from(phase.classList).some(cls => cls.startsWith('phase-'));
+                if (!hasColor) {
+                    console.log(`Phase sans couleur: ${index + 1} - "${phase.textContent}"`);
+                }
+            });
+        }
+    }, 1000);
+};
+
+console.log('Script de gestion des phases chargé. Tapez window.testPhaseColors() pour tester.');
