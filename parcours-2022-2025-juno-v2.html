@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Missions Atelier Juno 2022-2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #000000 0%, #00220a 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .timeline-section {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 3px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #102030;
+            color: white;
+            padding: 1.5rem 2rem;
+            border-bottom: 5px solid #1c701c;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .timeline-container {
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Styles pour la timeline horizontale - période 2022-2025 */
+        .timeline-wrapper-juno {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .timeline-juno {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-header-juno {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .period-column-juno {
+            flex: 1;
+            text-align: center;
+            padding: 8px 2px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin: 0 1px;
+            font-size: 0.7rem;
+        }
+
+        .timeline-content-juno {
+            position: relative;
+            min-height: 1200px;
+        }
+
+        .activity-lane-juno {
+            position: relative;
+            margin-bottom: 25px;
+            border-left: 4px solid #193242;
+            padding-left: 25px;
+            background: rgba(248, 249, 250, 0.3);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .lane-label-juno {
+            position: absolute;
+            left: -4px;
+            top: -20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #27642f;
+            padding: 8px 15px;
+            z-index: 10;
+            min-width: 140px;
+            text-align: left;
+        }
+
+        .sub-lanes-container {
+            margin-top: 5px;
+            padding: 10px 0;
+        }
+
+        .sub-lane-juno {
+            position: relative;
+            height: 50px;
+            margin-bottom: 8px;
+            border-left: 2px solid #bdc3c7;
+            padding-left: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .sub-lane-label-juno {
+            position: absolute;
+            left: 8px;
+            top: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #34495e;
+            text-align: left;
+            width: 80px;
+            z-index: 5;
+        }
+
+        .activity-bar-juno {
+            position: absolute;
+            height: 22px;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .activity-bar-juno:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Types de missions - couleurs spécifiques */
+        .assistance-moe-juno { 
+            background: linear-gradient(135deg, #495655, #3a4441); 
+        }
+        .bim-management-juno { 
+            background: linear-gradient(135deg, #307175, #384e64); 
+        }
+        .maitrise-oeuvre-juno { 
+            background: linear-gradient(135deg, #3a8860, #1f2e28); 
+        }
+        .modelisation-juno { 
+            background: linear-gradient(135deg, #B6C0CB, #a3adb7); 
+            color: #2c3e50; 
+        }
+
+        .project-phase-juno {
+            position: absolute;
+            bottom: -18px;
+            left: 2px;
+            font-size: 0.6rem;
+            color: #2c3e50;
+            background: rgba(255,255,255,0.95);
+            padding: 0px 4px;
+            white-space: nowrap;
+            font-weight: 600;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+        }
+
+        /* Couleurs spécifiques pour chaque phase */
+        .project-phase-juno.phase-edl {
+            background: linear-gradient(135deg, #F4E4BC, #E8D5A3) !important;
+            color: #8B6914 !important;
+            border-color: #D4C29A !important;
+        }
+
+        .project-phase-juno.phase-esq {
+            background: linear-gradient(135deg, #B8E6B8, #9FD89F) !important;
+            color: #2D5016 !important;
+            border-color: #9BC99B !important;
+        }
+
+        .project-phase-juno.phase-aps {
+            background: linear-gradient(135deg, #B8D4F0, #9BC4E8) !important;
+            color: #1B4F72 !important;
+            border-color: #8AB7E0 !important;
+        }
+
+        .project-phase-juno.phase-apd {
+            background: linear-gradient(135deg, #D4B8E6, #C29FDB) !important;
+            color: #4A235A !important;
+            border-color: #B899D1 !important;
+        }
+
+        .project-phase-juno.phase-pc {
+            background: linear-gradient(135deg, #f3dccd, #f5ceb5) !important;
+            color: #A0522D !important;
+            border-color: #E6A578 !important;
+        }
+
+        .project-phase-juno.phase-pro {
+            background: linear-gradient(135deg, #e9d7e9, #ddcfdd) !important;
+            color: #7B2D7B !important;
+            border-color: #D1A8D1 !important;
+        }
+
+        .project-phase-juno.phase-exe {
+            background: linear-gradient(135deg, #f3e8eb, #fde8ee) !important;
+            color: #8B0000 !important;
+            border-color: #E091A7 !important;
+        }
+
+        .project-phase-juno.phase-doe {
+            background: linear-gradient(135deg, #D0D0D0, #BFBFBF) !important;
+            color: #4A4A4A !important;
+            border-color: #B8B8B8 !important;
+        }
+
+        .project-phase-juno.phase-dce {
+            background: linear-gradient(135deg, #E6E6FA, #D8BFD8) !important;
+            color: #4B0082 !important;
+            border-color: #DDA0DD !important;
+        }
+
+        .project-phase-juno.phase-det {
+            background: linear-gradient(135deg, #FFE4E1, #FFC0CB) !important;
+            color: #B22222 !important;
+            border-color: #F0A0A0 !important;
+        }
+
+        .project-phase-juno.phase-concours {
+            background: linear-gradient(135deg, #F0E68C, #DAA520) !important;
+            color: #8B4513 !important;
+            border-color: #CD853F !important;
+        }
+
+        .client-info-juno {
+            position: absolute;
+            top: 15px;
+            right: 8px;
+            font-size: 0.6rem;
+            color: #7f8c8d;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: rgba(255,255,255,0.9);
+            padding: 1px 4px;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+
+        .activity-bar-juno:hover .client-info-juno {
+            opacity: 1;
+        }
+
+        .stats-overlay-juno {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .stat-item-juno {
+            text-align: center;
+        }
+
+        .stat-value-juno {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1rem;
+        }
+
+        .legend-juno {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        /* Légende des phases de projet */
+        .phases-legend {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(248, 249, 250, 0.8);
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+        }
+
+        .phases-legend h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .phases-legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .phase-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .phase-legend-color {
+            min-width: 50px;
+            height: 20px;
+            border-radius: 6px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .phase-legend-description {
+            flex: 1;
+        }
+
+        .phase-legend-acronym {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 2px;
+        }
+
+        .phase-legend-full {
+            font-size: 0.8rem;
+            color: #6c757d;
+            line-height: 1.3;
+        }
+
+        /* Couleurs de la légende */
+        .legend-edl { 
+            background: linear-gradient(135deg, #F4E4BC, #E8D5A3); 
+            color: #8B6914; 
+        }
+        .legend-esq { 
+            background: linear-gradient(135deg, #B8E6B8, #9FD89F); 
+            color: #2D5016; 
+        }
+        .legend-aps { 
+            background: linear-gradient(135deg, #B8D4F0, #9BC4E8); 
+            color: #1B4F72; 
+        }
+        .legend-apd { 
+            background: linear-gradient(135deg, #D4B8E6, #C29FDB); 
+            color: #4A235A; 
+        }
+        .legend-pc { 
+            background: linear-gradient(135deg, #f3dccd, #f5ceb5); 
+            color: #A0522D; 
+        }
+        .legend-pro { 
+            background: linear-gradient(135deg, #e9d7e9, #ddcfdd); 
+            color: #7B2D7B; 
+        }
+        .legend-exe { 
+            background: linear-gradient(135deg, #f3e8eb, #fde8ee); 
+            color: #8B0000; 
+        }
+        .legend-doe { 
+            background: linear-gradient(135deg, #D0D0D0, #BFBFBF); 
+            color: #4A4A4A; 
+        }
+        .legend-dce { 
+            background: linear-gradient(135deg, #E6E6FA, #D8BFD8); 
+            color: #4B0082; 
+        }
+        .legend-det { 
+            background: linear-gradient(135deg, #FFE4E1, #FFC0CB); 
+            color: #B22222; 
+        }
+        .legend-concours { 
+            background: linear-gradient(135deg, #F0E68C, #DAA520); 
+            color: #8B4513; 
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .timeline-container {
+                padding: 1rem;
+            }
+            
+            .period-column-juno {
+                font-size: 0.6rem;
+                padding: 6px 1px;
+            }
+            
+            .activity-lane-juno {
+                height: 65px;
+                margin-bottom: 8px;
+            }
+            
+            .lane-label-juno {
+                font-size: 0.75rem;
+                width: 120px;
+            }
+            
+            .activity-bar-juno {
+                font-size: 0.55rem;
+                padding: 0 4px;
+                height: 20px;
+            }
+            
+            .legend-juno {
+                gap: 10px;
+                padding: 0 1rem;
+            }
+            
+            .phases-legend-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                font-size: 12px;
+            }
+            
+            .timeline-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            .activity-bar-juno:hover {
+                transform: none;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .client-info-juno {
+                opacity: 1;
+            }
+            
+            .legend-juno {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Timeline Missions Atelier Juno</h1>
+            <p>Parcours professionnel - Janvier 2022 à Janvier 2025</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Timeline principale -->
+        <div class="timeline-section">
+            <div class="section-header">
+                <h2><i class="fas fa-calendar-timeline"></i> Vue d'ensemble - 3 années d'évolution professionnelle</h2>
+                <p style="color: #ecf0f1; margin-top: 0.5rem; font-style: italic;">Progression des missions et développement des compétences</p>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-wrapper-juno">
+                    <div class="stats-overlay-juno">
+                        <div class="stat-item-juno">
+                            <div class="stat-value-juno">36</div>
+                            <div>Missions réalisées</div>
+                        </div>
+                        <div class="stat-item-juno">
+                            <div class="stat-value-juno">25</div>
+                            <div>Clients différents</div>
+                        </div>
+                        <div class="stat-item-juno">
+                            <div class="stat-value-juno">4</div>
+                            <div>Types de missions</div>
+                        </div>
+                        <div class="stat-item-juno">
+                            <div class="stat-value-juno">37</div>
+                            <div>Mois d'activité</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-juno">
+                        <!-- L'en-tête de la timeline sera généré par JavaScript -->
+                        <div class="timeline-header-juno" id="timeline-header"></div>
+                        
+                        <!-- Le contenu des lanes sera généré par JavaScript -->
+                        <div class="timeline-content-juno" id="timeline-content"></div>
+                    </div>
+                </div>
+                
+                <div class="legend-juno">
+                    <div class="legend-item">
+                        <div class="legend-color assistance-moe-juno" style="background: linear-gradient(135deg, #495655, #3a4441);"></div>
+                        <span>Assistance MOE</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color bim-management-juno" style="background: linear-gradient(135deg, #307175, #384e64);"></div>
+                        <span>BIM Management</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color maitrise-oeuvre-juno" style="background: linear-gradient(135deg, #3a8860, #1f2e28);"></div>
+                        <span>Maîtrise d'œuvre</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color modelisation-juno" style="background: linear-gradient(135deg, #B6C0CB, #a3adb7);"></div>
+                        <span>Modélisation</span>
+                    </div>
+                </div>
+                
+                <!-- Légende des phases -->
+                <div class="phases-legend">
+                    <h3><i class="fas fa-info-circle"></i> Guide des Phases de Projet</h3>
+                    <div class="phases-legend-grid" id="phases-legend-grid">
+                        <!-- Sera généré par JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // ==== DONNÉES DES MISSIONS JUNO 2022-2025 (EXACTES DU FICHIER EXCEL) ====
+const missionsData = [
+        // Formation (5 missions)
+    {
+        "Année": 2022,
+        "Type de Mission": "Formation",
+        "Client/Cabinet": "Formations Divers",
+        "Nom du Projet": "Formations Divers",
+        "Phase": "Formation",
+        "Date Début": new Date(2022, 6, 12),
+        "Date Fin": new Date(2025, 1, 25),
+        "Durée (jours)": 164
+    },
+        // Maîtrise d'oeuvre (5 missions)
+    {
+        "Année": 2022,
+        "Type de Mission": "Maîtrise d'oeuvre",
+        "Client/Cabinet": "KUP",
+        "Nom du Projet": "Cabinet dentaire Villepinte",
+        "Phase": "DET",
+        "Date Début": new Date(2022, 0, 12),
+        "Date Fin": new Date(2022, 5, 25),
+        "Durée (jours)": 164
+    },
+    {
+        "Année": 2023,
+        "Type de Mission": "Maîtrise d'oeuvre",
+        "Client/Cabinet": "HYVE",
+        "Nom du Projet": "Salle de sport",
+        "Phase": "APD",
+        "Date Début": new Date(2023, 8, 7),
+        "Date Fin": new Date(2023, 10, 5),
+        "Durée (jours)": 59
+    },
+    {
+        "Année": 2023,
+        "Type de Mission": "Maîtrise d'oeuvre",
+        "Client/Cabinet": "HYVE",
+        "Nom du Projet": "Salle de sport",
+        "Phase": "PRO",
+        "Date Début": new Date(2023, 10, 12),
+        "Date Fin": new Date(2024, 0, 10),
+        "Durée (jours)": 29
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "Maîtrise d'oeuvre",
+        "Client/Cabinet": "JANS",
+        "Nom du Projet": "DP Maison individuelle",
+        "Phase": "EDL/ESQ",
+        "Date Début": new Date(2024, 1, 5),
+        "Date Fin": new Date(2024, 5, 4),
+        "Durée (jours)": 212
+    },
+     {
+        "Année": 2024,
+        "Type de Mission": "Maîtrise d'oeuvre",
+        "Client/Cabinet": "JANS",
+        "Nom du Projet": "DP Maison individuelle",
+        "Phase": "DCE/DP",
+        "Date Début": new Date(2024, 5, 5),
+        "Date Fin": new Date(2024, 8, 4),
+        "Durée (jours)": 212
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "Maîtrise d'oeuvre",
+        "Client/Cabinet": "OTERO",
+        "Nom du Projet": "Rénovation maison individuelle",
+        "Phase": "EDL/ESQ",
+        "Date Début": new Date(2024, 5, 1),
+        "Date Fin": new Date(2024, 6, 15),
+        "Durée (jours)": 14
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "Lina Ghotmeh Architecture",
+        "Nom du Projet": "FR76 AdivBois",
+        "Phase": "PRO/DCE",
+        "Date Début": new Date(2022, 11, 19),
+        "Date Fin": new Date(2023, 1, 26),
+        "Durée (jours)": 69
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "Ateliers SCHALL",
+        "Nom du Projet": "Gare FORT D'AUBERVILLIERS",
+        "Phase": "APS",
+        "Date Début": new Date(2022, 4, 7),
+        "Date Fin": new Date(2022, 7, 16),
+        "Durée (jours)": 9
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "Lina Ghotmeh Architecture",
+        "Nom du Projet": "FR93 Bordeaux EVA",
+        "Phase": "EXE",
+        "Date Début": new Date(2023, 2, 1),
+        "Date Fin": new Date(2023, 3, 27),
+        "Durée (jours)": 57
+    },
+    {
+        "Année": 2023,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "Renault Chanteloup Architectes",
+        "Nom du Projet": "Bureaux Paris - aménagement",
+        "Phase": "APS",
+        "Date Début": new Date(2023, 3, 12),
+        "Date Fin": new Date(2023, 6, 16),
+        "Durée (jours)": 95
+    },
+    {
+        "Année": 2023,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "LA Architecture",
+        "Nom du Projet": "CHC Ecole Chapelle Charbon",
+        "Phase": "APS",
+        "Date Début": new Date(2023, 5, 8),
+        "Date Fin": new Date(2023, 6, 7),
+        "Durée (jours)": 29
+    },
+    {
+        "Année": 2023,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "Archi5",
+        "Nom du Projet": "Gare de Nanterre La Boule",
+        "Phase": "PC",
+        "Date Début": new Date(2023, 10, 2),
+        "Date Fin": new Date(2024, 1, 5),
+        "Durée (jours)": 83
+    },
+    {
+        "Année": 2023,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "Patriarche Architecture",
+        "Nom du Projet": "CHU Nantes - lot 104 A & B",
+        "Phase": "EXE",
+        "Date Début": new Date(2023, 11, 5),
+        "Date Fin": new Date(2024, 8, 6),
+        "Durée (jours)": 276
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "Archi5",
+        "Nom du Projet": "Gare de Nanterre La Boule",
+        "Phase": "PRO",
+        "Date Début": new Date(2024, 1, 5),
+        "Date Fin": new Date(2024, 3, 30),
+        "Durée (jours)": 74
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "LIL Architecture",
+        "Nom du Projet": "Maison individuelle Lavaud",
+        "Phase": "PC",
+        "Date Début": new Date(2024, 2, 25),
+        "Date Fin": new Date(2024, 3, 29),
+        "Durée (jours)": 35
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "FUSO",
+        "Nom du Projet": "Ensemble logements collectifs Agnettes",
+        "Phase": "APD",
+        "Date Début": new Date(2024, 4, 7),
+        "Date Fin": new Date(2024, 6, 12),
+        "Durée (jours)": 66
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "Assistance MOE",
+        "Client/Cabinet": "FUSO",
+        "Nom du Projet": "Ensemble logements collectifs Agnettes",
+        "Phase": "PC",
+        "Date Début": new Date(2024, 8, 12),
+        "Date Fin": new Date(2024, 10, 13),
+        "Durée (jours)": 62
+    },
+    // BIM Management (9 missions)
+    {
+        "Année": 2022,
+        "Type de Mission": "BIM Management",
+        "Client/Cabinet": "Wilmotte & Associés",
+        "Nom du Projet": "CMA CGM  Academy",
+        "Phase": "EXE",
+        "Date Début": new Date(2022, 1, 15),
+        "Date Fin": new Date(2023, 10, 20),
+        "Durée (jours)": 643
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "BIM Management",
+        "Client/Cabinet": "Archi5",
+        "Nom du Projet": "Le BOURGET",
+        "Phase": "PRO",
+        "Date Début": new Date(2022, 6, 12),
+        "Date Fin": new Date(2022, 8, 26),
+        "Durée (jours)": 76
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "BIM Management",
+        "Client/Cabinet": "BRETON GCC ",
+        "Nom du Projet": "Breizh",
+        "Phase": "EXE",
+        "Date Début": new Date(2022, 6, 26),
+        "Date Fin": new Date(2023, 5, 27),
+        "Durée (jours)": 336
+    },
+    {
+        "Année": 2023,
+        "Type de Mission": "BIM Management",
+        "Client/Cabinet": "L'AUC",
+        "Nom du Projet": "Extension archives Nationales Pierrefitte",
+        "Phase": "APS",
+        "Date Début": new Date(2023, 0, 9),
+        "Date Fin": new Date(2023, 0, 9),
+        "Durée (jours)": 1
+    },
+    {
+        "Année": 2023,
+        "Type de Mission": "BIM Management",
+        "Client/Cabinet": "L'AUC",
+        "Nom du Projet": "Extension archives Nationales Pierrefitte",
+        "Phase": "PRO",
+        "Date Début": new Date(2023, 8, 5),
+        "Date Fin": new Date(2023, 10, 5),
+        "Durée (jours)": 61
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "BIM Management",
+        "Client/Cabinet": "Wilmotte & Associés",
+        "Nom du Projet": "CMA CGM Academy",
+        "Phase": "DOE",
+        "Date Début": new Date(2024, 0, 15),
+        "Date Fin": new Date(2024, 8, 23),
+        "Durée (jours)": 252
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "BIM Management",
+        "Client/Cabinet": "CO-Architecture",
+        "Nom du Projet": "CFA PAMANZI Mayotte",
+        "Phase": "PRO",
+        "Date Début": new Date(2024, 0, 23),
+        "Date Fin": new Date(2024, 3, 17),
+        "Durée (jours)": 85
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "BIM Management",
+        "Client/Cabinet": "VIB Architecture",
+        "Nom du Projet": "MATHSTIC",
+        "Phase": "EXE",
+        "Date Début": new Date(2024, 6, 2),
+        "Date Fin": new Date(2025, 0, 9),
+        "Durée (jours)": 191
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "BIM Management",
+        "Client/Cabinet": "CO-Architecture",
+        "Nom du Projet": "CFA PAMANZI Mayotte",
+        "Phase": "DCE",
+        "Date Début": new Date(2024, 7, 26),
+        "Date Fin": new Date(2024, 9, 23),
+        "Durée (jours)": 58
+    },
+
+    // Modélisation (11 missions)
+    {
+        "Année": 2022,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "AREP",
+        "Nom du Projet": "Gare de BOIS COLOMBES",
+        "Phase": "APS",
+        "Date Début": new Date(2022, 0, 10),
+        "Date Fin": new Date(2022, 0, 16),
+        "Durée (jours)": 6
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "SCAU",
+        "Nom du Projet": "CHU Nice",
+        "Phase": "APD",
+        "Date Début": new Date(2022, 0, 17),
+        "Date Fin": new Date(2022, 0, 30),
+        "Durée (jours)": 13
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "MEF",
+        "Nom du Projet": "Bâtiments en îlots Bordeaux",
+        "Phase": "PCM",
+        "Date Début": new Date(2022, 0, 31),
+        "Date Fin": new Date(2022, 3, 10),
+        "Durée (jours)": 69
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "DISTYLIGHT",
+        "Nom du Projet": "Luminaires projet THE LINK",
+        "Phase": "APS",
+        "Date Début": new Date(2022, 2, 21),
+        "Date Fin": new Date(2022, 3, 1),
+        "Durée (jours)": 11
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "SBP",
+        "Nom du Projet": "BARBES TATI - Structure",
+        "Phase": "APD",
+        "Date Début": new Date(2022, 2, 30),
+        "Date Fin": new Date(2022, 4, 24),
+        "Durée (jours)": 55
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "LIL Architecture",
+        "Nom du Projet": "Logements",
+        "Phase": "APS/PC",
+        "Date Début": new Date(2022, 6, 1),
+        "Date Fin": new Date(2022, 10, 4),
+        "Durée (jours)": 126
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "TOA",
+        "Nom du Projet": "Projet CVC",
+        "Phase": "APS",
+        "Date Début": new Date(2022, 7, 1),
+        "Date Fin": new Date(2022, 7, 5),
+        "Durée (jours)": 4
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "TOA",
+        "Nom du Projet": "Projet CVC",
+        "Phase": "APS",
+        "Date Début": new Date(2022, 7, 22),
+        "Date Fin": new Date(2022, 7, 30),
+        "Durée (jours)": 8
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "DISTYLIGHT",
+        "Nom du Projet": "Luminaires projet THE LINK",
+        "Phase": "PRO/DCE",
+        "Date Début": new Date(2022, 7, 30),
+        "Date Fin": new Date(2022, 8, 9),
+        "Durée (jours)": 10
+    },
+    {
+        "Année": 2022,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "ARCHI5",
+        "Nom du Projet": "Gare Ligne 15 BPP",
+        "Phase": "APD",
+        "Date Début": new Date(2022, 8, 13),
+        "Date Fin": new Date(2022, 8, 17),
+        "Durée (jours)": 4
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "Encore Heureux",
+        "Nom du Projet": "Cité du Court Métrage",
+        "Phase": "Concours",
+        "Date Début": new Date(2024, 7, 1),
+        "Date Fin": new Date(2024, 7, 25),
+        "Durée (jours)": 24
+    },
+    {
+        "Année": 2024,
+        "Type de Mission": "Modélisation",
+        "Client/Cabinet": "Encore Heureux",
+        "Nom du Projet": "Carsat Marseille",
+        "Phase": "Concours",
+        "Date Début": new Date(2024, 8, 1),
+        "Date Fin": new Date(2024, 8, 25),
+        "Durée (jours)": 24
+    }
+];
+
+// ==== CONFIGURATION ET UTILITAIRES ====
+
+// Période de la timeline (Janvier 2022 à Janvier 2025)
+const timelinePeriods = [];
+
+// Générer les périodes (semestres pour 2022-2024, puis janvier 2025)
+const generateTimePeriods = () => {
+    // 2022
+    timelinePeriods.push({
+        key: "2022-S1",
+        label: "2022 S1",
+        startDate: new Date(2022, 0, 1),
+        endDate: new Date(2022, 5, 30),
+        year: 2022,
+        semester: 1
+    });
+    timelinePeriods.push({
+        key: "2022-S2", 
+        label: "2022 S2",
+        startDate: new Date(2022, 6, 1),
+        endDate: new Date(2022, 11, 31),
+        year: 2022,
+        semester: 2
+    });
+    
+    // 2023
+    timelinePeriods.push({
+        key: "2023-S1",
+        label: "2023 S1", 
+        startDate: new Date(2023, 0, 1),
+        endDate: new Date(2023, 5, 30),
+        year: 2023,
+        semester: 1
+    });
+    timelinePeriods.push({
+        key: "2023-S2",
+        label: "2023 S2",
+        startDate: new Date(2023, 6, 1), 
+        endDate: new Date(2023, 11, 31),
+        year: 2023,
+        semester: 2
+    });
+    
+    // 2024
+    timelinePeriods.push({
+        key: "2024-S1",
+        label: "2024 S1",
+        startDate: new Date(2024, 0, 1),
+        endDate: new Date(2024, 5, 30),
+        year: 2024,
+        semester: 1
+    });
+    timelinePeriods.push({
+        key: "2024-S2",
+        label: "2024 S2", 
+        startDate: new Date(2024, 6, 1),
+        endDate: new Date(2024, 11, 31),
+        year: 2024,
+        semester: 2
+    });
+    
+    // 2025 (janvier seulement)
+    timelinePeriods.push({
+        key: "2025-01",
+        label: "Jan 2025",
+        startDate: new Date(2025, 0, 1),
+        endDate: new Date(2025, 0, 31), 
+        year: 2025,
+        month: 0
+    });
+};
+
+// Fonction pour calculer la position et largeur d'une mission sur la timeline
+const calculateMissionPosition = (mission) => {
+    const totalTimelineStart = new Date(2022, 0, 1);
+    const totalTimelineEnd = new Date(2025, 0, 31);
+    const totalTimelineWidth = 100; // 100% de largeur
+    
+    const missionStart = mission['Date Début'];
+    const missionEnd = mission['Date Fin'];
+    
+    // Calcul des positions en pourcentage
+    const startPosition = ((missionStart - totalTimelineStart) / (totalTimelineEnd - totalTimelineStart)) * totalTimelineWidth;
+    const endPosition = ((missionEnd - totalTimelineStart) / (totalTimelineEnd - totalTimelineStart)) * totalTimelineWidth;
+    const width = endPosition - startPosition;
+    
+    return {
+        left: Math.max(0, Math.min(startPosition, totalTimelineWidth - 0.5)),
+        width: Math.max(0.5, Math.min(width, totalTimelineWidth - startPosition)),
+        startPosition,
+        endPosition
+    };
+};
+
+// Fonction pour obtenir la classe CSS du type de mission
+const getMissionTypeClass = (type) => {
+    const typeMap = {
+        "Assistance MOE": "assistance-moe-juno",
+        "BIM Management": "bim-management-juno", 
+        "Maîtrise d'oeuvre": "maitrise-oeuvre-juno",
+        "Modélisation": "modelisation-juno"
+    };
+    return typeMap[type] || "assistance-moe-juno";
+};
+
+// Fonction pour obtenir la classe CSS de la phase
+const getPhaseClass = (phase) => {
+    if (!phase) return "phase-doe";
+    
+    const phaseUpper = phase.toUpperCase();
+    
+    if (phaseUpper.includes("EDL")) return "phase-edl";
+    if (phaseUpper.includes("ESQ") ) return "phase-esq";
+    if (phaseUpper.includes("APS") && !phaseUpper.includes("PC")) return "phase-aps";
+    if (phaseUpper.includes("APD")) return "phase-apd";
+    if (phaseUpper.includes("PC") || phaseUpper.includes("PCM")|| phaseUpper.includes("DP")) return "phase-pc";
+    if (phaseUpper.includes("PRO") && !phaseUpper.includes("DCE")) return "phase-pro";
+    if (phaseUpper.includes("EXE")) return "phase-exe";
+    if (phaseUpper.includes("DOE")) return "phase-doe";
+    if (phaseUpper.includes("DCE")) return "phase-dce";
+    if (phaseUpper.includes("DET")) return "phase-det";
+    if (phaseUpper.includes("CONCOURS")) return "phase-concours";
+    
+    return "phase-doe"; // Par défaut
+};
+
+// Fonction pour raccourcir le nom du projet
+const shortenProjectName = (name, maxLength = 35) => {
+    if (!name || name.length <= maxLength) return name || "Projet";
+    
+    // Essayer de couper au niveau d'un mot
+    const words = name.split(' ');
+    let result = words[0];
+    
+    for (let i = 1; i < words.length; i++) {
+        if ((result + ' ' + words[i]).length <= maxLength - 3) {
+            result += ' ' + words[i];
+        } else {
+            return result + '...';
+        }
+    }
+    
+    return result.length > maxLength ? result.substring(0, maxLength - 3) + '...' : result;
+};
+
+// ==== GÉNÉRATION DU CONTENU ====
+
+// Fonction pour générer l'en-tête de la timeline
+const generateTimelineHeader = () => {
+    generateTimePeriods();
+    
+    const header = document.getElementById('timeline-header');
+    if (!header) return;
+    
+    header.innerHTML = '';
+    
+    timelinePeriods.forEach(period => {
+        const column = document.createElement('div');
+        column.className = 'period-column-juno';
+        column.textContent = period.label;
+        header.appendChild(column);
+    });
+};
+
+// Fonction pour regrouper les missions par type puis par phase
+const groupMissionsByTypeAndPhase = () => {
+    const missionTypes = [
+        "Maîtrise d'oeuvre",
+        "Assistance MOE",
+        "BIM Management", 
+        "Modélisation",
+        "Formation"
+    ];
+    
+    const result = {};
+    
+    missionTypes.forEach(type => {
+        const typeMissions = missionsData.filter(m => m['Type de Mission'] === type);
+        
+        if (typeMissions.length > 0) {
+            console.log(`\n=== TRAITEMENT ${type} ===`);
+            
+            // Regrouper par phase au sein du type
+            const phaseGroups = {};
+            
+            typeMissions.forEach(mission => {
+                const phase = mission['Phase'] || 'Autre';
+                const phaseInfo = normalizePhaseGroup(phase);
+                const phaseGroup = phaseInfo.group;
+                
+                console.log(`Mission: ${mission['Nom du Projet']} - Phase: ${phase} -> Groupe: ${phaseGroup} (ordre: ${phaseInfo.order})`);
+                
+                if (!phaseGroups[phaseGroup]) {
+                    phaseGroups[phaseGroup] = {
+                        missions: [],
+                        order: phaseInfo.order
+                    };
+                }
+                phaseGroups[phaseGroup].missions.push(mission);
+            });
+            
+            // Créer un objet trié explicitement par ordre des phases
+            const sortedPhaseGroups = {};
+            
+            // Créer un tableau pour trier
+            const phasesToSort = Object.entries(phaseGroups).map(([name, data]) => ({
+                name: name,
+                missions: data.missions,
+                order: data.order
+            }));
+            
+            // Trier par ordre chronologique
+            phasesToSort.sort((a, b) => a.order - b.order);
+            
+            console.log(`Phases triées pour ${type}:`, phasesToSort.map(p => `${p.name} (${p.order})`));
+            
+            // Reconstruire l'objet dans le bon ordre
+            phasesToSort.forEach(phaseData => {
+                sortedPhaseGroups[phaseData.name] = phaseData.missions;
+            });
+            
+            result[type] = sortedPhaseGroups;
+        }
+    });
+    
+    console.log('=== RÉSULTAT FINAL ===', result);
+    return result;
+};
+// Fonction pour normaliser les groupes de phases
+const normalizePhaseGroup = (phase) => {
+    if (!phase) return { group: 'Autre', order: 99 };
+    
+    const phaseUpper = phase.toUpperCase();
+    
+    if (phaseUpper.includes('CONCOURS')) return { group: 'Concours', order: 0 };
+    if (phaseUpper.includes('EDL') || phaseUpper.includes('ESQ') ) return { group: 'Études préliminaires', order: 1 };
+    if (phaseUpper.includes('APS') && !phaseUpper.includes('PC')) return { group: 'APS', order: 2 };
+    if (phaseUpper.includes('APD')) return { group: 'APD', order: 3 };
+    if (phaseUpper.includes('PC') || phaseUpper.includes('PCM')|| phaseUpper.includes('DP')) return { group: 'Permis/Autorisations', order: 4 };
+    if (phaseUpper.includes('PRO') || phaseUpper.includes('DCE')) return { group: 'PRO/DCE', order: 5 };
+    if (phaseUpper.includes('EXE')) return { group: 'Exécution', order: 6 };
+    if (phaseUpper.includes('DET')) return { group: 'Direction des Travaux', order: 7 };
+    if (phaseUpper.includes('DOE')) return { group: 'Réception', order: 8 };
+    
+    return { group: 'Autre', order: 99 };
+};
+
+// Fonction pour détecter si deux missions se chevauchent temporellement
+const missionsOverlap = (mission1, mission2) => {
+    const start1 = mission1['Date Début'];
+    const end1 = mission1['Date Fin'];
+    const start2 = mission2['Date Début'];
+    const end2 = mission2['Date Fin'];
+    
+    // Vérifier s'il y a chevauchement
+    return (start1 <= end2) && (start2 <= end1);
+};
+
+// Fonction pour calculer l'arrangement optimal des missions pour éviter les superpositions
+const calculateOptimalLayout = (missions) => {
+    // Trier les missions par date de début
+    const sortedMissions = [...missions].sort((a, b) => a['Date Début'] - b['Date Début']);
+    
+    // Créer des "pistes" (tracks) pour placer les missions
+    const tracks = [];
+    const missionLayout = [];
+    
+    sortedMissions.forEach(mission => {
+        const position = calculateMissionPosition(mission);
+        
+        // Trouver la première piste disponible pour cette mission
+        let trackIndex = 0;
+        let placed = false;
+        
+        while (!placed) {
+            // Si la piste n'existe pas encore, la créer
+            if (!tracks[trackIndex]) {
+                tracks[trackIndex] = [];
+            }
+            
+            // Vérifier si cette mission peut être placée sur cette piste
+            const canPlace = tracks[trackIndex].every(existingMission => {
+                return !missionsOverlap(mission, existingMission);
+            });
+            
+            if (canPlace) {
+                // Placer la mission sur cette piste
+                tracks[trackIndex].push(mission);
+                missionLayout.push({
+                    mission: mission,
+                    trackIndex: trackIndex,
+                    position: position
+                });
+                placed = true;
+            } else {
+                // Essayer la piste suivante
+                trackIndex++;
+            }
+            
+            // Sécurité : ne pas dépasser 4 pistes pour éviter des sous-lanes trop hautes
+            if (trackIndex >= 4) {
+                tracks[trackIndex % 4].push(mission);
+                missionLayout.push({
+                    mission: mission,
+                    trackIndex: trackIndex % 4,
+                    position: position
+                });
+                placed = true;
+            }
+        }
+    });
+    
+    return missionLayout;
+};
+// Fonction pour créer une lane d'activité avec sous-lanes par phases TRIÉES et sans superpositions
+const createActivityLaneWithSubLanes = (laneLabel, phaseGroups, laneIndex) => {
+    const lane = document.createElement('div');
+    lane.className = 'activity-lane-juno';
+    
+    const label = document.createElement('div');
+    label.className = 'lane-label-juno';
+    label.textContent = laneLabel;
+    lane.appendChild(label);
+    
+    // Conteneur pour les sous-lanes
+    const subLanesContainer = document.createElement('div');
+    subLanesContainer.className = 'sub-lanes-container';
+    
+    // IMPORTANT: S'assurer que les phases sont bien triées par ordre chronologique
+    // Créer un tableau des phases avec leur ordre pour un tri explicite
+    const sortedPhases = Object.entries(phaseGroups).map(([phaseName, missions]) => {
+        // Déterminer l'ordre de cette phase en analysant les missions
+        let minOrder = 99;
+        missions.forEach(mission => {
+            const phaseInfo = normalizePhaseGroup(mission['Phase']);
+            minOrder = Math.min(minOrder, phaseInfo.order);
+        });
+        
+        return {
+            phaseName: phaseName,
+            missions: missions,
+            order: minOrder
+        };
+    }).sort((a, b) => a.order - b.order);
+    
+    console.log(`${laneLabel} - Ordre des phases:`, sortedPhases.map(p => `${p.phaseName} (ordre ${p.order})`));
+    
+    // Créer une sous-lane pour chaque phase dans l'ordre chronologique correct
+    sortedPhases.forEach(({ phaseName, missions, order }, subLaneIndex) => {
+        const subLane = document.createElement('div');
+        subLane.className = 'sub-lane-juno';
+        
+        const subLabel = document.createElement('div');
+        subLabel.className = 'sub-lane-label-juno';
+        subLabel.textContent = phaseName;
+        subLane.appendChild(subLabel);
+        
+        // Calculer l'arrangement optimal pour éviter les superpositions
+        const optimalLayout = calculateOptimalLayout(missions);
+        
+        // Placer chaque mission selon l'arrangement optimal
+        optimalLayout.forEach(({ mission, trackIndex, position }) => {
+            const typeClass = getMissionTypeClass(mission['Type de Mission']);
+            const phaseClass = getPhaseClass(mission['Phase']);
+            
+            const activityBar = document.createElement('div');
+            activityBar.className = `activity-bar-juno ${typeClass}`;
+            activityBar.style.left = `${position.left}%`;
+            activityBar.style.width = `${position.width}%`;
+            activityBar.style.top = `${5 + (trackIndex * 20)}px`; // Espacement de 20px entre les pistes
+            activityBar.style.height = '18px';
+            activityBar.style.fontSize = '0.6rem';
+            
+            // Contenu de la barre (nom du projet raccourci)
+            const projectName = shortenProjectName(mission['Nom du Projet'], 25);
+            activityBar.textContent = projectName;
+            
+            // Phase du projet
+            const phaseElement = document.createElement('div');
+            phaseElement.className = `project-phase-juno ${phaseClass}`;
+            phaseElement.textContent = mission['Phase'] || 'N/A';
+            phaseElement.style.fontSize = '0.55rem';
+            phaseElement.style.bottom = '-16px';
+            activityBar.appendChild(phaseElement);
+            
+            // Informations client (hover)
+            const clientInfo = document.createElement('div');
+            clientInfo.className = 'client-info-juno';
+            clientInfo.textContent = mission['Client/Cabinet'];
+            clientInfo.style.fontSize = '0.55rem';
+            activityBar.appendChild(clientInfo);
+            
+            subLane.appendChild(activityBar);
+        });
+        
+        // Ajuster la hauteur de la sous-lane selon le nombre de pistes utilisées
+        const maxTrack = optimalLayout.reduce((max, item) => Math.max(max, item.trackIndex), 0);
+        const subLaneHeight = Math.max(50, 30 + (maxTrack + 1) * 20); // Hauteur minimale de 50px
+        subLane.style.height = `${subLaneHeight}px`;
+        
+        subLanesContainer.appendChild(subLane);
+    });
+    
+    lane.appendChild(subLanesContainer);
+    return lane;
+};
+
+// Fonction principale pour générer le contenu de la timeline avec sous-lanes
+const generateTimelineContent = () => {
+    const content = document.getElementById('timeline-content');
+    if (!content) return;
+    
+    content.innerHTML = '';
+    
+    const missionsByTypeAndPhase = groupMissionsByTypeAndPhase();
+    
+    // Créer des lanes pour chaque type de mission avec leurs sous-lanes de phases
+    const missionTypeLabels = {
+        "Assistance MOE": "Assistance MOE",
+        "BIM Management": "BIM Management", 
+        "Maîtrise d'oeuvre": "Maîtrise d'œuvre",
+        "Modélisation": "Modélisation"
+    };
+    
+    let laneIndex = 0;
+    Object.entries(missionsByTypeAndPhase).forEach(([type, phaseGroups]) => {
+        const label = missionTypeLabels[type] || type;
+        const lane = createActivityLaneWithSubLanes(label, phaseGroups, laneIndex);
+        content.appendChild(lane);
+        laneIndex++;
+    });
+};
+
+// Fonction pour générer la légende des phases
+const generatePhasesLegend = () => {
+    const legendGrid = document.getElementById('phases-legend-grid');
+    if (!legendGrid) return;
+    
+    const phasesInfo = [
+        { key: 'concours', short: 'Concours', full: 'Concours d\'Architecture', description: 'Participation à concours' },
+        { key: 'edl', short: 'EDL', full: 'État des Lieux', description: 'Analyse de l\'existant et diagnostic' },
+        { key: 'esq', short: 'ESQ/DP', full: 'Esquisse / Déclaration Préalable', description: 'Études préliminaires' },
+        { key: 'aps', short: 'APS', full: 'Avant-Projet Sommaire', description: 'Définition architecturale générale' },
+        { key: 'apd', short: 'APD', full: 'Avant-Projet Détaillé', description: 'Précision des choix techniques' },
+        { key: 'pc', short: 'PC/PCM', full: 'Permis de Construire', description: 'Autorisations administratives' },
+        { key: 'pro', short: 'PRO', full: 'Projet', description: 'Plans détaillés pour consultation' },
+        { key: 'exe', short: 'EXE', full: 'Projet d\'Exécution', description: 'Plans très détaillés pour construction' },
+        { key: 'det', short: 'DET', full: 'Direction des Travaux', description: 'Suivi et direction de l\'exécution' },
+        { key: 'doe', short: 'DOE', full: 'Dossier Ouvrages Exécutés', description: 'Documentation finale' },
+        { key: 'dce', short: 'DCE', full: 'Dossier de Consultation Entreprises', description: 'Consultation des entreprises' }
+    ];
+    
+    legendGrid.innerHTML = '';
+    
+    phasesInfo.forEach(phase => {
+        const item = document.createElement('div');
+        item.className = 'phase-legend-item';
+        
+        item.innerHTML = `
+            <div class="phase-legend-color legend-${phase.key}">${phase.short}</div>
+            <div class="phase-legend-description">
+                <div class="phase-legend-acronym">${phase.full}</div>
+                <div class="phase-legend-full">${phase.description}</div>
+            </div>
+        `;
+        
+        legendGrid.appendChild(item);
+    });
+};
+
+// ==== INITIALISATION ====
+const initializeTimeline = () => {
+    console.log('Initialisation de la timeline Juno 2022-2025...');
+    console.log(`Nombre de missions: ${missionsData.length}`);
+    
+    generateTimelineHeader();
+    generateTimelineContent();
+    generatePhasesLegend();
+    
+    console.log('Timeline initialisée avec succès');
+};
+
+// Export pour usage externe
+window.JunoTimeline = {
+    data: missionsData,
+    periods: timelinePeriods,
+    initialize: initializeTimeline,
+    regenerate: () => {
+        generateTimelineContent();
+        console.log('Timeline régénérée');
+    }
+};
+    </script>
+    <script>
+        // ==== SCRIPT D'INITIALISATION ET INTERACTIVITÉ TIMELINE JUNO ====
+
+// Fonction pour appliquer les couleurs aux phases après génération du contenu
+function applyPhaseColorsJuno() {
+    console.log('Application des couleurs de phases pour timeline Juno...');
+    
+    const phases = document.querySelectorAll('.project-phase-juno');
+    console.log(`Nombre de phases trouvées: ${phases.length}`);
+    
+    phases.forEach(function(phase, index) {
+        const text = phase.textContent.trim().toUpperCase();
+        
+        // Supprimer les anciennes classes de phase
+        phase.classList.remove(
+            'phase-edl', 'phase-esq', 'phase-aps', 'phase-apd', 
+            'phase-pc', 'phase-pro', 'phase-exe', 'phase-doe',
+            'phase-dce', 'phase-det', 'phase-concours'
+        );
+        
+        // Appliquer la bonne classe selon le contenu
+        if (text.includes('EDL')) {
+            phase.classList.add('phase-edl');
+        } else if (text.includes('ESQ') || text.includes('DP')) {
+            phase.classList.add('phase-esq');
+        } else if (text.includes('APS') && !text.includes('PC')) {
+            phase.classList.add('phase-aps');
+        } else if (text.includes('APD')) {
+            phase.classList.add('phase-apd');
+        } else if (text.includes('PC') || text.includes('PCM')) {
+            phase.classList.add('phase-pc');
+        } else if (text.includes('PRO') && !text.includes('DCE')) {
+            phase.classList.add('phase-pro');
+        } else if (text.includes('EXE')) {
+            phase.classList.add('phase-exe');
+        } else if (text.includes('DOE')) {
+            phase.classList.add('phase-doe');
+        } else if (text.includes('DCE')) {
+            phase.classList.add('phase-dce');
+        } else if (text.includes('DET')) {
+            phase.classList.add('phase-det');
+        } else if (text.includes('CONCOURS')) {
+            phase.classList.add('phase-concours');
+        } else {
+            // Phase par défaut
+            phase.classList.add('phase-doe');
+        }
+    });
+    
+    console.log('Application des couleurs terminée');
+}
+
+// Fonction pour créer les tooltips informatifs
+function createProjectTooltips() {
+    const activityBars = document.querySelectorAll('.activity-bar-juno');
+    
+    activityBars.forEach(bar => {
+        // Améliorer l'accessibilité
+        bar.setAttribute('tabindex', '0');
+        bar.setAttribute('role', 'button');
+        bar.setAttribute('aria-label', `Mission: ${bar.textContent}`);
+        
+        // Interaction au clic pour afficher plus d'infos
+        bar.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showProjectDetails(this);
+        });
+        
+        // Interaction au survol pour mettre en valeur
+        bar.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.02)';
+            this.style.zIndex = '100';
+            
+            // Mettre en évidence la sous-lane
+            const subLane = this.closest('.sub-lane-juno');
+            if (subLane) {
+                subLane.style.backgroundColor = 'rgba(52, 152, 219, 0.1)';
+                subLane.style.borderLeftColor = '#3498db';
+            }
+            
+            // Mettre en évidence la lane principale
+            const mainLane = this.closest('.activity-lane-juno');
+            if (mainLane) {
+                mainLane.style.backgroundColor = 'rgba(52, 152, 219, 0.05)';
+            }
+        });
+        
+        bar.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.zIndex = '1';
+            
+            // Restaurer la sous-lane
+            const subLane = this.closest('.sub-lane-juno');
+            if (subLane) {
+                subLane.style.backgroundColor = '';
+                subLane.style.borderLeftColor = '#bdc3c7';
+            }
+            
+            // Restaurer la lane principale
+            const mainLane = this.closest('.activity-lane-juno');
+            if (mainLane) {
+                mainLane.style.backgroundColor = '';
+            }
+        });
+        
+        // Support clavier
+        bar.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                bar.click();
+            }
+        });
+    });
+}
+
+// Fonction pour afficher les détails d'un projet
+function showProjectDetails(projectElement) {
+    const rect = projectElement.getBoundingClientRect();
+    const projectName = projectElement.textContent;
+    const clientInfo = projectElement.querySelector('.client-info-juno');
+    const phaseInfo = projectElement.querySelector('.project-phase-juno');
+    
+    // Créer une popup temporaire avec les détails
+    const popup = document.createElement('div');
+    popup.style.cssText = `
+        position: fixed;
+        top: ${rect.bottom + 10}px;
+        left: ${rect.left}px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        z-index: 9999;
+        font-size: 0.85rem;
+        max-width: 350px;
+        line-height: 1.4;
+        font-family: 'Barlow', sans-serif;
+    `;
+    
+    const client = clientInfo ? clientInfo.textContent : 'Client non spécifié';
+    const phase = phaseInfo ? phaseInfo.textContent : 'Phase non spécifiée';
+    
+    popup.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <div style="width: 4px; height: 30px; background: ${projectElement.style.background || '#495655'}; border-radius: 2px;"></div>
+            <strong style="color: #2c3e50;">${projectName}</strong>
+        </div>
+        <div style="color: #34495e; margin-bottom: 8px;">
+            <strong>Client:</strong> ${client}
+        </div>
+        <div style="color: #34495e; margin-bottom: 10px;">
+            <strong>Phase:</strong> ${phase}
+        </div>
+        <div style="margin-top: 10px; font-size: 0.7rem; color: #95a5a6; text-align: center;">
+            Cliquez ailleurs pour fermer
+        </div>
+    `;
+    
+    document.body.appendChild(popup);
+    
+    // Ajuster la position si la popup dépasse de l'écran
+    const popupRect = popup.getBoundingClientRect();
+    if (popupRect.right > window.innerWidth) {
+        popup.style.left = `${window.innerWidth - popupRect.width - 20}px`;
+    }
+    if (popupRect.bottom > window.innerHeight) {
+        popup.style.top = `${rect.top - popupRect.height - 10}px`;
+    }
+    
+    // Supprimer la popup après 4 secondes ou au clic ailleurs
+    const removePopup = () => {
+        if (popup.parentNode) {
+            popup.parentNode.removeChild(popup);
+        }
+        document.removeEventListener('click', removePopup);
+    };
+    
+    setTimeout(removePopup, 4000);
+    document.addEventListener('click', removePopup);
+}
+
+// Fonction pour analyser et afficher des statistiques
+function generateTimelineStatistics() {
+    if (!window.JunoTimeline || !window.JunoTimeline.data) return;
+    
+    const missions = window.JunoTimeline.data;
+    
+    // Statistiques par type de mission
+    const typeStats = {};
+    const phaseStats = {};
+    const yearStats = {};
+    
+    missions.forEach(mission => {
+        const type = mission['Type de Mission'] || 'Non spécifié';
+        const phase = mission['Phase'] || 'Non spécifiée';
+        const year = mission['Année'] || 0;
+        
+        typeStats[type] = (typeStats[type] || 0) + 1;
+        phaseStats[phase] = (phaseStats[phase] || 0) + 1;
+        yearStats[year] = (yearStats[year] || 0) + 1;
+    });
+    
+    console.log('=== STATISTIQUES TIMELINE JUNO ===');
+    console.log('Types de missions:', typeStats);
+    console.log('Phases:', phaseStats);
+    console.log('Répartition par année:', yearStats);
+    
+    // Calculer la durée totale
+    const totalDays = missions.reduce((sum, mission) => {
+        return sum + (mission['Durée (jours)'] || 0);
+    }, 0);
+    
+    console.log(`Durée totale: ${totalDays} jours (${Math.round(totalDays/365 * 10)/10} années)`);
+}
+
+// Fonction pour optimiser l'affichage pour l'impression
+function optimizeForPrint() {
+    const style = document.createElement('style');
+    style.textContent = `
+        @media print {
+            .timeline-section {
+                break-inside: avoid;
+            }
+            
+            .activity-lane-juno {
+                break-inside: avoid;
+            }
+            
+            .phases-legend {
+                break-before: page;
+            }
+            
+            .legend-juno {
+                break-inside: avoid;
+            }
+            
+            .client-info-juno {
+                opacity: 1 !important;
+                font-size: 0.5rem !important;
+            }
+            
+            .activity-bar-juno {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
+            
+            .project-phase-juno {
+                font-size: 0.5rem !important;
+                padding: 0px 2px !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Fonction pour vérifier l'intégrité des données affichées
+function validateTimelineData() {
+    const activityBars = document.querySelectorAll('.activity-bar-juno');
+    const expectedMissions = window.JunoTimeline ? window.JunoTimeline.data.length : 0;
+    
+    console.log(`Barres d'activité générées: ${activityBars.length}`);
+    console.log(`Missions dans les données: ${expectedMissions}`);
+    
+    if (activityBars.length !== expectedMissions) {
+        console.warn('⚠️ Différence entre les missions et les barres affichées');
+    } else {
+        console.log('✅ Toutes les missions sont affichées correctement');
+    }
+    
+    // Vérifier que les phases ont des couleurs
+    const coloredPhases = document.querySelectorAll('.project-phase-juno[class*="phase-"]');
+    console.log(`Phases colorées: ${coloredPhases.length}`);
+}
+
+// Fonction principale d'initialisation
+function initializeJunoTimelineComplete() {
+    console.log('=== INITIALISATION TIMELINE JUNO 2022-2025 ===');
+    
+    // Vérifier que les fonctions de base sont disponibles
+    if (!window.JunoTimeline) {
+        console.error('JunoTimeline n\'est pas disponible');
+        return;
+    }
+    
+    try {
+        // 1. Initialiser la timeline
+        window.JunoTimeline.initialize();
+        
+        // 2. Appliquer les couleurs des phases
+        setTimeout(() => {
+            applyPhaseColorsJuno();
+        }, 100);
+        
+        // 3. Créer les tooltips
+        setTimeout(() => {
+            createProjectTooltips();
+        }, 200);
+        
+        // 4. Générer les statistiques
+        setTimeout(() => {
+            generateTimelineStatistics();
+        }, 300);
+        
+        // 5. Valider les données
+        setTimeout(() => {
+            validateTimelineData();
+        }, 400);
+        
+        // 6. Optimiser pour l'impression
+        setTimeout(() => {
+            optimizeForPrint();
+        }, 500);
+        
+        console.log('✅ Timeline Juno initialisée avec succès');
+        
+    } catch (error) {
+        console.error('❌ Erreur lors de l\'initialisation:', error);
+    }
+}
+
+// Fonction de réinitialisation manuelle
+function reinitializeJunoTimeline() {
+    console.log('Réinitialisation manuelle de la timeline...');
+    
+    // Nettoyer le contenu existant
+    const timelineContent = document.getElementById('timeline-content');
+    const timelineHeader = document.getElementById('timeline-header');
+    
+    if (timelineContent) timelineContent.innerHTML = '';
+    if (timelineHeader) timelineHeader.innerHTML = '';
+    
+    // Réinitialiser
+    setTimeout(initializeJunoTimelineComplete, 100);
+}
+
+// Gestion des événements de chargement
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM chargé, initialisation dans 500ms...');
+    setTimeout(initializeJunoTimelineComplete, 500);
+});
+
+window.addEventListener('load', function() {
+    console.log('Page entièrement chargée');
+    // Sécurité: réinitialiser si rien n'est affiché
+    setTimeout(() => {
+        const activityBars = document.querySelectorAll('.activity-bar-juno');
+        if (activityBars.length === 0) {
+            console.log('Aucune barre d\'activité détectée, réinitialisation...');
+            reinitializeJunoTimeline();
+        }
+    }, 1000);
+});
+
+// Fonctions utilitaires pour le debug
+window.JunoTimelineDebug = {
+    reinitialize: reinitializeJunoTimeline,
+    applyColors: applyPhaseColorsJuno,
+    showStats: generateTimelineStatistics,
+    validate: validateTimelineData,
+    
+    // Fonction pour afficher toutes les informations de debug
+    debugInfo: function() {
+        console.log('=== DEBUG TIMELINE JUNO ===');
+        generateTimelineStatistics();
+        validateTimelineData();
+        
+        const phases = document.querySelectorAll('.project-phase-juno');
+        const coloredPhases = document.querySelectorAll('.project-phase-juno[class*="phase-"]');
+        
+        console.log('Résumé:');
+        console.log('- Phases totales:', phases.length);
+        console.log('- Phases colorées:', coloredPhases.length);
+        console.log('- Timeline initialisée:', !!window.JunoTimeline);
+        console.log('- Données disponibles:', window.JunoTimeline ? window.JunoTimeline.data.length : 0);
+    },
+    
+    // Fonction pour tester manuellement
+    test: function() {
+        console.log('=== TEST TIMELINE JUNO ===');
+        this.debugInfo();
+        
+        setTimeout(() => {
+            console.log('Application des couleurs...');
+            applyPhaseColorsJuno();
+            
+            setTimeout(() => {
+                validateTimelineData();
+                console.log('Test terminé');
+            }, 500);
+        }, 100);
+    }
+};
+
+// Instructions pour l'utilisateur
+console.log('Timeline Juno chargée. Fonctions disponibles:');
+console.log('- window.JunoTimelineDebug.test() : Tester la timeline');
+console.log('- window.JunoTimelineDebug.reinitialize() : Réinitialiser');
+console.log('- window.JunoTimelineDebug.debugInfo() : Informations de debug');
+
+// Auto-correction: essayer de réinitialiser toutes les 3 secondes pendant les 15 premières secondes
+let retryCount = 0;
+const retryInterval = setInterval(() => {
+    retryCount++;
+    
+    const activityBars = document.querySelectorAll('.activity-bar-juno');
+    const phases = document.querySelectorAll('.project-phase-juno');
+    const coloredPhases = document.querySelectorAll('.project-phase-juno[class*="phase-"]');
+    
+    console.log(`Vérification ${retryCount}/5 - Barres: ${activityBars.length}, Phases colorées: ${coloredPhases.length}/${phases.length}`);
+    
+    if (activityBars.length === 0 || (phases.length > 0 && coloredPhases.length === 0)) {
+        console.log('Problème détecté, tentative de correction...');
+        reinitializeJunoTimeline();
+    }
+    
+    if (retryCount >= 5) {
+        clearInterval(retryInterval);
+        console.log('Arrêt des vérifications automatiques');
+    }
+}, 3000);
+    </script>
+    <!-- Le JavaScript sera injecté dans les artéfacts suivants -->
+</body>
+</html>
