@@ -43,6 +43,35 @@
             margin: 0 auto;
             padding: 0 2rem;
         }
+         .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            background-color: #6F8381;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .home-button:hover {
+            background-color: #2c3e50;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .home-button i {
+            margin-right: 10px;
+        }
+
 
         .timeline-section {
             background: white;
@@ -482,7 +511,12 @@
                 background: white;
                 font-size: 12px;
             }
-            
+            .home-button {
+                top: 35px;
+                left: 15px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
             .timeline-section {
                 box-shadow: none;
                 border: 1px solid #ddd;
@@ -510,7 +544,10 @@
             <p>Parcours professionnel - Janvier 2022 à Janvier 2025</p>
         </div>
     </div>
-    
+     <!-- Bouton retour à l'accueil en position fixe -->
+    <a href="index.html" class="home-button">
+        <i class="fas fa-home"></i> Retour à l'accueil
+    </a>
     <div class="container">
         <!-- Timeline principale -->
         <div class="timeline-section">
