@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 28 Juillet - 1er Août 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #000000;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #000000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A;
+        }
+        .narrative-block {
+            font-style: italic;
+            color: #555;
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 3px solid #000000;
+            background-color: #f8f9fa;
+        }
+        .production-block {
+            background-color: #fff5f5;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .kkaa-block {
+            background-color: #f0f4ff;
+            border-left: 4px solid #4e73df;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .coordination-block {
+            background-color: #f8fff8;
+            border-left: 4px solid #1cc88a;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .negotiation-block {
+            background-color: #fff8f0;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+
+        <h1>Journal de Bord HMONP<br>28 Juillet - 1er Août 2025</h1>
+
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition du temps de travail du 28 juillet au 1er août 2025, illustrant une dernière ligne droite pré-HMONP entre production intensive et vigilance stratégique.</p>
+            <p><strong>Temps total travaillé :</strong> 37 heures</p>
+            <p><strong>Activités principales :</strong> Modélisation Témoin BIM MEL - Production intensive (15h - 41%), Assistance KKAA - Mise à jour maquette prototype Témoin (12h - 32%), Cité des Musiques Actuelles - Audit BIM et structuration Kroqi (8h - 22%), Accord-cadre RIVP - Négociation phase offre (2h - 5%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Production BIM intensive (41%), Assistance technique haute exigence (32%), Coordination BIM stratégique (22%), Vigilance commerciale (5%)</p>
+        </div>
+
+        <h2>ENTRE PRODUCTION INTENSIVE ET VIGILANCE STRATÉGIQUE : DERNIÈRE LIGNE DROITE PRÉ-HMONP</h2>
+
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+
+            <div class="narrative-block">
+                À quelques semaines de ma soutenance HMONP, cette semaine incarne un paradoxe révélateur : me voilà plongé dans une production technique intensive au moment précis où je m'apprête à franchir le seuil de l'habilitation. Loin d'être une régression, cette posture confirme la pertinence d'une double compétence construite patiemment - celle d'un architecte qui maîtrise le langage numérique autant que la pensée architecturale.
+            </div>
+
+            <p>Cette semaine se caractérise par un <strong>équilibre professionnel exemplaire</strong>, conjuguant production BIM intensive, assistance architecturale de haut niveau, coordination stratégique et vigilance commerciale. Cette pluralité d'engagements témoigne de la maturité acquise et de la confiance accordée par l'ensemble des acteurs du marché.</p>
+
+            <div class="production-block">
+                <h4>Modélisation Témoin BIM MEL : L'exigence de la représentation technique</h4>
+                <p>Les 31 juillet et 1er août, j'ai consacré <strong>15 heures</strong> à la modélisation du témoin de cuisine pour le projet BIM MEL. Cette mission de production pure m'a confronté à la complexité de la représentation technique d'un élément architectonique aussi codifié qu'une cuisine, avec ses menuiseries de mur-rideau en façade et l'ensemble de ses détails constructifs.</p>
+                <p>Le défi principal résidait dans la <strong>traduction fidèle des intentions architecturales en objets numériques paramétriques</strong>, tout en respectant les contraintes techniques et normatives propres aux espaces de restauration collective. Cette question m'a conduit à développer une méthodologie rigoureuse d'organisation des familles Revit, privilégiant la clarté de l'information sur la sophistication graphique.</p>
+            </div>
+
+            <p>La maîtrise de Revit et des standards BIM n'est pas un simple outil au service de la conception, elle constitue un <strong>langage professionnel à part entière</strong> qui permet de dialoguer efficacement avec l'ensemble des acteurs du projet. Cette immersion dans un travail de modélisation approfondie, à la veille de l'habilitation, confirme la pertinence de ce positionnement différenciant.</p>
+
+            <div class="kkaa-block">
+                <h4>Assistance KKAA : Continuité et transmission d'un savoir-faire</h4>
+                <p>Du 29 au 30 juillet, j'ai consacré <strong>12 heures</strong> à l'assistance technique pour Kengo Kuma and Associates, concentrées sur la mise à jour de la maquette numérique du prototype de témoin en phase conception SOG. Cette mission prolonge un engagement de longue durée auprès de cette agence de renom, où j'ai progressivement construit une <strong>relation de confiance fondée sur la fiabilité de mes livrables</strong> et ma compréhension des enjeux architecturaux sous-jacents.</p>
+                <p>La modélisation de l'espace de bureau d'une société avec une préoccupation particulière sur la structure bois révèle l'attention portée par KKAA aux détails constructifs et à la matérialité. Le bois, matériau vivant et porteur de sens dans la démarche de Kengo Kuma, ne pouvait être réduit à sa seule dimension structurelle mais devait également <strong>traduire une intention esthétique et une philosophie constructive</strong>.</p>
+            </div>
+
+            <div class="narrative-block">
+                "Cette mission illustre parfaitement le positionnement que j'ai développé au sein de l'Atelier Juno : celui d'un architecte-consultant capable de saisir les subtilités d'une démarche conceptuelle tout en maîtrisant les outils numériques permettant de la concrétiser. La confiance accordée par une agence aussi prestigieuse que KKAA constitue une forme de reconnaissance professionnelle qui dépasse le cadre strictement technique de mes interventions."
+            </div>
+
+            <div class="coordination-block">
+                <h4>Cité des Musiques Actuelles : Orchestrer la coordination BIM</h4>
+                <p>Le 28 juillet, j'ai réparti mes <strong>8 heures</strong> entre plusieurs tâches complémentaires : la création de pages d'audit pour analyser les maquettes en suivant les templates des fiches d'audit existantes des anciens projets, le démarrage d'une structuration Kroqi avec les équipes de MOE, et la création de fichiers d'export JSON pour les IFC depuis Revit.</p>
+                <p>La création de templates de fiches d'audit constitue une <strong>dimension essentielle du BIM Management</strong> souvent sous-estimée. Il ne s'agit pas simplement de vérifier la conformité technique des maquettes, mais de construire un cadre méthodologique permettant d'identifier les non-conformités, de les hiérarchiser et d'en assurer le suivi correctif.</p>
+                <p>Le démarrage de la structuration Kroqi avec les équipes de MOE m'a placé dans une <strong>posture de coordinateur stratégique</strong>, anticipant les besoins futurs d'organisation de l'information. Cette dimension préfigure les responsabilités que je serai amené à assumer en tant qu'architecte habilité.</p>
+            </div>
+
+            <div class="negotiation-block">
+                <h4>Accord-cadre RIVP : Vigilance commerciale</h4>
+                <p>Le 30 juillet, les <strong>2 heures</strong> dédiées au suivi de l'accord-cadre RIVP correspondent à une phase de négociation nécessitant une attention particulière. Suite au dépôt de notre candidature, l'attente des retours du maître d'ouvrage exige une disponibilité réactive et une capacité à ajuster rapidement notre positionnement commercial.</p>
+                <p>Cette mission, bien que modeste en termes de volume horaire, revêt une <strong>importance stratégique pour l'Atelier Juno</strong>. Elle témoigne de ma participation active aux démarches commerciales de l'agence et de ma compréhension des mécanismes d'appels d'offres publics, des critères de sélection et des stratégies de positionnement.</p>
+            </div>
+
+            <p>La <strong>complémentarité entre ces missions</strong> ne constitue pas une dispersion mais bien une stratégie cohérente de développement professionnel. Chaque mission nourrit les autres : l'exigence technique de la modélisation MEL renforce ma crédibilité auprès de KKAA, la dimension stratégique du BIM Management sur la Cité des Musiques enrichit ma compréhension globale des projets, et le suivi commercial RIVP m'ancre dans les réalités économiques de la profession.</p>
+
+            <p>À quelques semaines de ma soutenance, cette semaine confirme la pertinence du parcours que j'ai emprunté : <strong>celui d'un architecte qui a fait de sa double expertise technique et conceptuelle non pas un compromis mais un véritable levier d'action professionnelle</strong>.</p>
+
+            <div class="narrative-block">
+                "La diversité des compétences mobilisées cette semaine - production numérique intensive, assistance architecturale de haut niveau, coordination BIM, vigilance commerciale - témoigne de la richesse formatrice de mon parcours à l'Atelier Juno. À quelques semaines de l'habilitation, cet équilibre représente la synthèse vivante de toutes les dimensions de l'architecte contemporain que je suis devenu."
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 28 Juillet', 'Mardi 29 Juillet', 'Mercredi 30 Juillet', 'Jeudi 31 Juillet', 'Vendredi 1er Août'],
+                datasets: [
+                    {
+                        label: 'Modélisation Témoin BIM MEL',
+                        data: [0, 0, 0, 8, 7],
+                        backgroundColor: '#e74c3c',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Assistance KKAA',
+                        data: [0, 6, 6, 0, 0],
+                        backgroundColor: '#4e73df',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Cité des Musiques Actuelles',
+                        data: [8, 0, 0, 0, 0],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Accord-cadre RIVP',
+                        data: [0, 0, 2, 0, 0],
+                        backgroundColor: '#f39c12',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: [
+                    'Modélisation Témoin BIM MEL (15h)',
+                    'Assistance KKAA (12h)',
+                    'Cité des Musiques Actuelles (8h)',
+                    'Accord-cadre RIVP (2h)'
+                ],
+                datasets: [{
+                    data: [15, 12, 8, 2],
+                    backgroundColor: [
+                        '#e74c3c',
+                        '#4e73df',
+                        '#1cc88a',
+                        '#f39c12'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
