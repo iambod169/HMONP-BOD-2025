@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 25-29 Août 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            border-left: 4px solid #000000;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #000000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #00090f;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A;
+        }
+        .narrative-block {
+            font-style: italic;
+            color: #555;
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 3px solid #000000;
+            background-color: #f8f9fa;
+        }
+        .production-block {
+            background-color: #fff5f5;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .limoges-block {
+            background-color: #faf5ff;
+            border-left: 4px solid #9b59b6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .archives-block {
+            background-color: #f0f0ff;
+            border-left: 4px solid #6c5ce7;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .coordination-block {
+            background-color: #f8fff8;
+            border-left: 4px solid #1cc88a;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .hmonp-block {
+            background-color: #f5f5f5;
+            border-left: 4px solid #2c3e50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+
+        <h1>Journal de Bord HMONP<br>25 - 29 Août 2025</h1>
+
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette visualisation représente la répartition du temps de travail du 25 au 29 août 2025, illustrant une semaine de reprise post-congés rythmée par les audits BIM et la préparation à la soutenance HMONP.</p>
+            <p><strong>Temps total travaillé :</strong> 33 heures</p>
+            <p><strong>Activités principales :</strong> Modélisation Témoin BIM MEL - Finalisation pour KKAA (12h - 36%), Palais des Sports de Limoges - Audit BIM paramétrage (9h - 27%), Extension Archives Nationales - Vérification audits Power BI (6h - 18%), Cité des Musiques Actuelles - Paramétrage Kroqi et audits (5h - 15%), Temps de travail HMONP - Préparation soutenance (1h - 3%)</p>
+            <p><strong>Répartition par type d'activité :</strong> Production et finalisation BIM (36%), Audit paramétrique (27%), Continuité analytique Power BI (18%), Coordination BIM et résolution de problèmes (15%), Préparation à l'habilitation (3%)</p>
+        </div>
+
+        <h2>REPRISE POST-CONGÉS : ENTRE AUDITS BIM ET PRÉPARATION À LA SOUTENANCE</h2>
+
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+
+            <div class="narrative-block">
+                La reprise post-congés s'est ouverte sur un constat paradoxal : dans un peu plus d'un mois, je présenterai devant un jury le bilan de mon parcours professionnel, et pourtant, ces cinq jours m'auront conduit à naviguer entre production technique intensive, audit paramétrique, analyse de données, résolution d'incidents et préparation intellectuelle. Cette polyvalence maîtrisée est précisément le propos que je défendrai lors de ma soutenance.
+            </div>
+
+            <p>Cette semaine de reprise illustre la <strong>philosophie professionnelle développée au sein de l'Atelier Juno</strong> : une pratique architecturale hybride où l'expertise BIM ne s'oppose pas à la démarche conceptuelle mais la nourrit et la structure. Cinq projets, cinq registres de compétences, une même exigence de rigueur.</p>
+
+            <div class="production-block">
+                <h4>Modélisation Témoin BIM MEL : Clôture d'un cycle de production</h4>
+                <p>Les 25 et 26 août, j'ai consacré <strong>12 heures</strong> à l'achèvement de la modélisation du témoin BIM MEL pour Kengo Kuma and Associates. Cette mission de finalisation m'a conduit à intégrer les <strong>ajustements de matériaux</strong> et les modifications structurelles découlant des commentaires transmis par les bureaux d'études techniques suite à l'analyse des coupes architecturales.</p>
+                <p>Cette phase d'ajustement révèle la dimension itérative du processus BIM, où la maquette numérique devient le <strong>lieu de convergence des expertises multiples</strong>. Les retours des BET Structure ne constituent pas de simples corrections techniques mais bien des contributions qui enrichissent et affinent le projet architectural. Ma position d'interface entre l'agence conceptrice et les bureaux d'études m'a permis de comprendre comment ces allers-retours nourrissent la qualité du projet.</p>
+                <p>La clôture de cette mission pour KKAA marque également <strong>la fin d'un cycle professionnel</strong> : après plusieurs mois d'assistance technique régulière auprès de cette agence prestigieuse, je boucle cette collaboration dans un contexte particulier, à quelques semaines de ma soutenance HMONP. Cette coïncidence temporelle symbolise une forme de passage, celui d'une posture d'assistant technique vers une autonomie professionnelle plus affirmée.</p>
+            </div>
+
+            <div class="narrative-block">
+                "Ma position d'interface entre l'agence conceptrice et les bureaux d'études m'a permis de comprendre comment ces allers-retours nourrissent la qualité du projet, chaque discipline apportant son regard critique et constructif."
+            </div>
+
+            <div class="limoges-block">
+                <h4>Palais des Sports de Limoges : Nouveau projet, nouvelle méthodologie</h4>
+                <p>Du 26 au 27 août, j'ai consacré <strong>9 heures</strong> à l'audit des paramètres présents dans les différentes maquettes du Palais des Sports de Limoges. L'arrivée de ce nouveau projet dans mon périmètre d'intervention constitue l'événement marquant de cette semaine de reprise, m'ayant immédiatement plongé dans les spécificités d'un équipement sportif de grande envergure.</p>
+                <p>L'audit paramétrique représente une <strong>mission BIM fondamentale souvent méconnue</strong> : avant même d'examiner la cohérence géométrique d'une maquette, il s'agit d'en vérifier la structuration informationnelle. Quels paramètres ont été utilisés ? Respectent-ils les nomenclatures établies ? Permettent-ils les extractions de données nécessaires aux phases ultérieures ? Ces questions méthodologiques conditionnent l'exploitabilité future des maquettes et donc la fluidité de l'ensemble du processus projet.</p>
+                <p>Cette mission m'a confronté à la complexité d'un équipement sportif, <strong>typologie architecturale exigeante</strong> tant par ses dimensions que par ses contraintes fonctionnelles et techniques. Les grandes portées structurelles, les exigences acoustiques, les normes d'accessibilité et de sécurité spécifiques aux établissements recevant du public sportif constituent autant de paramètres à intégrer dans l'analyse des maquettes. Cette diversité typologique enrichit considérablement mon expérience professionnelle.</p>
+            </div>
+
+            <div class="archives-block">
+                <h4>Extension Archives Nationales : Continuité analytique</h4>
+                <p>Les 28 et 29 août, les <strong>6 heures</strong> dédiées au projet d'Extension des Archives Nationales se sont concentrées sur la vérification des audits via Power BI, avec un objectif précis : <strong>tester les paramétrages développés en amont</strong>. Cette mission illustre parfaitement l'approche méthodique que j'ai progressivement construite, où chaque outil déployé fait l'objet d'une phase de validation avant son utilisation opérationnelle.</p>
+                <p>Power BI, dans ce contexte, ne se limite pas à un simple outil de visualisation de données mais devient un véritable <strong>instrument de contrôle qualité</strong>. Les tableaux de bord que j'ai élaborés permettent d'identifier rapidement les anomalies paramétriques, de quantifier les non-conformités et d'orienter les actions correctives. Cette dimension analytique du BIM Management requiert une double compétence : la maîtrise technique des outils d'extraction et de visualisation de données, mais également une capacité d'interprétation architecturale permettant de distinguer les écarts critiques des variations acceptables.</p>
+            </div>
+
+            <div class="coordination-block">
+                <h4>Cité des Musiques Actuelles : Résolution de problèmes et orchestration</h4>
+                <p>Le 28 août, j'ai articulé mes <strong>5 heures</strong> autour de deux axes complémentaires : la résolution d'un problème technique lié aux paramétrages de Kroqi suite à l'ajout de nouveaux fichiers sur la plateforme, et le démarrage effectif des audits des maquettes via cet outil.</p>
+                <p>Cette mission révèle une dimension essentielle du BIM Management souvent négligée : <strong>la gestion des imprévus techniques</strong>. Les plateformes collaboratives, aussi sophistiquées soient-elles, ne sont pas exemptes de dysfonctionnements. L'ajout de nouveaux fichiers a perturbé les paramétrages établis, nécessitant une intervention rapide pour maintenir la continuité du processus de coordination. Cette capacité de réaction face aux aléas techniques constitue une compétence professionnelle à part entière.</p>
+                <p>Le démarrage des audits marque une étape décisive dans le pilotage BIM du projet. Cette fonction de contrôle m'a placé dans une posture délicate : <strong>celle du garant de la qualité</strong>, devant signaler les écarts sans pour autant créer de tensions contre-productives avec les équipes de production. L'art du BIM Management réside autant dans la maîtrise technique que dans cette diplomatie professionnelle.</p>
+            </div>
+
+            <div class="hmonp-block">
+                <h4>Temps de travail HMONP : La dernière ligne droite</h4>
+                <p>Le 29 août, l'<strong>heure dédiée aux préparatifs de la soutenance HMONP</strong>, bien que modeste dans le volume horaire hebdomadaire, revêt une importance capitale. Cette reprise post-congés intervient à un moment charnière : dans un peu plus d'un mois, je présenterai devant un jury le parcours professionnel qui me conduira à l'habilitation.</p>
+                <p>Cette semaine illustre d'ailleurs parfaitement le propos que je défendrai lors de ma soutenance : l'architecte contemporain ne peut se cantonner à une expertise unique mais doit <strong>cultiver une polyvalence maîtrisée</strong>. En l'espace de cinq jours, j'ai navigué entre production technique (MEL), audit paramétrique (Limoges), vérification analytique (Archives Nationales), résolution de problèmes (Cité des Musiques) et préparation intellectuelle (HMONP).</p>
+            </div>
+
+            <div class="narrative-block">
+                "Cette capacité à jongler entre différents registres de compétences, loin de constituer une dispersion, témoigne d'une maturité professionnelle qui sera bientôt sanctionnée par l'habilitation à exercer en mon nom propre."
+            </div>
+
+            <p>La <strong>diversité typologique des projets</strong> traités cette semaine (équipement culturel, équipement sportif, bâtiment patrimonial, espace tertiaire) démontre la transversalité des compétences BIM acquises. Chaque projet, avec ses spécificités techniques et programmatiques, a enrichi ma compréhension globale des processus de conception et de réalisation architecturale.</p>
+
+            <p>À l'aube de ma soutenance HMONP, cette semaine confirme que le parcours emprunté au sein de l'Atelier Juno n'était pas un détour mais bien <strong>un chemin stratégique vers une pratique architecturale renouvelée</strong>, où la maîtrise des outils numériques devient un levier d'émancipation professionnelle plutôt qu'une contrainte technique.</p>
+        </div>
+    </div>
+
+    <script>
+        // Graphique Gantt - jours sur l'axe Y, projets en légende
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 25 Août', 'Mardi 26 Août', 'Mercredi 27 Août', 'Jeudi 28 Août', 'Vendredi 29 Août'],
+                datasets: [
+                    {
+                        label: 'Modélisation Témoin BIM MEL',
+                        data: [7, 5, 0, 0, 0],
+                        backgroundColor: '#e74c3c',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Palais des Sports de Limoges',
+                        data: [0, 4, 5, 0, 0],
+                        backgroundColor: '#9b59b6',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Extension Archives Nationales',
+                        data: [0, 0, 0, 3, 3],
+                        backgroundColor: '#6c5ce7',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Cité des Musiques Actuelles',
+                        data: [0, 0, 0, 5, 0],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Temps de travail HMONP',
+                        data: [0, 0, 0, 0, 1],
+                        backgroundColor: '#2c3e50',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Heures travaillées'
+                        }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Graphique de distribution du temps
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        const timeDistributionChart = new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: [
+                    'Modélisation Témoin BIM MEL (12h)',
+                    'Palais des Sports de Limoges (9h)',
+                    'Extension Archives Nationales (6h)',
+                    'Cité des Musiques Actuelles (5h)',
+                    'Temps de travail HMONP (1h)'
+                ],
+                datasets: [{
+                    data: [12, 9, 6, 5, 1],
+                    backgroundColor: [
+                        '#e74c3c',
+                        '#9b59b6',
+                        '#6c5ce7',
+                        '#1cc88a',
+                        '#2c3e50'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total par projet',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

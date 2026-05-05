@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Bord HMONP - 1-5 Septembre 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/Logo Black.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #445;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin-top: 30px;
+            height: 500px;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .reflection {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f0fa;
+            border-radius: 8px;
+            border-left: 4px solid #A7ACD9;
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #000000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .home-button:hover {
+            background-color: #A7ACD9;
+        }
+        .home-button i {
+            margin-right: 8px;
+        }
+        strong {
+            color: #3A5F3A;
+        }
+        .narrative-block {
+            font-style: italic;
+            color: #555;
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 3px solid #A7ACD9;
+            background-color: #f8f9fa;
+        }
+        .dcao-block {
+            background-color: #fff5f5;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .chelles-block {
+            background-color: #faf5ff;
+            border-left: 4px solid #9b59b6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .rd-block {
+            background-color: #fffbf0;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .mel-block {
+            background-color: #f0fff8;
+            border-left: 4px solid #1cc88a;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .musiques-block {
+            background-color: #f0f5ff;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Accueil
+        </a>
+
+        <h1>Journal de Bord HMONP<br>1 - 5 Septembre 2025</h1>
+
+        <div class="chart-container">
+            <canvas id="ganttChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="timeDistributionChart"></canvas>
+        </div>
+
+        <div class="summary">
+            <h2>Résumé de la semaine</h2>
+            <p>Cette semaine constitue un sprint final entre production professionnelle intense et remise imminente du mémoire HMONP (vendredi 5 septembre au soir).</p>
+            <p><strong>Temps total travaillé :</strong> 29 heures</p>
+            <p><strong>Activités principales :</strong> DCAO - DIGUE-TOULOUSE : préparation administrative appel d'offres (15h — 52%), Projet Maison de Chelles : relevé et conception MOE (5h — 17%), [PSL] EXE/DET : R&D Power BI et alternative Flinkr (5h — 17%), Modélisation Témoin BIM MEL : relance Amélie BET fluides (2h — 7%), Cité des Musiques Actuelles : échange Alice et plannings APS (2h — 7%)</p>
+        </div>
+
+        <h2>SPRINT FINAL : ENTRE PRODUCTION PROFESSIONNELLE ET ÉCHÉANCE ACADÉMIQUE</h2>
+
+        <div class="reflection">
+            <h3>RÉFLEXION DE LA SEMAINE</h3>
+
+            <div class="narrative-block">
+                Cinq missions, cinq registres de compétences, une même exigence de rigueur — et en toile de fond, la remise du mémoire HMONP vendredi soir. Cette semaine incarne parfaitement la tension productive des derniers mois : mener de front l'activité professionnelle et la finalisation académique.
+            </div>
+
+            <div class="dcao-block">
+                <h4><i class="fas fa-file-contract"></i> DCAO - DIGUE-TOULOUSE — Appel d'offres administratif (15h)</h4>
+                <p>La semaine s'ouvre sur la préparation complète d'un dossier d'appel d'offres pour le projet DCAO - DIGUE-TOULOUSE : remplissage des DC1, DC2, déclaration de CA et présentation de l'effectif avec titres d'étude. L'Atelier Juno est sollicité pour intégrer un groupement de MOE en tant que BIM Manager, ce qui confère à ce dossier une dimension stratégique pour l'agence.</p>
+                <p>Me confier seul la responsabilité de ce dossier — engageant directement la crédibilité de l'agence — témoigne d'une <strong>reconnaissance de ma maturité professionnelle</strong>. À quelques jours de remettre mon mémoire HMONP, remplir ces documents en tant que futur architecte habilité change profondément la perspective.</p>
+            </div>
+
+            <div class="chelles-block">
+                <h4><i class="fas fa-home"></i> Projet Maison de Chelles — Relevé et conception MOE (5h)</h4>
+                <p>Suite à la livraison de la maison principale, Jack me sollicite pour transformer le garage en fond de parcelle en <strong>habitation secondaire pour ses parents</strong>. La prise de cotes sur site permet d'identifier les contraintes réelles et les potentialités spatiales : métamorphoser la kitchenette existante en cuisine, optimiser le plan autour d'une salle de bain déjà présente.</p>
+                <p>Ce projet arrive à un moment symbolique : alors que mon mémoire théorise ma double expertise BIM-Architecture, cette mission me ramène aux fondamentaux sensibles de la conception — l'écoute du client, la lecture de l'existant, l'intelligence spatiale.</p>
+            </div>
+
+            <div class="rd-block">
+                <h4><i class="fas fa-microscope"></i> [PSL] EXE/DET — R&D Power BI & alternative Flinkr (5h)</h4>
+                <p>L'annonce du passage de Speckle en modèle payant dès janvier 2026 impose une réflexion stratégique d'urgence. Ces 5 heures de R&D sont consacrées à l'exploration de <strong>Flinkr comme plugin alternatif</strong> dans l'écosystème Microsoft, évaluant sa viabilité pour remplacer Speckle dans les workflows BIM de l'agence.</p>
+            </div>
+
+            <div class="mel-block">
+                <h4><i class="fas fa-cubes"></i> Modélisation Témoin BIM MEL — Relance Amélie BET fluides (2h)</h4>
+                <p>Relance d'Amélie pour que la maquette témoin soit finalisée afin que les BET fluides puissent intégrer leurs réseaux. Cette coordination, modeste en volume horaire, illustre le rôle d'<strong>interface et de facilitateur</strong> qui est au cœur du BIM Management : maintenir la dynamique sans créer de tensions contre-productives.</p>
+            </div>
+
+            <div class="musiques-block">
+                <h4><i class="fas fa-music"></i> Cité des Musiques Actuelles — Échange Alice & plannings APS (2h)</h4>
+                <p>Échange avec Alice de Construire pour définir les plannings révisés et préparer le démarrage de la phase APS du projet de la Sirène. Le passage Esquisse → APS transforme la nature du travail BIM : il s'agit désormais <strong>d'accompagner la montée en précision de la modélisation</strong> et la densification de l'information.</p>
+            </div>
+
+            <div class="narrative-block">
+                "La remise du mémoire vendredi soir ne marque pas la fin d'un processus mais le début d'un nouveau chapitre : celui de l'architecte habilité à exercer en son nom propre."
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi 1 Sep', 'Mardi 2 Sep', 'Mercredi 3 Sep', 'Jeudi 4 Sep', 'Vendredi 5 Sep'],
+                datasets: [
+                    {
+                        label: 'DCAO - DIGUE-TOULOUSE',
+                        data: [7, 4, 2, 1, 1],
+                        backgroundColor: '#e74c3c',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Maison de Chelles',
+                        data: [0, 0, 2, 2, 1],
+                        backgroundColor: '#9b59b6',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: '[PSL] EXE/DET — R&D',
+                        data: [0, 0, 2, 2, 1],
+                        backgroundColor: '#f39c12',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Modélisation Témoin BIM MEL',
+                        data: [0, 2, 0, 0, 0],
+                        backgroundColor: '#1cc88a',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    },
+                    {
+                        label: 'Cité des Musiques Actuelles',
+                        data: [0, 2, 0, 0, 0],
+                        backgroundColor: '#3498db',
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: { display: true, text: 'Heures travaillées' }
+                    },
+                    y: { stacked: true }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Répartition quotidienne du temps par projet',
+                        font: { size: 16 }
+                    },
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        const ctxDist = document.getElementById('timeDistributionChart').getContext('2d');
+        new Chart(ctxDist, {
+            type: 'pie',
+            data: {
+                labels: [
+                    'DCAO - DIGUE-TOULOUSE (15h)',
+                    'Maison de Chelles (5h)',
+                    '[PSL] EXE/DET — R&D (5h)',
+                    'Modélisation Témoin BIM MEL (2h)',
+                    'Cité des Musiques Actuelles (2h)'
+                ],
+                datasets: [{
+                    data: [15, 5, 5, 2, 2],
+                    backgroundColor: ['#e74c3c', '#9b59b6', '#f39c12', '#1cc88a', '#3498db'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribution du temps total — 29h',
+                        font: { size: 16 }
+                    },
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
